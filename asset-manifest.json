@@ -1,20 +1,26 @@
 {
   "files": {
-    "main.css": "/SwaSarjan/static/css/main.e6c13ad2.css",
-    "main.js": "/SwaSarjan/static/js/main.b1849d5f.js",
+    "main.css": "/SwaSarjan/static/css/main.464f9450.css",
+    "main.js": "/SwaSarjan/static/js/main.8a08f131.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.61dcf0f5ee2d7affa138.png",
+    "static/media/HomeImpact.png": "/SwaSarjan/static/media/HomeImpact.f471b79038cb75b3aaa8.png",
     "static/media/HomeBanner3.jpeg": "/SwaSarjan/static/media/HomeBanner3.aed1ac4a4761fb75f5b0.jpeg",
     "static/media/HomeBanner2.jpeg": "/SwaSarjan/static/media/HomeBanner2.6febbd0405c3545c7a9e.jpeg",
     "static/media/HomeBanner4.jpeg": "/SwaSarjan/static/media/HomeBanner4.39a0824ed121dc497c15.jpeg",
     "static/media/SwaLogoMain.png": "/SwaSarjan/static/media/SwaLogoMain.8a5aea7fb6b5bec3f97a.png",
+    "static/media/HomeMarquee5.png": "/SwaSarjan/static/media/HomeMarquee5.b6e34b042f83a1ff1f3d.png",
+    "static/media/HomeMarquee4.png": "/SwaSarjan/static/media/HomeMarquee4.7655276a9b2f215e3742.png",
+    "static/media/HomeMarquee2.png": "/SwaSarjan/static/media/HomeMarquee2.a3cbd94c6f0f57fc6d41.png",
+    "static/media/HomeMarquee3.png": "/SwaSarjan/static/media/HomeMarquee3.cc141168314d5377c61c.png",
+    "static/media/HomeMarquee1.png": "/SwaSarjan/static/media/HomeMarquee1.026504850784ebe6f693.png",
     "index.html": "/SwaSarjan/index.html",
-    "main.e6c13ad2.css.map": "/SwaSarjan/static/css/main.e6c13ad2.css.map",
-    "main.b1849d5f.js.map": "/SwaSarjan/static/js/main.b1849d5f.js.map",
+    "main.464f9450.css.map": "/SwaSarjan/static/css/main.464f9450.css.map",
+    "main.8a08f131.js.map": "/SwaSarjan/static/js/main.8a08f131.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.b1849d5f.js"
+    "static/css/main.464f9450.css",
+    "static/js/main.8a08f131.js"
   ]
 }
