@@ -8,6 +8,7 @@ const styles = {
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "80vh",
+    transition:"none",
   },
   content: {
     position: "absolute",
