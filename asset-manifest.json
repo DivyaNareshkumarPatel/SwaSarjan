@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.e6c13ad2.css",
-    "main.js": "/SwaSarjan/static/js/main.d24794b1.js",
+    "main.js": "/SwaSarjan/static/js/main.b1849d5f.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.61dcf0f5ee2d7affa138.png",
     "static/media/HomeBanner3.jpeg": "/SwaSarjan/static/media/HomeBanner3.aed1ac4a4761fb75f5b0.jpeg",
@@ -10,11 +10,11 @@
     "static/media/SwaLogoMain.png": "/SwaSarjan/static/media/SwaLogoMain.8a5aea7fb6b5bec3f97a.png",
     "index.html": "/SwaSarjan/index.html",
     "main.e6c13ad2.css.map": "/SwaSarjan/static/css/main.e6c13ad2.css.map",
-    "main.d24794b1.js.map": "/SwaSarjan/static/js/main.d24794b1.js.map",
+    "main.b1849d5f.js.map": "/SwaSarjan/static/js/main.b1849d5f.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.d24794b1.js"
+    "static/js/main.b1849d5f.js"
   ]
 }
