@@ -13,13 +13,14 @@ export default function HomeWorld() {
             width: "100%",
             height: "auto",
             objectFit: "contain",
-            minWidth:"300px"
+            minWidth:"300px",
+            maxWidth:"500px"
           }}
         />
       </div>
       <div
         style={{
-          flex: 2,
+          flex: 1,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",

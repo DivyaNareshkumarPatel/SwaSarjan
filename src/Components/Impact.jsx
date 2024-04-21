@@ -20,7 +20,7 @@ export default function Impact() {
         >
           Our Impact
         </Typography>
-        <Typography>The works we've done till the date</Typography>
+        <Typography style={{marginBottom:"20px"}}>The works we've done till the date</Typography>
       </div>
       <div
         style={{
@@ -45,7 +45,7 @@ export default function Impact() {
             src={img}
             alt=""
             style={{
-              maxWidth: "620px",
+              maxWidth: "520px",
               minWidth: "200px",
               width: "100%",
               height: "100%",
@@ -59,14 +59,26 @@ export default function Impact() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            margin:"0px"
+            margin: "0px",
           }}
         >
           <div style={{ display: "flex", flexWrap: "wrap", flex: 2 }}>
-            <ImpactData counter={2000} content="Children are promoted and helped for education."/>
-            <ImpactData counter={5000} content="Trees are planted in city and traffic areas."/>
-            <ImpactData counter={1000} content="Girls are provided scholarships for future."/>
-            <ImpactData counter={4000} content="Villagers are got basic health check-ups for free."/>
+            <ImpactData
+              counter={2000}
+              content="Children are promoted and helped for education."
+            />
+            <ImpactData
+              counter={5000}
+              content="Trees are planted in city and traffic areas."
+            />
+            <ImpactData
+              counter={1000}
+              content="Girls are provided scholarships for future."
+            />
+            <ImpactData
+              counter={4000}
+              content="Villagers are got basic health check-ups for free."
+            />
           </div>
           <div>
             <Button
