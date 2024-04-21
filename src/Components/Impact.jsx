@@ -69,19 +69,23 @@ export default function Impact() {
             <ImpactData counter={4000} content="Villagers are got basic health check-ups for free."/>
           </div>
           <div>
-          <Button
-            variant="contained"
-            style={{
-              marginTop: "20px",
-              backgroundColor: "transparent",
-              borderRadius: "20px",
-              borderWidth: "2px",
-              border: "2px solid white",
-              color: "white",
-            }}
-          >
-            Know More About Us
-          </Button>
+            <Button
+              variant="contained"
+              sx={{
+                marginTop: "20px",
+                backgroundColor: "transparent",
+                borderRadius: "20px",
+                borderWidth: "2px",
+                border: "2px solid white",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "white",
+                  color: "black",
+                },
+              }}
+            >
+              Know More About Us
+            </Button>
           </div>
         </div>
       </div>

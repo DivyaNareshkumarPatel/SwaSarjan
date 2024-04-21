@@ -7,7 +7,7 @@ export default function ImpactData({ counter, content }) {
   useEffect(() => {
     const duration = 100;
     const minValue = 1000;
-    const maxValue = 15000;
+    const maxValue = 5000;
     const range = maxValue - minValue;
 
     const intervalDuration = duration / range;
