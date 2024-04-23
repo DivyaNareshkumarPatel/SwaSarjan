@@ -33,7 +33,7 @@ export default function HomeWorld() {
             style={{
               fontWeight: "bold",
               fontSize: "2em",
-              marginBottom: "10px",
+              marginBottom: "15px",
               maxWidth: "550px",
               minWidth:"250px"
             }}
