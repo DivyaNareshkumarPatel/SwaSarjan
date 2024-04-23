@@ -56,7 +56,7 @@ const HomeSponsors = () => {
   const responsiveChunks = chunkSponsors(sponsors, size);
 
   return (
-    <div style={{ backgroundColor: "#0C0C0C", color: "white", paddingBottom:"15px" }}>
+    <div style={{ backgroundColor: "#0C0C0C", color: "white", paddingBottom:"40px" }}>
       <div style={{ padding: "40px" }}>
         <Typography
           variant="h4"
