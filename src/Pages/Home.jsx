@@ -7,6 +7,7 @@ import HomeWorld from '../Components/HomeWorld'
 import HomeSponsers from '../Components/HomeSponsers'
 import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
+import Projects from '../Components/Projects'
 export default function Home() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Home() {
       <HomeBanner/>
       <HomeMarquee/>
       <Impact/>
+      <Projects/>
       <HomeWorld/>
       <HomeSponsers/>
       <HomeTestimonials/>
