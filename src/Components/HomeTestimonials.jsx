@@ -42,7 +42,7 @@ export default function HomeTestimonials() {
         autoPlay
         animation="slide"
         indicators
-        timeout={500}
+        timeout={1000}
         navButtonsAlwaysVisible
       >
         {testimonial.map((item, index) => {

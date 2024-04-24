@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Box, Toolbar, Typography, IconButton, styled, TextField } from '@mui/material';
 
-import { Menu as MenuIcon, Search as SearchIcon, Notifications as NotificationsIcon, AccountCircle as AccountCircleIcon } from '@mui/icons-material';
+import { Search as SearchIcon, AccountCircle as AccountCircleIcon } from '@mui/icons-material';
 import LogoImage from './SwaLogoMain.png';
 
 const Image = styled('img')({ height: 45, margin: 'auto', display: 'flex', padding: '5px 0 0' });

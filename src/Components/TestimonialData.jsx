@@ -31,7 +31,7 @@ export default function TestimonialData({ item }) {
           </div>
         </div>
         <div style={{ flex: 1 }}>
-          <img src={item.image} alt="" />
+          <img src={item.image} style={{maxWidth: "100%", height: "auto", minWidth:"300px"}} alt="" />
         </div>
       </div>
     </div>
