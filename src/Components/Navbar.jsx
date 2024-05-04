@@ -1,40 +1,88 @@
 import React, { useState } from 'react';
-import { AppBar, Box, Toolbar, Typography, IconButton, styled, TextField } from '@mui/material';
-
-import { Menu as MenuIcon, Search as SearchIcon, Notifications as NotificationsIcon, AccountCircle as AccountCircleIcon } from '@mui/icons-material';
-import LogoImage from './SwaLogoMain.png';
-
+import { AppBar, Box, Toolbar, Typography, IconButton, styled, Menu, MenuItem } from '@mui/material';
+import { Search as SearchIcon, Menu as MenuIcon, AccountCircle as AccountCircleIcon } from '@mui/icons-material';
+import LogoImage from '../images/SwaLogoMain.png';
 
 const Image = styled('img')({ height: 45, margin: 'auto', display: 'flex', padding: '5px 0 0' });
-const Navbar1 = styled(AppBar)({ background: 'white', position:"static" });
-const Wrapper = styled(Box)({ paddingLeft: '250px', display: 'flex', alignItems: 'center', flex: 1, marginLeft: '', marginRight: '20px', justifyItems: 'center', justifyContent: 'flex-end' });
-const SearchWrapper = styled(Box)({ marginRight: '20px' });
-const NavLink = styled(Typography)(({ isActive }) => ({ color: isActive ? '#f26522' : 'black', marginLeft: '20px',marginRight: '20px' , textDecoration: 'none', fontFamily: '',cursor: 'pointer', position: 'relative', '&::after': { content: '""', position: 'absolute', left: 0, bottom: '-3px', width: '0', borderBottom: '2px solid #f26522', transition: 'width 0.3s ease', }, '&:hover::after': { width: '100%', }, }));
-
-
+const Navbar1 = styled(AppBar)({ background: 'white', position: "static" });
+const Wrapper = styled(Box)({ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', flex: 1 });
+const NavLink = styled(Typography)(({ isActive }) => ({
+  color: isActive ? '#f26522' : 'black',
+  marginLeft: '20px',
+  marginRight: '20px',
+  textDecoration: 'none',
+  cursor: 'pointer',
+  position: 'relative',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    left: 0,
+    bottom: '-3px',
+    width: '0',
+    borderBottom: '2px solid #f26522',
+    transition: 'width 0.3s ease',
+  },
+  '&:hover::after': {
+    width: '100%',
+  },
+}));
 
 export default function NavBar() {
   const [activeMenu, setActiveMenu] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
+  const handleMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const menuItems = [
+    { text: 'Home', onClick: () => setActiveMenu('Home') },
+    { text: 'About', onClick: () => setActiveMenu('About') },
+    // { text: 'Campaign', onClick: () => setActiveMenu('Campaign') ,
+    // { text: 'Event', onClick: () => setActiveMenu('Event') },
+    { text: 'Event', color:'EBEBE4' },
+    { text: 'Contact', onClick: () => setActiveMenu('Contact') },
+    { text: 'Registration', onClick: () => setActiveMenu('Registration') },
+  ];
 
   return (
     <Box>
       <Navbar1>
         <Toolbar>
           <Box><Image src={LogoImage} alt="Logo" /></Box>
-          <Wrapper>
-            <NavLink fontFamily={''} variant="h7" isActive={activeMenu === 'Home'} onClick={() => setActiveMenu('Home')}>Home</NavLink>
-            <NavLink variant="h7" isActive={activeMenu === 'About'} onClick={() => setActiveMenu('About')}>About</NavLink>
-            <NavLink variant="h7" isActive={activeMenu === 'Campaign'} onClick={() => setActiveMenu('Campaign')}>Campaign</NavLink>
-            <NavLink variant="h7" isActive={activeMenu === 'Event'} onClick={() => setActiveMenu('Event')}>Event</NavLink>
-            <NavLink variant="h7" isActive={activeMenu === 'Contact'} onClick={() => setActiveMenu('Contact')}>Contact</NavLink>
-            <NavLink variant="h7" isActive={activeMenu === 'Registration'} onClick={() => setActiveMenu('Registration')}>Registration</NavLink>
+          <Wrapper sx={{ display: { xs: 'flex', md: 'none' } }}>
+            <IconButton color="black" onClick={handleMenuClick}><MenuIcon /></IconButton>
+            <Menu
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleMenuClose}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+            >
+              {menuItems.map((item, index) => (
+                <MenuItem key={index} onClick={() => { handleMenuClose(); item.onClick(); }}>{item.text}</MenuItem>
+              ))}
+            </Menu>
           </Wrapper>
-          {/* <SearchWrapper>
-            <TextField variant="outlined" size="small" placeholder="Search..." />
-          </SearchWrapper> */}
-          <IconButton color="#f26522" paddingLeft="5px"><SearchIcon /></IconButton>
-          <IconButton color="dark"><AccountCircleIcon /></IconButton>
+          <Wrapper sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {menuItems.map((item, index) => (
+              <NavLink key={index} fontFamily={''} variant="h7" isActive={activeMenu === item.text} onClick={item.onClick}>{item.text}</NavLink>
+            ))}
+          </Wrapper>
+          <Box>
+            <IconButton color="#f26522" paddingLeft="5px"><SearchIcon /></IconButton>
+            <IconButton color="dark"><AccountCircleIcon /></IconButton>
+          </Box>
         </Toolbar>
       </Navbar1>
     </Box>
