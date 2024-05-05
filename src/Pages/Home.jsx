@@ -9,6 +9,7 @@ import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
 import Projects from '../Components/Projects'
 import FAQs from '../Components/FAQs'
+import VideoGallery from '../Components/VideoGallery'
 export default function Home() {
   return (
     <div>
@@ -22,6 +23,7 @@ export default function Home() {
       <FAQs/>
       <HomeTestimonials/>
       <Volunteer/>
+      <VideoGallery/>
     </div>
   )
 }
