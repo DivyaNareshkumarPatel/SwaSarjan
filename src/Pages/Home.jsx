@@ -11,12 +11,12 @@ import Projects from '../Components/Projects'
 import Events from '../Components/Events'
 import FAQs from '../Components/FAQs'
 import VideoGallery from '../Components/VideoGallery'
+import Footer from '../Components/Footer'
 export default function Home() {
   return (
     <div>
       <Navbar/>
       <HomeBanner/>
-      <HomeMarquee/>
       <Impact/>
       <Projects/>
       <HomeWorld/>
@@ -26,6 +26,7 @@ export default function Home() {
       <FAQs/>
       <Volunteer/>
       <VideoGallery/>
+      <Footer/>
     </div>
   )
 }
