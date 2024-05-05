@@ -8,6 +8,7 @@ import HomeSponsers from '../Components/HomeSponsers'
 import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
 import Projects from '../Components/Projects'
+import Events from '../Components/Events'
 export default function Home() {
   return (
     <div>
@@ -18,6 +19,7 @@ export default function Home() {
       <Projects/>
       <HomeWorld/>
       <HomeSponsers/>
+      <Events/>
       <HomeTestimonials/>
       <Volunteer/>
     </div>

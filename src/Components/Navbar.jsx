@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Box, Toolbar, Typography, IconButton, styled, Menu, MenuItem } from '@mui/material';
-import { Search as SearchIcon, Menu as MenuIcon, AccountCircle as AccountCircleIcon } from '@mui/icons-material';
+import { Search as SearchIcon, Menu as MenuIcon, AccountCircle as AccountCircleIcon, } from '@mui/icons-material';
 import LogoImage from '../images/SwaLogoMain.png';
 
 const Image = styled('img')({ height: 45, margin: 'auto', display: 'flex', padding: '5px 0 0' });
@@ -44,7 +44,7 @@ export default function NavBar() {
     { text: 'About', onClick: () => setActiveMenu('About') },
     // { text: 'Campaign', onClick: () => setActiveMenu('Campaign') ,
     // { text: 'Event', onClick: () => setActiveMenu('Event') },
-    { text: 'Event', color:'EBEBE4' },
+    { text: 'Event' , color : '#111' },
     { text: 'Contact', onClick: () => setActiveMenu('Contact') },
     { text: 'Registration', onClick: () => setActiveMenu('Registration') },
   ];
