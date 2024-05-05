@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
 import { styled } from '@mui/styles';
 
+const MainContainer = styled(Box)({
+  backgroundColor : 'gray'
+});
+
 const BodyBox = styled(Box)({
   justifyContent: 'flex-start',
   alignItems: 'center',
@@ -124,7 +128,7 @@ const FAQs = () => {
         >
           FAQs
         </Typography>
-
+        <MainContainer>
         <BodyBox style={{ backgroundColor: color1 }}>
           <NumBox>
             <Typography variant='h3'>01</Typography>
@@ -165,6 +169,8 @@ const FAQs = () => {
           </ContentBox>
         </BodyBox>
 
+        </MainContainer>
+        
       </div>
     </div>
   )
