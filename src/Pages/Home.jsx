@@ -8,7 +8,7 @@ import HomeSponsers from '../Components/HomeSponsers'
 import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
 import Projects from '../Components/Projects'
-import Events from '../Components/Events'
+import FAQs from '../Components/FAQs'
 import VideoGallery from '../Components/VideoGallery'
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
       <Projects/>
       <HomeWorld/>
       <HomeSponsers/>
-      <Events/>
+      <FAQs/>
       <HomeTestimonials/>
       <Volunteer/>
       <VideoGallery/>
