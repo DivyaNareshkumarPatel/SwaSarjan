@@ -1,9 +1,10 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.464f9450.css",
-    "main.js": "/SwaSarjan/static/js/main.338f0886.js",
+    "main.js": "/SwaSarjan/static/js/main.9aa96144.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
+    "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
     "static/media/HomeImpact.png": "/SwaSarjan/static/media/HomeImpact.f471b79038cb75b3aaa8.png",
     "static/media/Testimonial1.png": "/SwaSarjan/static/media/Testimonial1.ca7802b3cbb4859602cf.png",
     "static/media/project1.png": "/SwaSarjan/static/media/project1.585ebe512d1c2e52ee3d.png",
@@ -24,11 +25,11 @@
     "static/media/HomeMarquee1.png": "/SwaSarjan/static/media/HomeMarquee1.026504850784ebe6f693.png",
     "index.html": "/SwaSarjan/index.html",
     "main.464f9450.css.map": "/SwaSarjan/static/css/main.464f9450.css.map",
-    "main.338f0886.js.map": "/SwaSarjan/static/js/main.338f0886.js.map",
+    "main.9aa96144.js.map": "/SwaSarjan/static/js/main.9aa96144.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.464f9450.css",
-    "static/js/main.338f0886.js"
+    "static/js/main.9aa96144.js"
   ]
 }
