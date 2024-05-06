@@ -5,6 +5,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 function VideoGallery() {
   const [size, setSize] = useState(5);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const videos = [
     {
       src: "https://www.youtube.com/embed/MBqdXGsjJ74?si=WIxzbqhBb7HeXQq2",
@@ -53,13 +55,11 @@ function VideoGallery() {
   useEffect(() => {
     calculateChunkSize();
     window.addEventListener("resize", calculateChunkSize);
+    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", calculateChunkSize);
     };
-  }, []);
-
-  const responsiveChunks = chunkVideos(videos, size);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  }, []); // Empty dependency array to run the effect only once on mount
 
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
@@ -70,15 +70,16 @@ function VideoGallery() {
   };
 
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div style={{ marginBottom: "20px", overflow:"auto"}}>
       <Carousel
-        autoPlay = {false}
+        autoPlay={false}
         animation="slide"
         indicators
         timeout={500}
         navButtonsAlwaysVisible
+        style={{height:"100% !important"}}
       >
-        {responsiveChunks.map((chunk, index) => (
+        {chunkVideos(videos, size).map((chunk, index) => (
           <div
             key={index}
             style={{
