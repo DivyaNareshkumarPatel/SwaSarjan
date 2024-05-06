@@ -72,10 +72,11 @@ function VideoGallery() {
   return (
     <div style={{ marginBottom: "20px" }}>
       <Carousel
-        autoPlay={false}
-        indicators
-        navButtonsAlwaysVisible
+        autoPlay = {false}
         animation="slide"
+        indicators
+        timeout={500}
+        navButtonsAlwaysVisible
       >
         {responsiveChunks.map((chunk, index) => (
           <div
@@ -98,7 +99,7 @@ function VideoGallery() {
                     video.src
                   )}/0.jpg`}
                   alt={`Thumbnail ${innerIndex}`}
-                  style={{ width: "100%", height: "auto" }}
+                  style={{ width: "100%", height: "100%" }}
                   onClick={() => handleVideoClick(video)}
                 />
                 <PlayArrowIcon
