@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import { styled } from '@mui/styles';
+import { styled } from '@mui/system'; // Import from '@mui/system' instead of '@mui/styles'
 
 const MainContainer = styled(Box)({
   backgroundColor: 'gray'
@@ -19,7 +19,7 @@ const BodyBox = styled(Box)({
   '&:active': {
     backgroundColor: '#fff',
   },
-  '@media (max-width:600px)': {
+  '@media (max-width: 900px)': {
     flexDirection: 'column',
   },
 });
@@ -35,16 +35,19 @@ const ContentBox = styled(Box)({
 
 const Title = styled(Typography)({
   fontWeight: 'bold',
-  fontSize: '4rem',
-  '@media (max-width:600px)': {
-    fontSize: '1.5rem',
+  fontSize: '30px',
+  '@media (max-width: 900px)': {
+    fontSize: '10px',
+  },
+  '@media (min-width: 901px)': {
+    fontSize: '30px',
   },
 });
 
 const Content = styled(Typography)({
   textWrap: 'pretty',
   fontSize: '1.2rem',
-  '@media (max-width:600px)': {
+  '@media (max-width: 900px)': {
     fontSize: '1rem',
   },
 });
