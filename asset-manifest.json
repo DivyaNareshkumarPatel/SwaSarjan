@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.464f9450.css",
-    "main.js": "/SwaSarjan/static/js/main.f9053b1a.js",
+    "main.js": "/SwaSarjan/static/js/main.ce45a8e9.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -21,15 +21,19 @@
     "static/media/HomeMarquee5.png": "/SwaSarjan/static/media/HomeMarquee5.b6e34b042f83a1ff1f3d.png",
     "static/media/HomeMarquee4.png": "/SwaSarjan/static/media/HomeMarquee4.7655276a9b2f215e3742.png",
     "static/media/HomeMarquee2.png": "/SwaSarjan/static/media/HomeMarquee2.a3cbd94c6f0f57fc6d41.png",
+    "static/media/courage.png": "/SwaSarjan/static/media/courage.6c8162a627161975b4eb.png",
     "static/media/HomeMarquee3.png": "/SwaSarjan/static/media/HomeMarquee3.cc141168314d5377c61c.png",
+    "static/media/sustainability.png": "/SwaSarjan/static/media/sustainability.bb6a380459a561a2fa5f.png",
+    "static/media/innovation.png": "/SwaSarjan/static/media/innovation.8e410ebdb22569203db9.png",
     "static/media/HomeMarquee1.png": "/SwaSarjan/static/media/HomeMarquee1.026504850784ebe6f693.png",
+    "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
     "main.464f9450.css.map": "/SwaSarjan/static/css/main.464f9450.css.map",
-    "main.f9053b1a.js.map": "/SwaSarjan/static/js/main.f9053b1a.js.map",
+    "main.ce45a8e9.js.map": "/SwaSarjan/static/js/main.ce45a8e9.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.464f9450.css",
-    "static/js/main.f9053b1a.js"
+    "static/js/main.ce45a8e9.js"
   ]
 }
