@@ -10,56 +10,71 @@ const OuterContainer = styled(Box)({
     justifyContent: "center",
     alignItems: "center",
     minHeight: "auto",
-    padding: '0 1rem',
+    // padding: '0 1rem',
     width: '100%',
 });
 
 const MainContainer = styled(Box)({
     display: 'flex',
     flexDirection: 'column',
-    alignItems: '',
     width: '100%',
-    maxWidth: '1000px',
+    // maxWidth: '800px',
     padding: '1rem',
-    margin: '2rem auto',
+    // margin: '2rem auto',
 });
 
 const SubContainer = styled(Box)({
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     width: '100%',
-    padding: '10px',
 });
 
 const LeftSubContainer = styled(SubContainer)({
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    '@media (max-width: 600px)': {
-        alignItems: 'center', // Center alignment on small screens
-    },
+    // flexDirection: 'column',
+    // alignItems: 'flex-start',
+    // '@media (max-width: 600px)': {
+    //     alignItems: 'center', // Center alignment on small screens
+    // },
+    display:"flex",
+    justifyContent:"space-evenly",
+    width:"100%",
+    flexWrap:"wrap",
+    alignItems:"center",
+    marginBottom:"20px"
 });
 
 const RightSubContainer = styled(SubContainer)({
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    '@media (max-width: 600px)': {
-        alignItems: 'center', // Center alignment on small screens
-    },
+    // flexDirection: 'column',
+    // alignItems: 'flex-end',
+    // '@media (max-width: 600px)': {
+    //     alignItems: 'center', // Center alignment on small screens
+    // },
+    display:"flex",
+    justifyContent:"space-evenly",
+    flexDirection:"row-reverse",
+    alignItems:"center",
+    width:"100%",
+    flexWrap:"wrap",
+    marginBottom:"20px"
 });
 
 const Heading = styled(Typography)(({theme}) => ({
-    fontSize: '30px',
+    fontSize: '2rem',
     marginBottom: '10px',
+    fontWeight:"bold",
+    color:"#2C2C2C",
     textAlign: 'left',
+    paddingTop:"top",
+    paddingLeft:"20px",
     [theme.breakpoints.down('sm')]: {
         textAlign: 'center', // Center alignment on small screens
     },
 }));
 
 const SubHeading = styled(Typography)(({theme}) => ({
+    paddingLeft:"20px",
     fontSize: '15px',
     textAlign: 'left',
+    marginBottom:"20px",
+    color:"#5C5C5C",
     [theme.breakpoints.down('sm')]: {
         textAlign: 'center', // Center alignment on small screens
     },
@@ -73,6 +88,8 @@ const TextBoxContentBox = styled(Box)({
 const TextBoxContent = styled(Typography)({
     color: 'black',
     textAlign: 'left',
+    maxWidth:"400px",
+    
 });
 
 const TextBoxButton = styled(Button)({
@@ -90,7 +107,7 @@ const TextBoxButton = styled(Button)({
 
 const Image = styled('img')({
     height: 'auto',
-    maxWidth: '100%',
+    maxWidth: '80%',
     margin: '0 0 20px 0',
 });
 
@@ -108,7 +125,7 @@ const Projects = () => {
                 <LeftSubContainer>
                     <Image src={project1Image} alt='Project1' />
                     <Box>
-                        <Typography variant="h6">Project Sakhi</Typography>
+                        <Typography variant="h6" sx={{fontWeight:"bold", marginBottom:"10px", color:"#7622D7"}}>Project Sakhi</Typography>
                         <TextBoxContentBox>
                             <TextBoxContent>
                                 Skill and Knowledge Handling over initiative for Women in collaboration with CCA.
@@ -123,7 +140,7 @@ const Projects = () => {
                 <RightSubContainer>
                     <Image src={project2Image} alt='Project2' />
                     <Box>
-                        <Typography variant="h6">Awareness Program</Typography>
+                        <Typography variant="h6" sx={{fontWeight:"bold", marginBottom:"10px", color:"#7622D7"}}>Awareness Program</Typography>
                         <TextBoxContentBox>
                             <TextBoxContent>
                                 We have organized a menstrual hygiene Awareness program to educate girls.
@@ -138,7 +155,7 @@ const Projects = () => {
                 <LeftSubContainer>
                     <Image src={project3Image} alt='Project3' />
                     <Box>
-                        <Typography variant="h6">Blood Donation Camp</Typography>
+                        <Typography variant="h6" sx={{fontWeight:"bold", marginBottom:"10px", color:"#7622D7"}}>Blood Donation Camp</Typography>
                         <TextBoxContentBox>
                             <TextBoxContent>
                                 We organized a blood donation camp with IEEE GUNI SB & WIE SB.
@@ -153,7 +170,7 @@ const Projects = () => {
                 <RightSubContainer>
                     <Image src={project4Image} alt='Project4' />
                     <Box>
-                        <Typography variant="h6">Tree Plantation Program</Typography>
+                        <Typography variant="h6" sx={{fontWeight:"bold", marginBottom:"10px", color:"#7622D7"}}>Tree Plantation Program</Typography>
                         <TextBoxContentBox>
                             <TextBoxContent>
                                 We planted trees under Azadi ka Amrit Mahotsav campaign.
