@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import ModelVideo from "./ModelVideo";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 function VideoGallery() {
   const [size, setSize] = useState(5);
@@ -70,14 +70,33 @@ function VideoGallery() {
   };
 
   return (
-    <div style={{marginBottom:"20px"}}>
-      <Carousel autoPlay={false} indicators navButtonsAlwaysVisible animation="slide">
+    <div style={{ marginBottom: "20px" }}>
+      <Carousel
+        autoPlay={false}
+        indicators
+        navButtonsAlwaysVisible
+        animation="slide"
+      >
         {responsiveChunks.map((chunk, index) => (
-          <div key={index} style={{ display: "flex", justifyContent: "space-evenly", flexDirection: "row", padding: "10px" }}>
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexDirection: "row",
+              padding: "20px",
+              paddingBottom: "1%",
+            }}
+          >
             {chunk.map((video, innerIndex) => (
-              <div key={innerIndex} style={{ position: "relative", maxWidth: "450px" }}>
+              <div
+                key={innerIndex}
+                style={{ position: "relative", maxWidth: "450px" }}
+              >
                 <img
-                  src={`https://img.youtube.com/vi/${extractVideoId(video.src)}/0.jpg`}
+                  src={`https://img.youtube.com/vi/${extractVideoId(
+                    video.src
+                  )}/0.jpg`}
                   alt={`Thumbnail ${innerIndex}`}
                   style={{ width: "100%", height: "auto" }}
                   onClick={() => handleVideoClick(video)}
