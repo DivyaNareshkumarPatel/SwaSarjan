@@ -10,7 +10,7 @@ export default function AboutSwaSarjan() {
       <div>
         <Typography
           variant="h5"
-          style={{ padding: "35px", fontWeight: "revert-layer" }}
+          style={{ padding: "35px", fontWeight: "500" }}
         >
           About SwaSarjan
         </Typography>

@@ -4,6 +4,7 @@ import CommonBanner from "../Components/CommonBanner";
 import AboutSwaSarjan from "../Components/AboutSwaSarjan";
 import AboutWork from "../Components/AboutWork";
 import AboutValues from "../Components/AboutValues";
+import AboutTeam from "../Components/AboutTeam";
 export default function About() {
   return (
     <div>
@@ -12,6 +13,7 @@ export default function About() {
       <AboutSwaSarjan/>
       <AboutWork/>
       <AboutValues/>
+      <AboutTeam/>
     </div>
   );
 }
