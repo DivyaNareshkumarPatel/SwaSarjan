@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import ModelVideo from "./ModelVideo";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
 function VideoGallery() {
   const [size, setSize] = useState(5);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+
   const videos = [
     {
       src: "https://www.youtube.com/embed/MBqdXGsjJ74?si=WIxzbqhBb7HeXQq2",
@@ -53,13 +55,11 @@ function VideoGallery() {
   useEffect(() => {
     calculateChunkSize();
     window.addEventListener("resize", calculateChunkSize);
+    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", calculateChunkSize);
     };
-  }, []);
-
-  const responsiveChunks = chunkVideos(videos, size);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  }, []); // Empty dependency array to run the effect only once on mount
 
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
@@ -70,16 +70,37 @@ function VideoGallery() {
   };
 
   return (
-    <div style={{marginBottom:"20px"}}>
-      <Carousel autoPlay={false} indicators navButtonsAlwaysVisible animation="slide">
-        {responsiveChunks.map((chunk, index) => (
-          <div key={index} style={{ display: "flex", justifyContent: "space-evenly", flexDirection: "row", padding: "10px" }}>
+    <div style={{ marginBottom: "20px", overflow:"auto"}}>
+      <Carousel
+        autoPlay={false}
+        animation="slide"
+        indicators
+        timeout={500}
+        navButtonsAlwaysVisible
+        style={{height:"100% !important"}}
+      >
+        {chunkVideos(videos, size).map((chunk, index) => (
+          <div
+            key={index}
+            style={{
+              display: "flex",
+              justifyContent: "space-evenly",
+              flexDirection: "row",
+              padding: "20px",
+              paddingBottom: "1%",
+            }}
+          >
             {chunk.map((video, innerIndex) => (
-              <div key={innerIndex} style={{ position: "relative", maxWidth: "450px" }}>
+              <div
+                key={innerIndex}
+                style={{ position: "relative", maxWidth: "450px" }}
+              >
                 <img
-                  src={`https://img.youtube.com/vi/${extractVideoId(video.src)}/0.jpg`}
+                  src={`https://img.youtube.com/vi/${extractVideoId(
+                    video.src
+                  )}/0.jpg`}
                   alt={`Thumbnail ${innerIndex}`}
-                  style={{ width: "100%", height: "auto" }}
+                  style={{ width: "100%", height: "100%" }}
                   onClick={() => handleVideoClick(video)}
                 />
                 <PlayArrowIcon

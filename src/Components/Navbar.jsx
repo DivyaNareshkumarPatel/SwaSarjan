@@ -83,9 +83,9 @@ export default function NavBar() {
   return (
     <Box>
       <Navbar1>
-        <Toolbar>
-          <Box>
-            <Image src={LogoImage} alt="Logo" />
+        <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
+          <Box sx={{flex:"2", display:"flex", justifyContent:"space-between"}}>
+            <div><Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} /></div>
           </Box>
           <Wrapper sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton color="black" onClick={handleMenuClick}>
@@ -117,7 +117,7 @@ export default function NavBar() {
               ))}
             </Menu>
           </Wrapper>
-          <Wrapper sx={{ display: { xs: "none", md: "flex" } }}>
+          <Wrapper sx={{ display: { xs: "none", md: "flex" }, justifyContent:"space-evenly", flex:"1"}}>
             {menuItems.map((item, index) => (
               <NavLink
                 key={index}

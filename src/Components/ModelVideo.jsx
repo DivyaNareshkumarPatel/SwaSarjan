@@ -19,7 +19,7 @@ const ModelVideo = ({ selectedVideo, handleCloseClick }) => {
           height: "100%",
         }}
       >
-        <div style={{background:"white", width:"80%", height:"80%"}}>
+        <div style={{background:"white", width:"70%", height:"70%"}}>
           <iframe
             title={selectedVideo.title}
             src={selectedVideo.src}
