@@ -6,6 +6,8 @@ import AboutWork from "../Components/AboutWork";
 import AboutValues from "../Components/AboutValues";
 import AboutTeam from "../Components/AboutTeam";
 import Benifits from "../Components/Benifits";
+import Volunteer from '../Components/Volunteer';
+import Footer from '../Components/Footer';
 export default function About() {
   return (
     <div>
@@ -16,6 +18,8 @@ export default function About() {
       <AboutValues/>
       <AboutTeam/>
       <Benifits/>
+      <Volunteer/>
+      <Footer/>
     </div>
   );
 }
