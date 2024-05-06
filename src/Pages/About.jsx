@@ -5,6 +5,7 @@ import AboutSwaSarjan from "../Components/AboutSwaSarjan";
 import AboutWork from "../Components/AboutWork";
 import AboutValues from "../Components/AboutValues";
 import AboutTeam from "../Components/AboutTeam";
+import Benifits from "../Components/Benifits";
 export default function About() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function About() {
       <AboutWork/>
       <AboutValues/>
       <AboutTeam/>
+      <Benifits/>
     </div>
   );
 }
