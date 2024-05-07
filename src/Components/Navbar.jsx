@@ -112,7 +112,12 @@ export default function NavBar() {
                     item.onClick();
                   }}
                 >
+                  <Link
+                  to={item.to}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   {item.text}
+                </Link>
                 </MenuItem>
               ))}
             </Menu>
