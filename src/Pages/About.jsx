@@ -9,6 +9,7 @@ import Benifits from "../Components/Benifits";
 import Volunteer from '../Components/Volunteer';
 import Footer from '../Components/Footer';
 import Awards from "../Components/Awards&Accreditations";
+import AboutGallery from "../Components/AboutGallery";
 export default function About() {
   return (
     <div>
@@ -20,6 +21,7 @@ export default function About() {
       <AboutTeam/>
       <Benifits/>
       <Awards/>
+      <AboutGallery/>
       <Volunteer/>
       <Footer/>
     </div>

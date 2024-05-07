@@ -35,7 +35,8 @@ const ViewButton = styled(Button)({
     color: '#FFFFFF',
     borderColor: '#FFFFFF',
     borderRadius: '30px',
-    fontSize: '20px',
+    fontSize: '15px',
+    padding:'5px 30px',
     '&:hover': {
         backgroundColor:'#FFFFFF',
         color:'#0C0C0C',
@@ -93,7 +94,7 @@ const Awards = () => {
                     </GridBox>
                 </Grid>
             </Grid>
-            <ViewButton variant="outlined">View More</ViewButton>
+            <ViewButton variant="outlined">View All</ViewButton>
         </BlackBox>
     )
 }
