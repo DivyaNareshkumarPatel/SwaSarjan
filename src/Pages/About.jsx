@@ -8,6 +8,7 @@ import AboutTeam from "../Components/AboutTeam";
 import Benifits from "../Components/Benifits";
 import Volunteer from '../Components/Volunteer';
 import Footer from '../Components/Footer';
+import Awards from "../Components/Awards&Accreditations";
 export default function About() {
   return (
     <div>
@@ -18,6 +19,7 @@ export default function About() {
       <AboutValues/>
       <AboutTeam/>
       <Benifits/>
+      <Awards/>
       <Volunteer/>
       <Footer/>
     </div>
