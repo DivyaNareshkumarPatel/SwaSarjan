@@ -13,7 +13,7 @@ export default function HomeWorld() {
             width: "100%",
             height: "auto",
             objectFit: "contain",
-            minWidth:"300px",
+            minWidth:"250px",
             maxWidth:"500px"
           }}
         />

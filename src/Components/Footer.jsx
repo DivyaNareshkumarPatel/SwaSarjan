@@ -1,24 +1,29 @@
 import React from 'react';
 import { Grid, Typography, Box, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookIcon from '../images/Facebook.png';
+import InstagramIcon from '../images/Instagram.png';
+import YouTubeIcon from '../images/Youtube.png';
+import LinkedinIcon from '../images/linkedin.png'
 
 const FooterContainer = styled(Box)({
   backgroundColor: '#181818',
   color: '#FFFFFF',
   padding: '40px',
+  paddingTop:"60px",
   borderTop: '1px solid #FFFFFF',
 });
 
 const FooterGrid = styled(Grid)({
   textAlign: 'center',
+  display :"flex",
+  justifyContent:"space-around",
+  width:"100%"
 });
 
-const FooterItem = styled(Grid)({
+const FooterItem = styled(Box)({
   textAlign: 'left',
+  padding:"20px 60px"
 });
 
 const FooterHeader = styled(Typography)({
@@ -36,8 +41,8 @@ const SocialIconButton = styled(IconButton)(({ theme, color }) => ({
   backgroundColor: '#181818',
   color: color, // Use the color prop here
   borderRadius: '50%',
-  padding: '5px',
-  margin: '0 10px',
+  // padding: '5px',
+  margin: '0 2px',
   '&:hover': {
     backgroundColor: '#A9A9A9',
   },
@@ -69,17 +74,17 @@ const Footer = () => {
         </FooterItem>
       </FooterGrid>
       <Box sx={{ textAlign: 'center', margin: '20px 0' }}>
-        <SocialIconButton color="#1877F2">
-          <FacebookIcon sx={{ fontSize: '40px' }} />
+        <SocialIconButton>
+          <img src={LinkedinIcon} alt="" style={{width:"40px"}} />
         </SocialIconButton>
-        <SocialIconButton color="#1DA1F2">
-          <TwitterIcon sx={{ fontSize: '40px' }} />
+        <SocialIconButton>
+          <img src={FacebookIcon} alt="" style={{width:"40px"}} />
         </SocialIconButton>
-        <SocialIconButton color="#C13584">
-          <InstagramIcon sx={{ fontSize: '40px' }} />
+        <SocialIconButton>
+          <img src={InstagramIcon} alt="" style={{width:"40px"}} />
         </SocialIconButton>
-        <SocialIconButton color="#ff0000">
-          <YouTubeIcon sx={{ fontSize: '40px' }} />
+        <SocialIconButton>
+          <img src={YouTubeIcon} alt="" style={{width:"40px"}} />
         </SocialIconButton>
       </Box>
       <Typography variant="body2" align="center" color="#A9A9A9">Copyright © 2024 SwaSarjan</Typography>
