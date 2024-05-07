@@ -55,7 +55,7 @@ const Num = styled(Typography)({
 });
 
 const Benifits = () => {
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
   const [expanded1, setExpanded1] = useState(false);
   const [expanded2, setExpanded2] = useState(false);
   const [expanded3, setExpanded3] = useState(false);
@@ -63,9 +63,9 @@ const Benifits = () => {
   const [expanded5, setExpanded5] = useState(false);
   const [expanded6, setExpanded6] = useState(false);
 
-  const handleExpand = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpand = () => {
+  //   setExpanded(!expanded);
+  // };
   
   const handleExpand1 = () => {
     setExpanded1(!expanded1);
