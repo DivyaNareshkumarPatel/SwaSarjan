@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.9da3a7c6.css",
-    "main.js": "/SwaSarjan/static/js/main.65b05dc8.js",
+    "main.js": "/SwaSarjan/static/js/main.a087a5df.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -19,6 +19,8 @@
     "static/media/HomeWorld.png": "/SwaSarjan/static/media/HomeWorld.b739bc1d81bf105116fb.png",
     "static/media/HomeBanner4.jpeg": "/SwaSarjan/static/media/HomeBanner4.39a0824ed121dc497c15.jpeg",
     "static/media/SwaLogoMain.png": "/SwaSarjan/static/media/SwaLogoMain.8a5aea7fb6b5bec3f97a.png",
+    "static/media/left_leaf.png": "/SwaSarjan/static/media/left_leaf.af4bdacb6b6cf61b9fa4.png",
+    "static/media/right_leaf.png": "/SwaSarjan/static/media/right_leaf.a2d2f9827eb08118ac00.png",
     "static/media/sponsor9.png": "/SwaSarjan/static/media/sponsor9.48a56e34b7fed155d33f.png",
     "static/media/HomeMarquee5.png": "/SwaSarjan/static/media/HomeMarquee5.b6e34b042f83a1ff1f3d.png",
     "static/media/HomeMarquee4.png": "/SwaSarjan/static/media/HomeMarquee4.7655276a9b2f215e3742.png",
@@ -31,11 +33,11 @@
     "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
     "main.9da3a7c6.css.map": "/SwaSarjan/static/css/main.9da3a7c6.css.map",
-    "main.65b05dc8.js.map": "/SwaSarjan/static/js/main.65b05dc8.js.map",
+    "main.a087a5df.js.map": "/SwaSarjan/static/js/main.a087a5df.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9da3a7c6.css",
-    "static/js/main.65b05dc8.js"
+    "static/js/main.a087a5df.js"
   ]
 }
