@@ -2,6 +2,7 @@ import React from "react";
 import { Typography, Button } from "@mui/material";
 import img from "../images/HomeImpact.png";
 import ImpactData from "./ImpactData";
+import { Link } from "react-router-dom";
 
 export default function Impact() {
   return (
@@ -81,6 +82,7 @@ export default function Impact() {
             />
           </div>
           <div>
+            <Link to="/about">
             <Button
               variant="contained"
               sx={{
@@ -97,7 +99,7 @@ export default function Impact() {
               }}
             >
               Know More About Us
-            </Button>
+            </Button></Link>
           </div>
         </div>
       </div>

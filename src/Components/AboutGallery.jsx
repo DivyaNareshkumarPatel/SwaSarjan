@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Typography , styled , Button , Grid} from "@mui/material";
 import AboutGalleryPhoto from '../images/AboutGalleryPhoto.png';
+import { Link } from "react-router-dom";
 
 const BlackBox = styled(Box)({
     backgroundColor:'#0C0C0C',
@@ -53,7 +54,7 @@ const AboutGallery = () => {
                     <Box style={{textAlign:'left',paddingLeft:'70px'}} p={{ xs: 3, md: 4 }}>
                         <SmallTitle variant="h4">Check out</SmallTitle>
                         <LargeTitle variant="h3">Our Gallery</LargeTitle>
-                        <ViewButton variant="outlined">View Gallery</ViewButton>
+                        <Link to='/gallery'><ViewButton variant="outlined">View Gallery</ViewButton></Link>
                     </Box>
                 </Grid>
                 <Grid item xs={12} md={6}>

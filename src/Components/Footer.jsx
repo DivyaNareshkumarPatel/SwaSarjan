@@ -5,6 +5,7 @@ import FacebookIcon from '../images/Facebook.png';
 import InstagramIcon from '../images/Instagram.png';
 import YouTubeIcon from '../images/Youtube.png';
 import LinkedinIcon from '../images/linkedin.png'
+import { Link } from 'react-router-dom';
 
 const FooterContainer = styled(Box)({
   backgroundColor: '#181818',
@@ -54,7 +55,7 @@ const Footer = () => {
       <FooterGrid container spacing={3} justifyContent="center">
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>About Us</FooterHeader>
-          <FooterContent>About SwaSarjan</FooterContent>
+          <Link to='/about' style={{textDecoration:'none'}}><FooterContent>About SwaSarjan</FooterContent></Link>
           <FooterContent>Impact</FooterContent>
           <FooterContent>Reach & Presence</FooterContent>
           <FooterContent>Blogs</FooterContent>
