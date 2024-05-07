@@ -13,10 +13,10 @@ export default function AboutTeamProfile({image, name, profession}) {
         <Typography style={{fontSize:"1.3em", fontWeight:"bold"}}>{profession}</Typography>
       </div>
       <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
-        <div><img src={linkedin} style={{width:"40px", margin:"10px"}} alt="" /></div>
-        <div><img src={facebook} style={{width:"40px", margin:"10px"}} alt="" /></div>
-        <div><img src={insta} style={{width:"40px", margin:"10px"}} alt="" /></div>
-        <div><img src={youtube} style={{width:"40px", margin:"10px"}} alt="" /></div>
+        <div><img src={linkedin} style={{width:"40px", margin:"10px", cursor:"pointer"}} alt="" /></div>
+        <div><img src={facebook} style={{width:"40px", margin:"10px", cursor:"pointer"}} alt="" /></div>
+        <div><img src={insta} style={{width:"40px", margin:"10px", cursor:"pointer"}} alt="" /></div>
+        <div><img src={youtube} style={{width:"40px", margin:"10px", cursor:"pointer"}} alt="" /></div>
       </div>
     </div>
   )

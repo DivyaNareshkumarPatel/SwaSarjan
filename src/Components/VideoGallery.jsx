@@ -72,7 +72,6 @@ function VideoGallery() {
   return (
     <div style={{ marginBottom: "20px", overflow:"auto"}}>
       <Carousel
-        autoPlay={false}
         animation="slide"
         indicators
         timeout={500}

@@ -8,7 +8,7 @@ const styles = {
     backgroundSize: "cover",
     backgroundPosition: "center",
     height: "80vh",
-    transition:"none",
+    transition: "none",
   },
   content: {
     position: "absolute",
@@ -24,8 +24,6 @@ const styles = {
   },
   button: {
     borderRadius: "20px",
-    backgroundColor: "#7622D7",
-    color: "white",
     marginLeft: "15px",
     marginRight: "15px",
   },
@@ -47,7 +45,7 @@ function BannerItem({ imgSrc }) {
             maxWidth: "425px",
             marginLeft: "15px",
             marginRight: "15px",
-            lineHeight : "1.1"
+            lineHeight: "1.1",
           }}
         >
           Share your <span style={styles.spanText}>Love</span> to make someone's
@@ -63,7 +61,7 @@ function BannerItem({ imgSrc }) {
             marginBottom: "40px",
             marginLeft: "15px",
             marginRight: "15px",
-            lineHeight : "1.2"
+            lineHeight: "1.2",
           }}
         >
           Swa-Sarjan is about helping people who need your help so that they can
@@ -71,7 +69,18 @@ function BannerItem({ imgSrc }) {
           basic needs.
         </Typography>
 
-        <Button variant="contained" color="primary" style={styles.button}>
+        <Button
+          variant="contained"
+          color="primary"
+          style={styles.button}
+          sx={{
+            color: "white",
+            backgroundColor: "#7622D7",
+            "&:hover": {
+              backgroundColor: "rgb(242, 101, 34)",
+            },
+          }}
+        >
           Donate
         </Button>
       </div>
