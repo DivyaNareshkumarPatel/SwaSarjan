@@ -33,10 +33,13 @@ const ModelVideo = ({ selectedVideo, handleCloseClick }) => {
             className="close-icon"
             style={{
               position: "absolute",
-              top: "10px",
-              right: "10px",
+              top: "30px",
+              right: "30px",
               zIndex: 1000,
-              cursor:"pointer"
+              cursor:"pointer",
+              background:"white",
+              padding:"5px",
+              borderRadius:"50%"
             }}
           />
         </div>

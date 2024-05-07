@@ -41,15 +41,25 @@ export default function Volunteer() {
               You can do what you do best
             </Typography>
             <Button
-              varient="text"
+
               style={{
                 border: "black solid 1px",
                 borderRadius: "50px",
-                color: "black",
                 fontSize: "10px",
                 padding: "8px",
                 paddingLeft: "15px",
                 paddingRight: "15px",
+              }}
+              variant="contained"
+              sx={{
+                borderRadius: 20,
+                color: "black",
+                border:"black solid 1px",
+                backgroundColor: "transparent",
+                "&:hover": {
+                  backgroundColor: "black",
+                  color: "white",
+                },
               }}
             >
               Apply Now
