@@ -4,6 +4,7 @@ import aboutSwa from "../images/aboutSwa.png";
 import rocket from "../images/Rocket.png";
 import bulb from "../images/bulb.png";
 import logo from "../images/SwaLogoMain.png";
+import { Link } from "react-router-dom";
 export default function AboutSwaSarjan() {
   return (
     <div>
@@ -107,6 +108,7 @@ export default function AboutSwaSarjan() {
           >
             <img src={logo} alt="" style={{ width: "150px" }} />
             <br />
+            <Link to="/contact">
             <Button
               variant="contained"
               sx={{
@@ -121,7 +123,7 @@ export default function AboutSwaSarjan() {
               }}
             >
               Contact
-            </Button>
+            </Button></Link>
           </div>
         </div>
       </div>

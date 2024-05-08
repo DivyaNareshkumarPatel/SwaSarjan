@@ -4,12 +4,13 @@ import { Grid, Typography, Box, styled } from "@mui/material";
 const MainContainer = styled(Box)({
   textAlign: 'center',
   padding: '20px',
+  margin:'80px 0px'
 });
 
 const GridBox = styled(Grid)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? 'rgba(118, 34, 215, 0.05)' : '#FFFFFF',
-  padding: '20px',
-  margin: '10px',
+  padding: '50px 20px 50px 20px',
+  margin: '10px 10px 10px 10px',
   borderRadius: '10px',
   boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
 }));
