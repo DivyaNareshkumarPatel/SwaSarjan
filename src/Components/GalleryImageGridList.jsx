@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { ImageList, ImageListItem, Modal, Box, IconButton, styled } from "@mui/material";
+import { ImageList, ImageListItem, Modal, Box, IconButton, Pagination , styled} from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+// import GalleryPagination from "./GalleryPagination";
 import image1 from '../images/image1.png';
 import image2 from '../images/image2.png';
 import image3 from '../images/image3.png';
@@ -27,12 +28,19 @@ const images = [
 ];
 
 const MainContainer = styled(Box)({
-    maxWidth:'90%',
-    marginLeft:'60px',
-    alignItems:'center',
-    alignContent:'center',
-    justifyContent:'center',
-    display:'flex'
+  maxWidth: '90%',
+  margin: '0 auto', // Center the box horizontally
+  alignItems: 'center',
+  alignContent: 'center',
+  justifyContent: 'center',
+  display: 'flex',
+  flexDirection: 'column', // Adjust to column layout
+  position: 'relative' // Add position relative
+});
+
+const PaginationContainer = styled(Box)({
+  position: 'absolute',
+  bottom: '20px', // Adjust the distance from the bottom
 });
 
 const CloseIconButton = styled(IconButton)({
@@ -48,6 +56,13 @@ const CloseIconButton = styled(IconButton)({
 const GalleryImageList = () => {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const itemsPerPage = 6;
+  const totalPages = Math.ceil(images.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const visibleImages = images.slice(startIndex, endIndex);
 
   const handleOpen = (image) => {
     setSelectedImage(image);
@@ -59,12 +74,16 @@ const GalleryImageList = () => {
     setSelectedImage(null);
   };
 
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
   return (
     <MainContainer>
       <ImageList cols={3} gap={8}>
-        {images.map((image, index) => (
+        {visibleImages.map((image, index) => (
           <ImageListItem key={index} onClick={() => handleOpen(image)}>
-            <img src={image} alt={`Image ${index + 1}`} />
+            <img src={image} alt={`Image ${startIndex + index + 1}`} />
           </ImageListItem>
         ))}
       </ImageList>
@@ -83,7 +102,20 @@ const GalleryImageList = () => {
           </Box>
         </Box>
       </Modal>
-      </MainContainer>  
+      <PaginationContainer>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          color="primary"
+          sx={{
+            "& .MuiPaginationItem-root": {
+              color: "#F26522", // Set color for pagination numbers
+            },
+          }}
+        />
+      </PaginationContainer>
+    </MainContainer>  
   );
 };
 
