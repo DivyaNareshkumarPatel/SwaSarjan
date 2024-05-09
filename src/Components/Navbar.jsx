@@ -145,7 +145,7 @@ export default function NavBar() {
               <SearchIcon />
             </IconButton>
             <IconButton color="dark">
-              <AccountCircleIcon />
+             <Link to='/login'><AccountCircleIcon /></Link>
             </IconButton>
           </Box>
         </Toolbar>
