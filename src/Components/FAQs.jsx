@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import { styled } from '@mui/system'; 
+import { styled } from '@mui/system';
 
 const MainContainer = styled(Box)({
   backgroundColor: 'gray'
