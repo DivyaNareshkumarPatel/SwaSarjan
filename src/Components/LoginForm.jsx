@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import {useMediaQuery} from "@mui/material";
 import {
   Typography,
   Button,
@@ -9,8 +11,10 @@ import {
 import or from "../images/or.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function LoginForm() {
+  const isMedium = useMediaQuery("(max-width:807px)");
   const [focusedInput, setFocusedInput] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -232,6 +236,11 @@ export default function LoginForm() {
               Don’t have an account? <OrangeText>Register</OrangeText>
             </div>
           </form>
+              <Link to='/gallery' style={{display:isMedium?"block":"none"}}>
+                <Button variant="" style={{ color: "#F26522" ,fontSize:'10px', backgroundColor:'#FFFFFF' }} startIcon={<ArrowBackIcon style={{fontSize:'10px'}} />}>
+                  Back to Home
+                </Button>
+                </Link>
         </div>
       </div>
     </div>

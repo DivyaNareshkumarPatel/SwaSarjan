@@ -1,5 +1,7 @@
 import React from "react";
 import { Typography, Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export default function LoginCommunity() {
   return (
     <div>
@@ -14,6 +16,11 @@ export default function LoginCommunity() {
           borderRadius:"10px",
         }}
       >
+        <Link to='/gallery'>
+        <Button variant="" style={{ color: "#F26522" , backgroundColor:'#0C0C0C' }} startIcon={<ArrowBackIcon />}>
+          Back to Home
+        </Button>
+        </Link>
         <div
           style={{
             height: "300px",
