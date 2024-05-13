@@ -14,73 +14,80 @@ const MainContainer = styled(Box)({
 });
 
 const Card = styled(Box)({
-    width:'100%',
+    width:'90%',
     margin:'20px 0px',
     display:'flex',
-    // alignItems:'center',
-    justifyContent:'space-around',
-    backgroundColor:'#F3F5F6'
+    flexDirection:'column',
+    justifyContent:'center',
+    backgroundColor:'#F3F5F6',
+    flex:1,
+    "@media (min-width: 900px)": {
+        flexDirection: 'row',
+        alignItems: 'center',
+        flex:1
+    },
 });
 
 const TextBox = styled(Box)({
     display:'flex',
     flexDirection:'column',
-    // alignItems:'center',
     justifyContent:'center',
-    
-    
+    padding: '20px',
+    "@media (min-width: 900px)": {
+        flex: 1,
+    },
 });
 
 const SubTextBox1 = styled(Box)({
-    marginBottom:'60px'
+    marginBottom:'20px',
 });
 
 const SubTextBox2 = styled(Box)({
     display:'flex',
-    flexDirection:'row',
-    justifyContent:'space-between'
-});
-const DateTextBox = styled(Box)({
-    display:'flex',
-    margin:'0px 10px',
     flexDirection:'column',
-    justifyContent:'flex-start',
-    maxWidth:'300px',
-    justifyContent:'space-between',
-    alignContent:'space-around'
-});
-const AddressTextBox = styled(Box)({
-    display:'flex',
-    margin:'0px 10px',
-    flexDirection:'column',
-    justifyContent:'flex-start',
-    maxWidth:'300px',
-    justifyContent:'space-between',
-    alignContent:'space-around'
+    "@media (min-width: 900px)": {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        
+    },
 });
 
-// const EventTitle = styled(Typography)({
-//     color:'#E5E5EA'
-// });
+const DateTextBox = styled(Box)({
+    display:'flex',
+    flexDirection:'column',
+    margin:'10px',
+    maxWidth:'300px',
+    "@media (min-width: 900px)": {
+        flex: 1,
+        margin:'0px 20px'
+    },
+});
+
+const AddressTextBox = styled(Box)({
+    display:'flex',
+    flexDirection:'column',
+    margin:'10px',
+    maxWidth:'300px',
+    "@media (min-width: 900px)": {
+        flex: 1,
+        margin:'0px 20px'
+    },
+});
 
 const AdressIcon = styled(PlaceIcon)({
     color:'#E7E5ED',
     fontSize:'50px'
 });
+
 const DateIcon = styled(CalendarMonthIcon)({
     color:'#E7E5ED',
     fontSize:'50px'
 });
 
-// const DateVenuFont = styled(Typography)({
-//     fontSize:'16px',
-//     fontWeight:'bold'
-// });
-
 const EventsCards = () => {
     return(
         <MainContainer>
-            <Card >
+            <Card>
                 <TextBox>
                     <SubTextBox1>
                         <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
@@ -95,27 +102,27 @@ const EventsCards = () => {
                             <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>      
+                            </Typography>      
                         </DateTextBox>
                         <AddressTextBox>
                             <AdressIcon/>
                             <Typography style={{fontWeight:'bold'}}>Address</Typography>
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>
+                            </Typography>
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
-                <img src={Events}/>
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
             </Card>
-            <Card >
-                <img src={Events}/>
+            <Card>
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
                 <TextBox>
                     <SubTextBox1>
                         <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
@@ -130,25 +137,25 @@ const EventsCards = () => {
                             <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>      
+                            </Typography>      
                         </DateTextBox>
                         <AddressTextBox>
                             <AdressIcon/>
                             <Typography style={{fontWeight:'bold'}}>Address</Typography>
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>
+                            </Typography>
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
             </Card>
-            <Card >
+            <Card>
                 <TextBox>
                     <SubTextBox1>
                         <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
@@ -163,28 +170,25 @@ const EventsCards = () => {
                             <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>      
+                            </Typography>      
                         </DateTextBox>
                         <AddressTextBox>
                             <AdressIcon/>
                             <Typography style={{fontWeight:'bold'}}>Address</Typography>
                             <Typography style={{color:'#3C3C43'}}>
                                 Proin vel vestibulum, orci,
-                                 tempus metus, habitant faucibus 
-                                 aliquet. 
+                                tempus metus, habitant faucibus 
+                                aliquet. 
                                 Viverra posuere vitae eget.
-                                </Typography>
+                            </Typography>
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
-                <img src={Events}/>
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
             </Card>
-
-
-            
         </MainContainer>
     )
 }
