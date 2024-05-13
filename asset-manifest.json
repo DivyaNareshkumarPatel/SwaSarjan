@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/SwaSarjan/static/css/main.0f44f3eb.css",
-    "main.js": "/SwaSarjan/static/js/main.dcd6dd7c.js",
+    "main.css": "/SwaSarjan/static/css/main.0b4c8f01.css",
+    "main.js": "/SwaSarjan/static/js/main.08a55274.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -15,11 +15,9 @@
     "static/media/project3.png": "/SwaSarjan/static/media/project3.4cf01e1902a155f33536.png",
     "static/media/project4.png": "/SwaSarjan/static/media/project4.cb6203c3d831cb158dfc.png",
     "static/media/image18.png": "/SwaSarjan/static/media/image18.4179b41b18a416f28bb7.png",
-    "static/media/image5.png": "/SwaSarjan/static/media/image5.d96c074275084efd594d.png",
     "static/media/image14.png": "/SwaSarjan/static/media/image14.e6714fc29e3a5c7781af.png",
     "static/media/image6.png": "/SwaSarjan/static/media/image6.7314acc519ef5e99cc83.png",
     "static/media/Kaushal.png": "/SwaSarjan/static/media/Kaushal.cfa2ec577d69c85a9b96.png",
-    "static/media/image12.png": "/SwaSarjan/static/media/image12.1c96d6b99dc48e27ab06.png",
     "static/media/image1.png": "/SwaSarjan/static/media/image1.a4fcb8a55030fdd5b891.png",
     "static/media/HomeBanner3.jpeg": "/SwaSarjan/static/media/HomeBanner3.aed1ac4a4761fb75f5b0.jpeg",
     "static/media/volunteer.png": "/SwaSarjan/static/media/volunteer.e24b5dfb4cae4ec4878e.png",
@@ -52,12 +50,12 @@
     "static/media/HomeMarquee1.png": "/SwaSarjan/static/media/HomeMarquee1.026504850784ebe6f693.png",
     "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
-    "main.0f44f3eb.css.map": "/SwaSarjan/static/css/main.0f44f3eb.css.map",
-    "main.dcd6dd7c.js.map": "/SwaSarjan/static/js/main.dcd6dd7c.js.map",
+    "main.0b4c8f01.css.map": "/SwaSarjan/static/css/main.0b4c8f01.css.map",
+    "main.08a55274.js.map": "/SwaSarjan/static/js/main.08a55274.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f44f3eb.css",
-    "static/js/main.dcd6dd7c.js"
+    "static/css/main.0b4c8f01.css",
+    "static/js/main.08a55274.js"
   ]
 }
