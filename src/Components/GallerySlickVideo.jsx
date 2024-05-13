@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import PlayCircleOutlineRoundedIcon from '@mui/icons-material/PlayCircleOutlineRounded';
+import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import ModelVideo from "./ModelVideo";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -55,9 +55,18 @@ function GallerySlickVideo() {
 
   return (
     <div className="container">
-      <div style={{textAlign:'center', marginTop:"20px", marginBottom:"5px"}}>
-        <Typography style={{fontSize:"50px", fontWeight:'bold'}}>Video Gallery</Typography>
-        <Typography style={{fontSize:"14px"}}>Check Out Our videos</Typography>
+      <div
+        style={{ textAlign: "center", marginTop: "20px", marginBottom: "5px" }}
+      >
+        <Typography
+          style={{ fontSize: "30px", fontWeight: "bold" }}
+          className="head"
+        >
+          Video Gallery
+        </Typography>
+        <Typography style={{ fontSize: "14px" }}>
+          Check Out Our videos
+        </Typography>
       </div>
       <Swiper
         effect={"coverflow"}
@@ -90,28 +99,32 @@ function GallerySlickVideo() {
               onClick={() => handleVideoClick(video)}
             ></img>
             <PlayCircleOutlineRoundedIcon
-                  style={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
-                    fontSize: "50px",
-                    color: "rgba(255, 255, 255, 0.8)",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => handleVideoClick(video)}
-                />
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%, -50%)",
+                fontSize: "50px",
+                color: "rgba(255, 255, 255, 0.8)",
+                cursor: "pointer",
+              }}
+              onClick={() => handleVideoClick(video)}
+            />
           </SwiperSlide>
         ))}
         <div className="slider-controler">
-          <div className="swiper-button-prev slider-arrow">
-            <KeyboardArrowLeftIcon
-              sx={{ color: "#7622D7", fontSize: "10px" }}
-            ></KeyboardArrowLeftIcon>
+          <div>
+            <div className="swiper-button-prev slider-arrow">
+              <KeyboardArrowLeftIcon
+                sx={{ color: "#7622D7" }}
+                className="left"
+              ></KeyboardArrowLeftIcon>
+            </div>
           </div>
           <div className="swiper-button-next slider-arrow">
             <KeyboardArrowRightIcon
               sx={{ color: "#7622D7" }}
+              className="right"
             ></KeyboardArrowRightIcon>
           </div>
           <div className="swiper-pagination"></div>

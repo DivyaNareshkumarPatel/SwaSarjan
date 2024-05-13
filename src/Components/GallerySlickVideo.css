@@ -1,5 +1,5 @@
 .container{
-    margin: auto 40px;
+    margin: auto 25px;
 }
 .swiper_container {
   height: 35rem;
@@ -50,9 +50,6 @@
     .swiper-slide img {
       width: 15rem !important;
       height: 16rem !important;
-    }
-    .container{
-        margin: auto 20px;
     }
   }
 .swiper-slide img {
