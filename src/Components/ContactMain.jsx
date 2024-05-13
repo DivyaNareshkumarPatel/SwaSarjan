@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import {
   Typography,
   Button,
@@ -7,7 +7,6 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  TextField
 } from "@mui/material";
 import back from "../images/contactDesign.png";
 import location from "../images/oLocation.png";
@@ -27,7 +26,7 @@ export default function ContactMain() {
 
   const InputStyle = styled("input")({
     border: "none",
-    // outline: "none",
+    outline: "none",
     borderRadius: "0",
     borderBottom: "1px solid #ccc",
     color: "#333",
@@ -40,9 +39,8 @@ export default function ContactMain() {
       outline: "none",
       borderBottom: "1px solid #011C2A",
     },
-    // Added new styles
-    lineHeight: "1.5", // Ensures the cursor stays visible
-    caretColor: "#011C2A", // Sets the color of the cursor
+    lineHeight: "1.5", 
+    caretColor: "#011C2A", 
   });
 
   const LabelBox = styled("div")({
@@ -94,6 +92,7 @@ export default function ContactMain() {
     }
     console.log('Form submitted:');
     setError('');
+    console.log(detail)
   };
 
   const inputChange = (e) => {
@@ -102,7 +101,7 @@ export default function ContactMain() {
       ...prev,
       [name]: value
     }));
-    console.log(value)
+    // console.log(value)
   };
 
   return (

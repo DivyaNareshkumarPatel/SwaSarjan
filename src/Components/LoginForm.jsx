@@ -11,6 +11,7 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 
 export default function LoginForm() {
+  const [focusedInput, setFocusedInput] = useState(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
@@ -134,6 +135,9 @@ export default function LoginForm() {
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                onFocus={() => setFocusedInput('userName')}
+                onBlur={() => setFocusedInput('')}
+                autoFocus={focusedInput === 'userName'}
               />
             </div>
             <div
@@ -150,6 +154,9 @@ export default function LoginForm() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onFocus={() => setFocusedInput('password')}
+                  onBlur={() => setFocusedInput('')}
+                  autoFocus={focusedInput === 'password'}
                 />
               </div>
               <div style={{ fontSize: "12px", color: "#202325" }}>
@@ -162,6 +169,9 @@ export default function LoginForm() {
                 placeholder="Mobile Number"
                 value={mobileNumber}
                 onChange={(e) => setMobileNumber(e.target.value)}
+                onFocus={() => setFocusedInput('mobileNumber')}
+                onBlur={() => setFocusedInput('')}
+                autoFocus={focusedInput === 'mobileNumber'}
               />
             </div>
             <div
@@ -178,6 +188,9 @@ export default function LoginForm() {
                   placeholder="OTP"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
+                  onFocus={() => setFocusedInput('otp')}
+                  onBlur={() => setFocusedInput('')}
+                  autoFocus={focusedInput === 'otp'}
                 />
               </div>
               <div style={{ fontSize: "12px", color: "#202325" }}>
