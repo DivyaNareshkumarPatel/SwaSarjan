@@ -5,6 +5,8 @@ import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Gallery from './Pages/Gallery';
 import Login from './Pages/Login';
+import Registration from './Pages/Registration';
+import Events from './Pages/Events';
 export default function App() {
   return (
     <Router basename="/SwaSarjan">
@@ -14,6 +16,8 @@ export default function App() {
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/gallery' element={<Gallery/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/registration' element={<Registration/>}/>
+        <Route path='/events' element={<Events/>}/>
       </Routes>
     </Router>
   );

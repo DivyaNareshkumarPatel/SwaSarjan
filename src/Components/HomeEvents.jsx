@@ -79,7 +79,7 @@ const ArrowButtonBox = styled(Box)({
   justifyContent: 'center',
 }); 
 
-const Events = () => {
+const HomeEvents = () => {
   return ( 
     <div style={{ background: "white", paddingTop: "40px", paddingBottom: "40px" }}>
       <OuterContainer>
@@ -181,4 +181,4 @@ const Events = () => {
   )
 }
 
-export default Events;
+export default HomeEvents;

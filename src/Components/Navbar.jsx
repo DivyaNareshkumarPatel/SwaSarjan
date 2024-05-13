@@ -67,7 +67,7 @@ export default function NavBar() {
     { text: "About", to: "/about", onClick: () => setActiveMenu("About") },
     // { text: 'Campaign', onClick: () => setActiveMenu('Campaign') ,
     // { text: 'Event', onClick: () => setActiveMenu('Event') },
-    { text: "Event", to: "/event", onClick: () => setActiveMenu("About") },
+    { text: "Events", to: "/events", onClick: () => setActiveMenu("About") },
     {
       text: "Contact",
       to: "/contact",

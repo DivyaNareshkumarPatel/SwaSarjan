@@ -8,7 +8,7 @@ import Sponsers from '../Components/Sponsers'
 import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
 import Projects from '../Components/Projects'
-import Events from '../Components/Events'
+import HomeEvents from '../Components/HomeEvents'
 import FAQs from '../Components/FAQs'
 import VideoGallery from '../Components/VideoGallery'
 import Footer from '../Components/Footer'
@@ -22,7 +22,7 @@ export default function Home() {
       <Projects/>
       <HomeWorld/>
       <Sponsers/>
-      <Events/>
+      <HomeEvents/>
       <HomeTestimonials/>
       <FAQs/>
       <Volunteer/>
