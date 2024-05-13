@@ -37,9 +37,8 @@ const ModelVideo = ({ selectedVideo, handleCloseClick }) => {
               right: "30px",
               zIndex: 1000,
               cursor:"pointer",
-              background:"white",
+              color:"white",
               padding:"5px",
-              borderRadius:"50%"
             }}
           />
         </div>
