@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+// import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+// import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import PlayCircleOutlineRoundedIcon from "@mui/icons-material/PlayCircleOutlineRounded";
 import ModelVideo from "./ModelVideo";
 import "swiper/css";
@@ -114,19 +114,19 @@ function GallerySlickVideo() {
         ))}
         <div className="slider-controler">
           <div>
-            <div className="swiper-button-prev slider-arrow">
+            {/* <div className="swiper-button-prev slider-arrow">
               <KeyboardArrowLeftIcon
                 sx={{ color: "#7622D7" }}
                 className="left"
               ></KeyboardArrowLeftIcon>
-            </div>
+            </div> */}
           </div>
-          <div className="swiper-button-next slider-arrow">
+          {/* <div className="swiper-button-next slider-arrow">
             <KeyboardArrowRightIcon
               sx={{ color: "#7622D7" }}
               className="right"
             ></KeyboardArrowRightIcon>
-          </div>
+          </div> */}
           <div className="swiper-pagination"></div>
         </div>
       </Swiper>
