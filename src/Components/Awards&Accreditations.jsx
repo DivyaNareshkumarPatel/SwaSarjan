@@ -30,19 +30,19 @@ const Content = styled(Typography)({
     textAlign:'center'
 });
 
-const ViewButton = styled(Button)({
-    margin: '60px',
-    color: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderRadius: '30px',
-    fontSize: '15px',
-    padding:'5px 30px',
-    '&:hover': {
-        backgroundColor:'#FFFFFF',
-        color:'#0C0C0C',
-        borderColor: '#FFFFFF'
-    }
-});
+// const ViewButton = styled(Button)({
+//     margin: '60px',
+//     color: '#FFFFFF',
+//     borderColor: '#FFFFFF',
+//     borderRadius: '30px',
+//     fontSize: '15px',
+//     padding:'5px 30px',
+//     '&:hover': {
+//         backgroundColor:'#FFFFFF',
+//         color:'#0C0C0C',
+//         borderColor: '#FFFFFF'
+//     }
+// });
 
 const Awards = () => {
     return (
@@ -94,7 +94,7 @@ const Awards = () => {
                     </GridBox>
                 </Grid>
             </Grid>
-            <ViewButton variant="outlined">View All</ViewButton>
+            {/* <ViewButton variant="outlined">View All</ViewButton> */}
         </BlackBox>
     )
 }

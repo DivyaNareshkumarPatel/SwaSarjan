@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, Typography, styled, Box } from '@mui/material';
+import { Link } from "react-router-dom";
 import project1Image from './project1.png';
 import project2Image from './project2.png';
 import project3Image from './project3.png';
@@ -131,9 +132,11 @@ const Projects = () => {
                                 Skill and Knowledge Handling over initiative for Women in collaboration with CCA.
                             </TextBoxContent>
                         </TextBoxContentBox>
+                        <Link to="/events">
                         <TextBoxButton variant="outlined">
                             Read more
                         </TextBoxButton>
+                        </Link>
                     </Box>
                 </LeftSubContainer>
 
@@ -146,9 +149,11 @@ const Projects = () => {
                                 We have organized a menstrual hygiene Awareness program to educate girls.
                             </TextBoxContent>
                         </TextBoxContentBox>
+                        <Link to="/events">
                         <TextBoxButton variant="outlined">
                             Read more
                         </TextBoxButton>
+                        </Link>
                     </Box>
                 </RightSubContainer>
 
@@ -161,9 +166,11 @@ const Projects = () => {
                                 We organized a blood donation camp with IEEE GUNI SB & WIE SB.
                             </TextBoxContent>
                         </TextBoxContentBox>
+                        <Link to="/events">
                         <TextBoxButton variant="outlined">
                             Read more
                         </TextBoxButton>
+                        </Link>
                     </Box>
                 </LeftSubContainer>
 
@@ -176,9 +183,11 @@ const Projects = () => {
                                 We planted trees under Azadi ka Amrit Mahotsav campaign.
                             </TextBoxContent>
                         </TextBoxContentBox>
+                        <Link to="/events">
                         <TextBoxButton variant="outlined">
                             Read more
                         </TextBoxButton>
+                        </Link>
                     </Box>
                 </RightSubContainer>
             </MainContainer>
