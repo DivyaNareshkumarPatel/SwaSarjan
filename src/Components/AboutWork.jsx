@@ -1,5 +1,6 @@
 import React from "react";
 import tick from "../images/tick.png";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 export default function AboutWork() {
   return (
@@ -187,6 +188,7 @@ export default function AboutWork() {
             marginTop: "40px",
           }}
         >
+          <Link to="/registration">
           <Button
             variant="contained"
             sx={{
@@ -202,6 +204,8 @@ export default function AboutWork() {
           >
             Join Us
           </Button>
+          </Link>
+
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography } from '@mui/material';
 import { styled } from "@mui/styles";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { Link } from "react-router-dom";
 
 const OuterContainer = styled(Box)({
   padding: '0 40px',
@@ -77,6 +78,7 @@ const ArrowButtonBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  color:'#0C0C0C'
 }); 
 
 const HomeEvents = () => {
@@ -107,7 +109,9 @@ const HomeEvents = () => {
               </Content>
             </ContentBox>
             <ArrowButtonBox>
-              <ArrowCircleRightIcon style={{ fontSize: '50px' }} />
+              <Link to='/events'>
+              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
+              </Link>
             </ArrowButtonBox>
           </SubContainer>
 
@@ -130,7 +134,9 @@ const HomeEvents = () => {
               </Content>
             </ContentBox>
             <ArrowButtonBox>
-              <ArrowCircleRightIcon style={{ fontSize: '50px' }} />
+            <Link to='/events'>
+              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
+              </Link>
             </ArrowButtonBox>
           </SubContainer>
 
@@ -151,7 +157,9 @@ const HomeEvents = () => {
               </Content>
             </ContentBox>
             <ArrowButtonBox>
-              <ArrowCircleRightIcon style={{ fontSize: '50px' }} />
+            <Link to='/events'>
+              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
+              </Link>
             </ArrowButtonBox>
           </SubContainer>
 
@@ -172,7 +180,9 @@ const HomeEvents = () => {
               </Content>
             </ContentBox>
             <ArrowButtonBox>
-              <ArrowCircleRightIcon style={{ fontSize: '50px' }} />
+            <Link to='/events'>
+              <ArrowCircleRightIcon style={{ fontSize: '50px' , color:'#0C0C0C' }} />
+              </Link>
             </ArrowButtonBox>
           </SubContainer>
         </MainContainer>

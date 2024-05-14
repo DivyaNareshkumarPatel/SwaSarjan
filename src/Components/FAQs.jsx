@@ -35,7 +35,7 @@ const ContentBox = styled(Box)({
 
 const Title = styled(Typography)({
   fontWeight: 'bold',
-  fontSize: '4rem',
+  fontSize: '30px',
   '@media (max-width:600px)': {
     fontSize: '1.5rem',
   },
