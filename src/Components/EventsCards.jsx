@@ -119,10 +119,10 @@ const EventsCards = () => {
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt="" />
             </Card>
             <Card>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt="" />
                 <TextBox>
                     <SubTextBox1>
                         <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
@@ -187,7 +187,7 @@ const EventsCards = () => {
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} />
+                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt=""/>
             </Card>
         </MainContainer>
     )
