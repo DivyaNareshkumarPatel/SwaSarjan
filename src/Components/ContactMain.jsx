@@ -7,6 +7,7 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
+  Snackbar,
 } from "@mui/material";
 import back from "../images/contactDesign.png";
 import location from "../images/oLocation.png";
@@ -39,8 +40,8 @@ export default function ContactMain() {
       outline: "none",
       borderBottom: "1px solid #011C2A",
     },
-    lineHeight: "1.5", 
-    caretColor: "#011C2A", 
+    lineHeight: "1.5",
+    caretColor: "#011C2A",
   });
 
   const LabelBox = styled("div")({
@@ -49,57 +50,64 @@ export default function ContactMain() {
   });
 
   const [detail, setDetail] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
   });
 
   const [focusedInput, setFocusedInput] = useState(null);
-
-
-  const [role, setRole] = useState('');
-  const [message, setMessage] = useState('');
-  const [error, setError] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [role, setRole] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!detail.firstName || !detail.lastName || !detail.email || !detail.phone || !role || !message) {
-      setError('Please fill in all fields.');
+    if (
+      !detail.firstName ||
+      !detail.lastName ||
+      !detail.email ||
+      !detail.phone ||
+      !role ||
+      !message
+    ) {
+      setError("Please fill in all fields.");
       return;
     }
-    if(detail.firstName.length<3){
-      setError('Please enter a valid first name.');
+    if (detail.firstName.length < 3) {
+      setError("Please enter a valid first name.");
       return;
     }
-    if(detail.lastName.length<3){
-      setError('Please enter a valid last name.');
+    if (detail.lastName.length < 3) {
+      setError("Please enter a valid last name.");
       return;
     }
     var phonePattern = /^\d{10}$/;
-    if(!phonePattern.test(detail.phone)){
-      setError('Please enter a valid phone number.');
+    if (!phonePattern.test(detail.phone)) {
+      setError("Please enter a valid phone number.");
       return;
     }
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(detail.email)) {
-      setError('Please enter a valid email address.');
+      setError("Please enter a valid email address.");
       return;
     }
-    if(message.length<10){
-      setError('Message length should be at least 10 characters');
+    if (message.length < 10) {
+      setError("Message length should be at least 10 characters");
       return;
     }
-    console.log('Form submitted:');
-    setError('');
-    console.log(detail)
+    console.log("Form submitted:");
+    setError("");
+    setOpenSnackbar(true);
+    console.log(detail);
   };
 
   const inputChange = (e) => {
     const { name, value } = e.target;
     setDetail((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
     // console.log(value)
   };
@@ -115,6 +123,12 @@ export default function ContactMain() {
         paddingBottom: "60px",
       }}
     >
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackbar(false)}
+        message="Message sent successfully"
+      />
       <div
         style={{
           textAlign: "center",
@@ -274,13 +288,13 @@ export default function ContactMain() {
                     background: "#FF7F7F",
                     marginBottom: "15px",
                     borderRadius: "5px",
-                    display:"flex",
-                    justifyContent:"center",
-                    alignItems:"center",
-                    padding:"5px"
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    padding: "5px",
                   }}
                 >
-                  <ErrorIcon sx={{marginRight:"5px"}} />
+                  <ErrorIcon sx={{ marginRight: "5px" }} />
                   <span>{error}</span>
                 </div>
               )}
@@ -300,9 +314,9 @@ export default function ContactMain() {
                     name="firstName"
                     value={detail.firstName}
                     onChange={inputChange}
-                    onFocus={() => setFocusedInput('firstName')}
-                    onBlur={() => setFocusedInput('')}
-                    autoFocus={focusedInput === 'firstName'}
+                    onFocus={() => setFocusedInput("firstName")}
+                    onBlur={() => setFocusedInput("")}
+                    autoFocus={focusedInput === "firstName"}
                   />
                 </LabelBox>
                 <LabelBox>
@@ -313,9 +327,9 @@ export default function ContactMain() {
                     name="lastName"
                     value={detail.lastName}
                     onChange={inputChange}
-                    onFocus={() => setFocusedInput('lastName')}
-                    onBlur={() => setFocusedInput('')}
-                    autoFocus={focusedInput === 'lastName'}
+                    onFocus={() => setFocusedInput("lastName")}
+                    onBlur={() => setFocusedInput("")}
+                    autoFocus={focusedInput === "lastName"}
                   />
                 </LabelBox>
               </div>
@@ -331,13 +345,13 @@ export default function ContactMain() {
                     <label htmlFor="email">Email</label>
                     <br />
                     <InputStyle
-                      type="email"
+                      type="text"
                       name="email"
                       value={detail.email}
                       onChange={inputChange}
-                      onFocus={() => setFocusedInput('email')}
-                      onBlur={() => setFocusedInput('')}
-                      autoFocus={focusedInput === 'email'}
+                      onFocus={() => setFocusedInput("email")}
+                      onBlur={() => setFocusedInput("")}
+                      autoFocus={focusedInput === "email"}
                     />
                   </LabelBox>
                   <LabelBox>
@@ -348,9 +362,9 @@ export default function ContactMain() {
                       name="phone"
                       value={detail.phone}
                       onChange={inputChange}
-                      onFocus={() => setFocusedInput('phone')}
-                      onBlur={() => setFocusedInput('')}
-                      autoFocus={focusedInput === 'phone'}
+                      onFocus={() => setFocusedInput("phone")}
+                      onBlur={() => setFocusedInput("")}
+                      autoFocus={focusedInput === "phone"}
                     />
                   </LabelBox>
                 </div>
@@ -465,13 +479,26 @@ export default function ContactMain() {
                 />
               </div>
               <div>
-                <Button type="submit" sx={{ backgroundColor: "#011C2A", color: "white", "&:hover":{
-                  background:"black"
-                } }}>
+                <Button
+                  type="submit"
+                  sx={{
+                    backgroundColor: "#011C2A",
+                    color: "white",
+                    "&:hover": {
+                      background: "black",
+                    },
+                  }}
+                >
                   Send Message
                 </Button>
               </div>
-              <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <img src={send} alt="" style={{ width: "170px" }} />
               </div>
             </form>

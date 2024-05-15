@@ -63,19 +63,7 @@ function EventNews() {
         ))}
         <div className="slider-controler">
           <div>
-            {/* <div className="swiper-button-prev slider-arrow">
-              <KeyboardArrowLeftIcon
-                sx={{ color: "#7622D7" }}
-                className="left"
-              ></KeyboardArrowLeftIcon>
-            </div> */}
           </div>
-          {/* <div className="swiper-button-next slider-arrow">
-            <KeyboardArrowRightIcon
-              sx={{ color: "#7622D7" }}
-              className="right"
-            ></KeyboardArrowRightIcon>
-          </div> */}
           <div className="swiper-pagination"></div>
         </div>
       </Swiper>

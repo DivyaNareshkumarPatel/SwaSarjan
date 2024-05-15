@@ -1,13 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import {useMediaQuery} from "@mui/material";
-import {
-  Typography,
-  Button,
-  styled,
-  Radio,
-  Snackbar,
-} from "@mui/material";
+import { useMediaQuery } from "@mui/material";
+import { Typography, Button, styled, Radio, Snackbar } from "@mui/material";
 import or from "../images/or.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
@@ -21,7 +15,7 @@ export default function LoginForm() {
   const [mobileNumber, setMobileNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState([]);
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const InputStyle = styled("input")({
@@ -43,19 +37,50 @@ export default function LoginForm() {
     cursor: "pointer",
   });
 
+  const validateUsername = () => {
+    if (username.trim() === "") return "Username is required.";
+    if (username.length < 3) return "Username must be at least 3 characters.";
+    return "";
+  };
+
+  const validatePassword = () => {
+    if (password.trim() === "") return "Password is required.";
+    if (password.length < 6) return "Password must be at least 6 characters.";
+    return "";
+  };
+
+  const validateMobileNumber = () => {
+    if (mobileNumber.trim() === "") return "Mobile number is required.";
+    const mobileNumberPattern = /^[0-9]{10}$/;
+    if (!mobileNumberPattern.test(mobileNumber))
+      return "Invalid mobile number.";
+    return "";
+  };
+
+  const validateOtp = () => {
+    if (otp.trim() === "") return "OTP is required.";
+    if (otp.length !== 6) return "OTP must be 6 digits.";
+    return "";
+  };
+
   const handleLogin = (event) => {
     event.preventDefault();
-    if (username === "") {
-      setError("Username is required.");
-    } else if (password === "") {
-      setError("Password is required.");
-    } else if (mobileNumber === "") {
-      setError("Mobile number is required.");
-    } else if (otp === "") {
-      setError("OTP is required.");
+    const validationErrors = [];
+    const usernameError = validateUsername();
+    const passwordError = validatePassword();
+    const mobileNumberError = validateMobileNumber();
+    const otpError = validateOtp();
+
+    if (usernameError) validationErrors.push(usernameError);
+    if (passwordError) validationErrors.push(passwordError);
+    if (mobileNumberError) validationErrors.push(mobileNumberError);
+    if (otpError) validationErrors.push(otpError);
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
     } else {
       setOpenSnackbar(true);
-      setError("")
+      setErrors([]);
     }
   };
 
@@ -66,15 +91,16 @@ export default function LoginForm() {
         alignItems: "center",
         justifyContent: "center",
         margin: "10px 40px",
+        flexDirection: "column",
       }}
     >
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={() => setOpenSnackbar(false)}
+        message="Login Successful!"
+      />
       <div>
-        <Snackbar
-          open={openSnackbar}
-          autoHideDuration={6000}
-          onClose={() => setOpenSnackbar(false)}
-          message="Login Successful!"
-        />
         <div
           style={{
             display: "flex",
@@ -115,23 +141,23 @@ export default function LoginForm() {
           </div>
         </div>
         <div style={{ marginTop: "10px" }}>
-          {error && (
-            <div
-              style={{
-                color: "white",
-                background: "#FF7F7F",
-                marginBottom: "15px",
-                borderRadius: "5px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "5px",
-              }}
-            >
-              <ErrorIcon sx={{ marginRight: "5px" }} />
-              <span>{error}</span>
-            </div>
-          )}
+        {errors.length > 0 && (
+        <div
+          style={{
+            color: "white",
+            background: "#FF7F7F",
+            marginBottom: "15px",
+            borderRadius: "5px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "5px",
+          }}
+        >
+          <ErrorIcon sx={{ marginRight: "5px" }} />
+          <span>{errors[0]}</span>
+        </div>
+      )}
           <form onSubmit={handleLogin}>
             <div>
               <InputStyle
@@ -139,9 +165,9 @@ export default function LoginForm() {
                 placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                onFocus={() => setFocusedInput('userName')}
-                onBlur={() => setFocusedInput('')}
-                autoFocus={focusedInput === 'userName'}
+                onFocus={() => setFocusedInput("userName")}
+                onBlur={() => setFocusedInput("")}
+                autoFocus={focusedInput === "userName"}
               />
             </div>
             <div
@@ -158,9 +184,9 @@ export default function LoginForm() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  onFocus={() => setFocusedInput('password')}
-                  onBlur={() => setFocusedInput('')}
-                  autoFocus={focusedInput === 'password'}
+                  onFocus={() => setFocusedInput("password")}
+                  onBlur={() => setFocusedInput("")}
+                  autoFocus={focusedInput === "password"}
                 />
               </div>
               <div style={{ fontSize: "12px", color: "#202325" }}>
@@ -173,9 +199,9 @@ export default function LoginForm() {
                 placeholder="Mobile Number"
                 value={mobileNumber}
                 onChange={(e) => setMobileNumber(e.target.value)}
-                onFocus={() => setFocusedInput('mobileNumber')}
-                onBlur={() => setFocusedInput('')}
-                autoFocus={focusedInput === 'mobileNumber'}
+                onFocus={() => setFocusedInput("mobileNumber")}
+                onBlur={() => setFocusedInput("")}
+                autoFocus={focusedInput === "mobileNumber"}
               />
             </div>
             <div
@@ -192,9 +218,9 @@ export default function LoginForm() {
                   placeholder="OTP"
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
-                  onFocus={() => setFocusedInput('otp')}
-                  onBlur={() => setFocusedInput('')}
-                  autoFocus={focusedInput === 'otp'}
+                  onFocus={() => setFocusedInput("otp")}
+                  onBlur={() => setFocusedInput("")}
+                  autoFocus={focusedInput === "otp"}
                 />
               </div>
               <div style={{ fontSize: "12px", color: "#202325" }}>
@@ -236,11 +262,19 @@ export default function LoginForm() {
               Don’t have an account? <OrangeText>Register</OrangeText>
             </div>
           </form>
-              <Link to='/gallery' style={{display:isMedium?"block":"none"}}>
-                <Button variant="" style={{ color: "#F26522" ,fontSize:'10px', backgroundColor:'#FFFFFF' }} startIcon={<ArrowBackIcon style={{fontSize:'10px'}} />}>
-                  Back to Home
-                </Button>
-                </Link>
+          <Link to="/gallery" style={{ display: isMedium ? "block" : "none" }}>
+            <Button
+              variant=""
+              style={{
+                color: "#F26522",
+                fontSize: "10px",
+                backgroundColor: "#FFFFFF",
+              }}
+              startIcon={<ArrowBackIcon style={{ fontSize: "10px" }} />}
+            >
+              Back to Home
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
