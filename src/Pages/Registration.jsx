@@ -25,7 +25,7 @@ export default function Registration() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        height: "100vh",
+        height : isMedium ? "auto" : "100vh",
         background: "#F5F5F5",
         boxShadow:
           "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
@@ -40,10 +40,11 @@ export default function Registration() {
           margin:"10px"
         }}
       >
-        <FirstDisplay>
+        <RegistrationMainForm/>
+        {/* <FirstDisplay>
           <div style={{ display: isMedium ? "none" : "block" }}><LoginCommunity/></div>
           <div><RegistrationOptions/></div>
-        </FirstDisplay>        
+        </FirstDisplay>         */}
       </div>
     </div>
   );
