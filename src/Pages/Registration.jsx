@@ -41,7 +41,7 @@ export default function Registration() {
         }}
       >
         <FirstDisplay>
-          <div style={{ display: isMedium ? "block" : "none" }}><LoginCommunity/></div>
+          <div style={{ display: isMedium ? "none" : "block" }}><LoginCommunity/></div>
           <div><RegistrationOptions/></div>
         </FirstDisplay>        
       </div>
