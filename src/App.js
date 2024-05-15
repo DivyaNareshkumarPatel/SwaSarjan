@@ -9,6 +9,7 @@ import Registration from './Pages/Registration';
 import Events from './Pages/Events';
 import Donate from './Pages/Donate';
 import Campaign from './Pages/Campaign';
+import Campaign2 from './Pages/Campaign2';
 export default function App() {
   return (
     <Router basename="/SwaSarjan">
@@ -22,6 +23,7 @@ export default function App() {
         <Route path='/events' element={<Events/>}/>
         <Route path='/donate' element={<Donate/>}/>
         <Route path='/campaign' element={<Campaign/>}/>
+        <Route path="/campaigndetail" element={<Campaign2/>}/>
       </Routes>
     </Router>
   );

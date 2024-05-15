@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import OrangeLogo from "../images/Swa Icon Name Orange.png";
