@@ -118,10 +118,11 @@ export default function LoginForm() {
           >
             Register Yourself & let’s get started with SwaSarjan
           </Typography>
+          <Link to='/registration'>
           <Button
             sx={{
               border: "1px black solid",
-              width: "70%",
+              width: "100%",
               borderRadius: "50px",
               color: "black",
               "&:hover": { background: "black", color: "white" },
@@ -129,6 +130,7 @@ export default function LoginForm() {
           >
             Register Now
           </Button>
+          </Link>
           <div
             style={{
               display: "flex",
@@ -259,7 +261,7 @@ export default function LoginForm() {
                 textAlign: "center",
               }}
             >
-              Don’t have an account? <OrangeText>Register</OrangeText>
+              Don’t have an account? <Link to='/registeration'><OrangeText>Register</OrangeText></Link>
             </div>
           </form>
           <Link to="/gallery" style={{ display: isMedium ? "block" : "none" }}>
