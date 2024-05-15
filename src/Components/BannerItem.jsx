@@ -1,4 +1,5 @@
 import { Paper, Button, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const styles = {
   paper: {
@@ -69,6 +70,7 @@ function BannerItem({ imgSrc }) {
           basic needs.
         </Typography>
 
+        <Link to='/donate'>
         <Button
           variant="contained"
           color="primary"
@@ -83,6 +85,7 @@ function BannerItem({ imgSrc }) {
         >
           Donate
         </Button>
+        </Link>
       </div>
     </Paper>
   );

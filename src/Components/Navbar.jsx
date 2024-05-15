@@ -85,7 +85,7 @@ export default function NavBar() {
       <Navbar1>
         <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
           <Box sx={{flex:"2", display:"flex", justifyContent:"space-between"}}>
-            <div><Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} /></div>
+            <Link to='/'><div><Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} /></div></Link>
           </Box>
           <Wrapper sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton color="black" onClick={handleMenuClick}>

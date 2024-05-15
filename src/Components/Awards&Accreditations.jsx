@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, styled, Grid , Button } from '@mui/material';
+import { Box, Typography, styled, Grid  } from '@mui/material';
 import left_leaf from '../images/left_leaf.png';
 import right_leaf from '../images/right_leaf.png';
 

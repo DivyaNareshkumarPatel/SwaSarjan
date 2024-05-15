@@ -16,7 +16,7 @@ export default function LoginCommunity() {
           borderRadius:"10px",
         }}
       >
-        <Link to='/gallery'>
+        <Link to='/'>
         <Button variant="" style={{ color: "#F26522" , backgroundColor:'#0C0C0C' }} startIcon={<ArrowBackIcon />}>
           Back to Home
         </Button>

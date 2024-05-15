@@ -2,6 +2,7 @@ import React from "react";
 import img from "../images/volunteer.png";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 export default function Volunteer() {
   const isSmallScreen = window.innerWidth <= 600;
   return (
@@ -40,6 +41,7 @@ export default function Volunteer() {
             <Typography style={{ marginBottom: "0.3rem" }}>
               You can do what you do best
             </Typography>
+            <Link to='/registration'>
             <Button
 
               style={{
@@ -61,9 +63,10 @@ export default function Volunteer() {
                   color: "white",
                 },
               }}
-            >
+              >
               Apply Now
-            </Button>
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
