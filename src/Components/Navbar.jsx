@@ -65,7 +65,7 @@ export default function NavBar() {
   const menuItems = [
     { text: "Home", to: "/", onClick: () => setActiveMenu("Home") },
     { text: "About", to: "/about", onClick: () => setActiveMenu("About") },
-    // { text: 'Campaign', onClick: () => setActiveMenu('Campaign') ,
+    { text: 'Campaign', to:"/campaign",onClick: () => setActiveMenu('Campaign') },
     // { text: 'Event', onClick: () => setActiveMenu('Event') },
     { text: "Events", to: "/events", onClick: () => setActiveMenu("About") },
     {
@@ -84,7 +84,7 @@ export default function NavBar() {
     <Box>
       <Navbar1>
         <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
-          <Box sx={{flex:"2", display:"flex", justifyContent:"space-between"}}>
+          <Box sx={{flex:"1", display:"flex", justifyContent:"space-between"}}>
             <Link to='/'><div><Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} /></div></Link>
           </Box>
           <Wrapper sx={{ display: { xs: "flex", md: "none" } }}>
