@@ -1,8 +1,8 @@
 import React from "react";
 import LoginCommunity from "../Components/LoginCommunity";
 import RegistrationOptions from "../Components/RegistrationOptions";
-import RegistrationMainForm from "../Components/RegistrationMainForm";
-import {Box,Typography,styled, useMediaQuery } from "@mui/material";
+// import RegistrationMainForm from "../Components/RegistrationMainForm";
+import {Box,styled, useMediaQuery } from "@mui/material";
 
 
 const FirstDisplay = styled(Box)({
