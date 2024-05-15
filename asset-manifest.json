@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.a5e360ca.css",
-    "main.js": "/SwaSarjan/static/js/main.504c1ba4.js",
+    "main.js": "/SwaSarjan/static/js/main.d1bbb560.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -39,6 +39,8 @@
     "static/media/image2.png": "/SwaSarjan/static/media/image2.48dd5aa935d082269101.png",
     "static/media/image10.png": "/SwaSarjan/static/media/image10.cb291dbcb4ada517c642.png",
     "static/media/news5.jpg": "/SwaSarjan/static/media/news5.fe719f6200f2a9602487.jpg",
+    "static/media/Swa Icon Name Orange.png": "/SwaSarjan/static/media/Swa Icon Name Orange.a387745f7cbf2f27426d.png",
+    "static/media/Swa Icon Name White.png": "/SwaSarjan/static/media/Swa Icon Name White.95f711d50d9e75c132c1.png",
     "static/media/news3.jpeg": "/SwaSarjan/static/media/news3.73f86dfd8ca6e46ed8e8.jpeg",
     "static/media/news2.jpeg": "/SwaSarjan/static/media/news2.82a3f25b261a4da4691d.jpeg",
     "static/media/news1.jpeg": "/SwaSarjan/static/media/news1.faf019d6727266a358b0.jpeg",
@@ -56,11 +58,11 @@
     "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
     "main.a5e360ca.css.map": "/SwaSarjan/static/css/main.a5e360ca.css.map",
-    "main.504c1ba4.js.map": "/SwaSarjan/static/js/main.504c1ba4.js.map",
+    "main.d1bbb560.js.map": "/SwaSarjan/static/js/main.d1bbb560.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a5e360ca.css",
-    "static/js/main.504c1ba4.js"
+    "static/js/main.d1bbb560.js"
   ]
 }
