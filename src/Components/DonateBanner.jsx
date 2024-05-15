@@ -7,19 +7,20 @@ const DonateBanner = () => {
     return (
         <div
             style={{
-                maxWidth: '100%', // Set maximum width to ensure responsiveness
+                maxWidth: '100%',
                 margin: '20px',
+                height: '500px',
                 position: 'relative',
                 borderRadius: '10px',
-                overflow: 'hidden', // Hide overflow to prevent blurred image from overflowing
+                overflow: 'hidden',
             }}
         >
             <img
                 src={image3}
                 alt="Background"
                 style={{
-                    width: '100%', // Make the image responsive
-                    height: 'auto', // Ensure aspect ratio is maintained
+                    width: '',
+                    height: '',
                     objectFit: 'cover',
                     filter: 'blur(0.1px) brightness(0.8)',
                     borderRadius: '10px',
@@ -33,9 +34,10 @@ const DonateBanner = () => {
                     transform: 'translate(-50%, -50%)',
                     textAlign: 'center',
                     padding: '10px',
+                    zIndex: '10',
                 }}
             >
-                <img src={WhiteLogo} alt="Logo" style={{ width: '50px', marginBottom: '10px' }} /> {/* Adjust width and add margin */}
+                <img src={WhiteLogo} alt="Logo" style={{ width: '50px', marginBottom: '10px' }} />
                 <Typography variant="h6" style={{ color: 'white' }}>
                     We Can Save The Future
                 </Typography>

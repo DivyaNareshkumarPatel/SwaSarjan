@@ -5,9 +5,8 @@ import OrangeLogo from '../images/Swa Icon Name Orange.png';
 import {
   Typography,
   Button,
-  styled,
   Radio,
-  Snackbar,
+  
 } from "@mui/material";
 
 import ErrorIcon from "@mui/icons-material/Error";
@@ -24,24 +23,6 @@ import FormLabel from '@mui/material/FormLabel';
 
 export default function DonateForm() {
   const isMedium = useMediaQuery("(max-width:807px)");
-  const [error, setError] = useState("");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
-
-//   const handleLogin = (event) => {
-//     event.preventDefault();
-//     if (username === "") {
-//       setError("Username is required.");
-//     } else if (password === "") {
-//       setError("Password is required.");
-//     } else if (mobileNumber === "") {
-//       setError("Mobile number is required.");
-//     } else if (otp === "") {
-//       setError("OTP is required.");
-//     } else {
-//       setOpenSnackbar(true);
-//       setError("")
-//     }
-//   };
 
   const DonationType = ['Education','Women Empowerment' , 'Tree Plantation',]
 
@@ -58,12 +39,6 @@ export default function DonateForm() {
      }}
     >
       <div>
-        <Snackbar
-          open={openSnackbar}
-          autoHideDuration={6000}
-          onClose={() => setOpenSnackbar(false)}
-          message="Donation Successful!"
-        />
         <div
           style={{
             display: "flex",
@@ -99,25 +74,6 @@ export default function DonateForm() {
             </div>
         </div>
 
-        <div style={{ marginTop: "10px" }}>
-          {error && (
-              <div
-              style={{
-                  color: "white",
-                  background: "#FF7F7F",
-                  marginBottom: "15px",
-                  borderRadius: "5px",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  padding: "5px",
-                }}
-                >
-              <ErrorIcon sx={{ marginRight: "5px" }} />
-              <span>{error}</span>
-            </div>
-          )}
-          {/* onSubmit={handleLogin} */}
           <form  style={{margin:'10px 0px 0px 0px'}}>
             <div>
             <Typography style={{fontWeight:'lighter' , fontSize:'12px' , color:'GrayText'}}>Choose a donation type or none</Typography>
@@ -225,6 +181,5 @@ export default function DonateForm() {
                 </Link>
         </div>
       </div>
-    </div>
   );
 }
