@@ -1,7 +1,22 @@
 import React from "react";
 import LoginCommunity from "../Components/LoginCommunity";
-import RegistrationForm from "../Components/RegistrationForm";
-import { useMediaQuery } from "@mui/material";
+import RegistrationOptions from "../Components/RegistrationOptions";
+import RegistrationMainForm from "../Components/RegistrationMainForm";
+import {Box,Typography,styled, useMediaQuery } from "@mui/material";
+
+
+const FirstDisplay = styled(Box)({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  // gap: "2rem",
+  flexDirection: "row",
+  "@media (max-width: 600px)": {
+    flexDirection: "column",
+  }
+});
+
+
 export default function Registration() {
     const isMedium = useMediaQuery("(max-width:807px)");
   return (
@@ -25,8 +40,10 @@ export default function Registration() {
           margin:"10px"
         }}
       >
-        <div style={{display:isMedium?"none":"block"}}><LoginCommunity /></div>
-        <div><RegistrationForm /></div>
+        <FirstDisplay>
+          <div><LoginCommunity/></div>
+          <div><RegistrationOptions/></div>
+        </FirstDisplay>        
       </div>
     </div>
   );
