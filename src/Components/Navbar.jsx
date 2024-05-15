@@ -65,7 +65,16 @@ export default function NavBar() {
   const menuItems = [
     { text: "Home", to: "/", onClick: () => setActiveMenu("Home") },
     { text: "About", to: "/about", onClick: () => setActiveMenu("About") },
-    { text: 'Campaign', to:"/campaign",onClick: () => setActiveMenu('Campaign') },
+    {
+      text: "Campaign",
+      to: "/campaign",
+      onClick: () => setActiveMenu("Campaign"),
+    },
+    {
+      text: "Gallery",
+      to: "/gallery",
+      onClick: () => setActiveMenu("Gallery"),
+    },
     // { text: 'Event', onClick: () => setActiveMenu('Event') },
     { text: "Events", to: "/events", onClick: () => setActiveMenu("About") },
     {
@@ -83,9 +92,15 @@ export default function NavBar() {
   return (
     <Box>
       <Navbar1>
-        <Toolbar sx={{display:"flex", justifyContent:"space-between"}}>
-          <Box sx={{flex:"1", display:"flex", justifyContent:"space-between"}}>
-            <Link to='/'><div><Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} /></div></Link>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          <Box
+            sx={{ flex: "1", display: "flex", justifyContent: "space-between" }}
+          >
+            <Link to="/">
+              <div>
+                <Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} />
+              </div>
+            </Link>
           </Box>
           <Wrapper sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton color="black" onClick={handleMenuClick}>
@@ -113,16 +128,22 @@ export default function NavBar() {
                   }}
                 >
                   <Link
-                  to={item.to}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  {item.text}
-                </Link>
+                    to={item.to}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    {item.text}
+                  </Link>
                 </MenuItem>
               ))}
             </Menu>
           </Wrapper>
-          <Wrapper sx={{ display: { xs: "none", md: "flex" }, justifyContent:"space-evenly", flex:"1"}}>
+          <Wrapper
+            sx={{
+              display: { xs: "none", md: "flex" },
+              justifyContent: "space-evenly",
+              flex: "2",
+            }}
+          >
             {menuItems.map((item, index) => (
               <NavLink
                 key={index}
@@ -145,7 +166,9 @@ export default function NavBar() {
               <SearchIcon />
             </IconButton>
             <IconButton color="dark">
-             <Link to='/login'><AccountCircleIcon /></Link>
+              <Link to="/login">
+                <AccountCircleIcon />
+              </Link>
             </IconButton>
           </Box>
         </Toolbar>

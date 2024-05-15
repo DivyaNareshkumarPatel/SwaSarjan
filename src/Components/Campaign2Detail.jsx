@@ -125,7 +125,7 @@ export default function Campaign2Detail() {
                 Donate
               </Button>
             </Link>
-            <Link to="/register">
+            <Link to="/registration">
               <Button
                 sx={{
                   color: "white",
