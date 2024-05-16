@@ -58,7 +58,7 @@ const Footer = () => {
           <Link to='/about' style={{textDecoration:'none'}}><FooterContent>About SwaSarjan</FooterContent></Link>
           <FooterContent>Impact</FooterContent>
           <FooterContent>Reach & Presence</FooterContent>
-          <FooterContent>Blogs</FooterContent>
+          <Link to='/blogs' style={{textDecoration:'none'}}><FooterContent>Blogs</FooterContent></Link>
         </FooterItem>
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>Get Involved</FooterHeader>
