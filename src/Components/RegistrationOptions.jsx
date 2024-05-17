@@ -3,6 +3,8 @@ import React , {useState} from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import image3 from '../images/image3.png';
 import LoginCommunity from "./LoginCommunity";
+import Payment from "./Payment";
+import RegistrationWelcomeScreen from "./RegistrationWelcomeScreen";
 
 const StyledBox = styled(Box)({
     maxWidth: "sm",
@@ -84,9 +86,10 @@ const RegistrationOptions=()=>{
                         <StyledBox onClick={() => handleRoleSelection('internship')}>Internship<ArrowForwardIcon/></StyledBox>
                     </Box>
                 </div>
-            </div> : {
-                // selectedRole === 'member' ?  : 
-            } }
+            </div> 
+            : 
+                selectedRole === 'member' ? <Payment/> : <RegistrationWelcomeScreen/> 
+            } 
 
         </div>
     )
