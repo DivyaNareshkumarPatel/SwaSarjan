@@ -1,9 +1,10 @@
-import React from "react";
+import React,{useState } from "react";
 // import LoginCommunity from "../Components/LoginCommunity";
-// import RegistrationOptions from "../Components/RegistrationOptions";
-// import RegistrationMainForm from "../Components/RegistrationMainForm";
-// import {Box,styled, useMediaQuery } from "@mui/material";
-
+import RegistrationOptions from "../Components/RegistrationOptions";
+import RegistrationMainForm from "../Components/RegistrationMainForm";
+import {Box,styled, useMediaQuery ,Button } from "@mui/material";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackwardIcon from '@mui/icons-material/ArrowBack';
 
 // const FirstDisplay = styled(Box)({
 //   display: "flex",
@@ -19,6 +20,11 @@ import React from "react";
 
 export default function Registration() {
     // const isMedium = useMediaQuery("(max-width:807px)");
+    const [showFirstComponent, setShowFirstComponent] = useState(true);
+
+    const handleToggle = () => {
+      setShowFirstComponent(!showFirstComponent);
+    };
   return (
     <div
       style={{
@@ -37,14 +43,43 @@ export default function Registration() {
           padding: "10px",
           borderRadius: "10px",
           display: "flex",
+          flexDirection:'column',
+          justifyContent:'center',
+          alignItems:'center',
           margin:"10px"
         }}
       >
-        {/* <RegistrationMainForm/> */}
-        {/* <FirstDisplay>
-          <div style={{ display: isMedium ? "none" : "block" }}><LoginCommunity/></div>
-          <div><RegistrationOptions/></div>
-        </FirstDisplay>         */}
+        {showFirstComponent ? (
+          <RegistrationMainForm/>
+      ) : (
+          <RegistrationOptions/>
+      )}
+      {showFirstComponent ? (
+          
+        <Button
+            onClick={handleToggle}
+            endIcon={<ArrowForwardIcon style={{marginLeft:'12px'}} />} 
+            style={{
+                backgroundColor:'#0C0C0C',
+                color:'#FFFFFF',
+                borderRadius:'30px',
+                width:'200px'
+            }}>
+                register
+            </Button>
+      ) : (
+            <Button
+            onClick={handleToggle}
+            startIcon={<ArrowBackwardIcon style={{marginRight:'12px'}} />} 
+            style={{
+                backgroundColor:'#0C0C0C',
+                color:'#FFFFFF',
+                borderRadius:'30px',
+                width:'180px'
+            }}>
+                Back
+            </Button>
+      )}
       </div>
     </div>
   );

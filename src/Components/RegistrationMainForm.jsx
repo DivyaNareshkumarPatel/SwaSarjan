@@ -1,8 +1,9 @@
 import React from "react";
 import { Box, Typography, Button, TextField } from "@mui/material";
 import { styled, useMediaQuery } from "@mui/system";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import OrangeLogo from '../images/Swa Icon Name Orange.png'
+import { Link } from "react-router-dom";
+import OrangeLogo from '../images/Swa Icon Name Orange.png';
+import RegistrationOptions from "./RegistrationOptions";
 
 const InputStyle = styled("input")(({ isMedium }) =>({
   width: isMedium ? "100%":"365px",
@@ -32,29 +33,32 @@ const RegistrationMainForm = () => {
     <div
       style={{
         display: "flex",
+        height: isMedium ?  'auto' : '100vh',
         alignItems: "center",
         justifyContent: "center",
-        margin: "10px 40px",
+        margin: "0px 40px",
         flexDirection: "column",
       }}
     >
       <div>
         <div style={{
             display:'flex',
-            flexDirection : isMedium ? 'column' : 'row' ,
+            // flexDirection : isMedium ? 'column' : 'row' ,
             justifyContent: isMedium ? 'center' : 'flex-start' ,
             textAlign:'left'
         }}>
             <div>
 
+        <Link to='/'>
         <img
             src={OrangeLogo}
             style={{
-                height: isMedium?'40px':'50px',
-                width: isMedium?'30px':'40px',
+                height: '50px',
+                width: '40px',
                 margin:'0px 60px 0px 10px'
             }}
             />
+        </Link>
         </div>
 
         <div
@@ -64,7 +68,7 @@ const RegistrationMainForm = () => {
             textAlign: "center",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom:'30px'
+            marginBottom:'20px'
           }}
         >
           <Typography variant="h5" style={{textAlign:'left'}}>Register your Account</Typography>
@@ -131,16 +135,7 @@ const RegistrationMainForm = () => {
             justifyContent:'center'
         }}
         >
-            <Button
-            endIcon={<ArrowForwardIcon style={{marginLeft:'12px'}}/>} 
-            style={{
-                backgroundColor:'#0C0C0C',
-                color:'#FFFFFF',
-                borderRadius:'30px',
-                width:'200px'
-            }}>
-                register
-            </Button>
+            
         </div>
       </div>
     </div>

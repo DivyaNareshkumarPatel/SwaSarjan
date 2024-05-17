@@ -1,6 +1,8 @@
 import { Typography , Box ,styled} from "@mui/material";
-import React from "react";
+import React , {useState} from "react";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import image3 from '../images/image3.png';
+import LoginCommunity from "./LoginCommunity";
 
 const StyledBox = styled(Box)({
     maxWidth: "sm",
@@ -19,30 +21,73 @@ const StyledBox = styled(Box)({
     marginBottom:'10px'
   });
 const RegistrationOptions=()=>{
+    const [selectedRole, setSelectedRole] = useState(null);
+    const handleRoleSelection = (role) => {
+        setSelectedRole(role);
+    };
+    // console.log(selectedRole)
     return(
         <div style={{
             display:'flex',
             justifyContent:'center',
             alignItems:'center',
-            margin:'0px 20px'
+            margin:'0px 10px',
+            display: "flex",
+            height: "90vh",
+            // background: "#F5F5F5",
+            // boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
         }}>
-            <div>   
-            <Box
-                height='auto'
-                width={300}
-                my={4}
-                alignItems="center"
-                justifyContent='center'
-                gap={4}
-                p={2}
-                sx={{  borderRadius: ' 10px ' ,boxShadow: "0 0.3rem 0.3rem rgba(0, 0, 0, 0.1)",}}
-                >
-                <Typography variant="h5" style={{fontWeight:'bold',textAlign:'center',marginBottom:'20px'}}>Select the role</Typography>
-                <StyledBox>Member<ArrowForwardIcon/></StyledBox>
-                <StyledBox>Volunteer<ArrowForwardIcon/></StyledBox>
-                <StyledBox>Internship<ArrowForwardIcon/></StyledBox>
-            </Box>
-            </div>
+            {selectedRole === null ? <div
+             style={{
+                    position: "relative",
+                    overflow: "hidden", 
+                    padding: "10px",
+                    borderRadius: "10px",
+                    margin: "20px",
+                    backgroundColor:'#FFFFFF'
+                }}>   
+                <img
+                    src={image3}
+                    alt="Background"
+                    style={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        filter: "blur(5px) brightness(0.8)",
+                        // filter: 'brightness(0.8)', 
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                    }}
+                />
+                <div style={{ 
+                    position: "relative", 
+                    zIndex: 1,
+                    backgroundColor:'#FFFFFF',
+                    borderRadius:'10px', 
+                    display:'flex'                    
+                    }}>        
+
+                    <LoginCommunity style={{height:'100%'}} />
+                    <Box
+                        height=''
+                        width={300}
+                        alignItems="center"
+                        justifyContent='center'
+                        gap={4}
+                        p={2}
+                        sx={{  borderRadius: ' 10px '}}
+                        >
+                        <Typography variant="h5" style={{fontWeight:'bold',textAlign:'center',marginBottom:'20px'}}>Select the role</Typography>
+                        <StyledBox onClick={() => handleRoleSelection('member')}>Member<ArrowForwardIcon/></StyledBox>
+                        <StyledBox onClick={() => handleRoleSelection('volunteer')}>Volunteer<ArrowForwardIcon/></StyledBox>
+                        <StyledBox onClick={() => handleRoleSelection('internship')}>Internship<ArrowForwardIcon/></StyledBox>
+                    </Box>
+                </div>
+            </div> : {
+                // selectedRole === 'member' ?  : 
+            } }
+
         </div>
     )
 }
