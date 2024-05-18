@@ -261,7 +261,7 @@ export default function LoginForm() {
                 textAlign: "center",
               }}
             >
-              Don’t have an account? <Link to='/registeration'><OrangeText>Register</OrangeText></Link>
+              Don’t have an account? <Link to='/registration'><OrangeText>Register</OrangeText></Link>
             </div>
           </form>
           <Link to="/gallery" style={{ display: isMedium ? "block" : "none" }}>
