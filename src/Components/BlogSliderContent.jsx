@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import star from "../images/star.png";
 export default function BlogSliderContent() {
   return (
-    <div style={{background:"red", maxWidth:"1000px"}}>
+    <div>
       <div>
         <div>
           <img src={account} alt="" style={{width:"50px", height:"50px"}}/>
