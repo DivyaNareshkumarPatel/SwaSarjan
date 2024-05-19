@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from '@mui/material';
-import { styled } from "@mui/styles";
+import styled from "@emotion/styled";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { Link } from "react-router-dom";
 

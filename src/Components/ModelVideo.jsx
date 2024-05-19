@@ -1,5 +1,5 @@
 import React from "react";
-import { Modal } from "@material-ui/core";
+import { Modal } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
 const ModelVideo = ({ selectedVideo, handleCloseClick }) => {

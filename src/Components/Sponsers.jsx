@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
-import { Typography } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import sponsor1 from "../images/sponsor1.png";
 import sponsor2 from "../images/sponsor2.png";
 import sponsor3 from "../images/sponsor3.png";
