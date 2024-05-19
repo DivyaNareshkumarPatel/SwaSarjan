@@ -64,13 +64,14 @@ const Campaign2Gallery = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            margin:"10px"
           }}
         >
           <div>
             <img
               src={selectedImage}
               alt=""
-              style={{ maxWidth: "90%", maxHeight: "90%" }}
+              style={{ maxWidth: "100%", maxHeight: "100%" }}
             />
           </div>
         </Modal>
