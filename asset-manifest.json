@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.a5e360ca.css",
-    "main.js": "/SwaSarjan/static/js/main.8a5b4203.js",
+    "main.js": "/SwaSarjan/static/js/main.e3ae9215.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -65,16 +65,15 @@
     "static/media/HomeMarquee3.png": "/SwaSarjan/static/media/HomeMarquee3.cc141168314d5377c61c.png",
     "static/media/sustainability.png": "/SwaSarjan/static/media/sustainability.bb6a380459a561a2fa5f.png",
     "static/media/innovation.png": "/SwaSarjan/static/media/innovation.8e410ebdb22569203db9.png",
-    "static/media/account.png": "/SwaSarjan/static/media/account.27cf68e33c4c140107ce.png",
     "static/media/HomeMarquee1.png": "/SwaSarjan/static/media/HomeMarquee1.026504850784ebe6f693.png",
     "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
     "main.a5e360ca.css.map": "/SwaSarjan/static/css/main.a5e360ca.css.map",
-    "main.8a5b4203.js.map": "/SwaSarjan/static/js/main.8a5b4203.js.map",
+    "main.e3ae9215.js.map": "/SwaSarjan/static/js/main.e3ae9215.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a5e360ca.css",
-    "static/js/main.8a5b4203.js"
+    "static/js/main.e3ae9215.js"
   ]
 }
