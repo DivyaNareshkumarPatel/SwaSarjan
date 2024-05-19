@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import ModelVideo from "./ModelVideo";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
@@ -39,10 +38,6 @@ const videos = [
 ];
 
 function BlogSlider() {
-  const [selectedVideo, setSelectedVideo] = useState(null);
-  const handleCloseClick = () => {
-    setSelectedVideo(null);
-  };
 
   return (
     <div className="container">
