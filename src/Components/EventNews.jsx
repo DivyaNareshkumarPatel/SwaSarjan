@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 // import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./GallerySlickVideo.css";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import { Typography } from "@mui/material";
+import { Typography, Modal } from "@mui/material";
 import image1 from '../images/news1.jpeg';
 import image2 from '../images/news2.jpeg';
 import image3 from '../images/news3.jpeg';
@@ -17,6 +17,16 @@ import image5 from '../images/news5.jpg';
 const images = [image1, image2, image3, image4, image5]
 
 function EventNews() {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleOpen = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleClose = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <div className="container">
       <div
@@ -58,6 +68,7 @@ function EventNews() {
             <img
               src={image}
               alt={index}
+              onClick={() => handleOpen(image)}
             ></img>
           </SwiperSlide>
         ))}
@@ -67,6 +78,22 @@ function EventNews() {
           <div className="swiper-pagination"></div>
         </div>
       </Swiper>
+      <Modal
+          open={!!selectedImage}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin:"20px"
+          }}
+        >
+          <div>
+            <img src={selectedImage} alt="" style={{ maxWidth: "100%", maxHeight: "100%"}} />
+          </div>
+        </Modal>
     </div>
   );
 }
