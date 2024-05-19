@@ -1,5 +1,5 @@
-import React from "react";
-import { Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Typography, Modal } from "@mui/material";
 import Masonry from "react-responsive-masonry";
 import image1 from "../images/image1.png";
 import image2 from "../images/image2.png";
@@ -17,6 +17,7 @@ import image15 from "../images/image15.png";
 import image16 from "../images/image16.png";
 import image17 from "../images/image17.png";
 import image18 from "../images/image18.png";
+
 const images = [
   image1,
   image2,
@@ -38,38 +39,63 @@ const images = [
   image6,
 ];
 
-class GalleryImage extends React.Component {
-  render() {
-    return (
-      <div>
-        <div style={{ margin: "25px" }}>
-          <div
-            style={{
-              textAlign: "center",
-              marginTop: "30px",
-              marginBottom: "30px",
-            }}
+const GalleryImage = () => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleOpen = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleClose = () => {
+    setSelectedImage(null);
+  };
+
+  return (
+    <div>
+      <div style={{ margin: "25px" }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "30px",
+            marginBottom: "30px",
+          }}
+        >
+          <Typography
+            style={{ fontSize: "30px", fontWeight: "bold" }}
+            className="head"
           >
-            <Typography
-              style={{ fontSize: "30px", fontWeight: "bold" }}
-              className="head"
-            >
-              Photo Gallery
-            </Typography>
-          </div>
-          <Masonry columnsCount={3} gutter="10px">
-            {images.map((image, i) => (
-              <img
-                key={i}
-                src={image}
-                style={{ width: "100%", display: "block" }}
-                alt=""
-              />
-            ))}
-          </Masonry>
+            Photo Gallery
+          </Typography>
         </div>
+        <Masonry columnsCount={3} gutter="10px">
+          {images.map((image, i) => (
+            <img
+              key={i}
+              src={image}
+              style={{ width: "100%", display: "block", cursor: "pointer" }}
+              alt=""
+              onClick={() => handleOpen(image)}
+            />
+          ))}
+        </Masonry>
+        <Modal
+          open={!!selectedImage}
+          onClose={handleClose}
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div>
+            <img src={selectedImage} alt="" style={{ maxWidth: "90%", maxHeight: "90%" }} />
+          </div>
+        </Modal>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
 export default GalleryImage;
