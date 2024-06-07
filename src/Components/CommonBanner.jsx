@@ -13,7 +13,7 @@ const styles = {
     color: "white",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "60vh",
+    height: "91vh",
     transition: "none",
   },
   content: {
@@ -33,7 +33,7 @@ export default function CommonBanner({head, line1, line2}) {
   const images = [img1, img2, img3, img4];
 
   return (
-    <div style={{ height: "60vh" }}>
+    <div style={{ height: "91vh" }}>
       <Carousel
         indicatorContainerProps={{
           style: {

@@ -8,7 +8,7 @@ const styles = {
     color: "white",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "80vh",
+    height: "91vh",
     transition: "none",
   },
   content: {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Carousel from "react-material-ui-carousel";
 import ModelVideo from "./ModelVideo";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
@@ -6,8 +6,8 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 function VideoGallery() {
   const [size, setSize] = useState(5);
   const [selectedVideo, setSelectedVideo] = useState(null);
-
-  const videos = [
+  const [videoTitles, setVideoTitles] = useState({});
+  const videos = useMemo(() => [
     {
       src: "https://www.youtube.com/embed/MBqdXGsjJ74?si=WIxzbqhBb7HeXQq2",
     },
@@ -26,7 +26,7 @@ function VideoGallery() {
     {
       src: "https://www.youtube.com/embed/Ozzr7C6u3iw?si=taK1jz-K03CML-fA",
     },
-  ];
+  ], []);
 
   const extractVideoId = (url) => {
     const match = url.match(/(?:embed\/|v=)([^?&]+)/);
@@ -55,11 +55,35 @@ function VideoGallery() {
   useEffect(() => {
     calculateChunkSize();
     window.addEventListener("resize", calculateChunkSize);
-    // Cleanup the event listener on component unmount
     return () => {
       window.removeEventListener("resize", calculateChunkSize);
     };
-  }, []); // Empty dependency array to run the effect only once on mount
+  }, []);
+
+  useEffect(() => {
+    const fetchTitles = async () => {
+      const titles = {};
+      for (const video of videos) {
+        const videoId = extractVideoId(video.src);
+        try {
+          const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=YOUR_YOUTUBE_API_KEY&part=snippet`);
+          const data = await response.json();
+          console.log("API Response for", video.src, ":", data); 
+          if (data.items && data.items.length > 0) {
+            titles[video.src] = data.items[0].snippet.title;
+          } else {
+            titles[video.src] = "Untitled Video";
+          }
+        } catch (error) {
+          console.error("Error fetching video details:", error);
+          titles[video.src] = "Untitled Video";
+        }
+      }
+      console.log("Updated Video Titles:", titles);
+      setVideoTitles(titles);
+    };
+    fetchTitles();
+  }, [videos]);
 
   const handleVideoClick = (video) => {
     setSelectedVideo(video);
@@ -70,13 +94,13 @@ function VideoGallery() {
   };
 
   return (
-    <div style={{ marginBottom: "20px", overflow:"auto"}}>
+    <div style={{ marginBottom: "20px", overflow: "auto" }}>
       <Carousel
         animation="slide"
         indicators
         timeout={500}
         navButtonsAlwaysVisible
-        style={{height:"100% !important"}}
+        style={{ height: "100% !important" }}
       >
         {chunkVideos(videos, size).map((chunk, index) => (
           <div
@@ -102,13 +126,14 @@ function VideoGallery() {
                   style={{ width: "100%", height: "100%" }}
                   onClick={() => handleVideoClick(video)}
                 />
+                <div>{videoTitles[video.src] || "Untitled Video"}</div>
                 <PlayArrowIcon
                   style={{
                     position: "absolute",
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    fontSize: 100,
+                    fontSize: 50,
                     color: "rgba(255, 255, 255, 0.8)",
                     cursor: "pointer",
                   }}

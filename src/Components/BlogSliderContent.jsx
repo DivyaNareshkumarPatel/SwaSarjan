@@ -2,19 +2,20 @@ import React from "react";
 import account from "../images/account.png";
 import { Typography } from "@mui/material";
 import star from "../images/star.png";
+import "./BlogSlider.css";
 export default function BlogSliderContent() {
   return (
-    <div>
+    <div className="s">
       <div>
         <div>
-          <img src={account} alt="" style={{width:"50px", height:"50px"}}/>
+          <img src={account} alt="" className="img1"/>
         </div>
         <div>
           <Typography>Leo</Typography>
           <Typography>Lead Designer</Typography>
         </div>
         <div>
-          <img src={star} alt="" style={{width:"120px", height:"20px", borderRadius:"0px"}}/>
+          <img src={star} alt="" className="img2"/>
         </div>
       </div>
       <div>

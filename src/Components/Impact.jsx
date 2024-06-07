@@ -80,6 +80,14 @@ export default function Impact() {
               counter={4000}
               content="Villagers are got basic health check-ups for free."
             />
+            <ImpactData
+              counter={4000}
+              content="Villagers are got basic health check-ups for free."
+            />
+            <ImpactData
+              counter={4000}
+              content="Villagers are got basic health check-ups for free."
+            />
           </div>
           <div>
             <Link to="/about">

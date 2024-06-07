@@ -1,63 +1,114 @@
-.container{
-    margin: auto 25px;
+.container {
+  margin: auto 25px;
 }
+
 .swiper_container {
   height: 35rem;
   padding: 2rem 0;
   position: relative;
 }
 
-.swiper-slide {
+.img1 {
+  width: 50px;
+  height: 50px;
+}
+
+.img2 {
+  width: 120px;
+  height: 20px;
+  border-radius: 0px
+}
+
+/* .swiper-slide {
   width: 37rem;
   height: 32rem;
   position: relative;
-}
+} */
 
 @media (max-width: 1000px) {
   .swiper_container {
     height: 30rem;
   }
-  .swiper-slide {
-    width: 28rem !important;
-    height: 26rem !important;
-  }
-  /* .swiper-slide img {
+
+  /* .swiper-slide {
     width: 28rem !important;
     height: 26rem !important;
   } */
-}
-@media (max-width: 700px) {
-    .swiper_container {
-      height: 20rem;
-    }
-    .swiper-slide {
-      width: 18rem !important;
-      height: 16rem !important;
-    }
-    /* .swiper-slide img {
-      width: 18rem !important;
-      height: 16rem !important;
-    } */
-}
-@media (max-width: 450px) {
-    .swiper_container {
-      height: 20rem;
-    }
-    .swiper-slide {
-      width: 15rem !important;
-      height: 16rem !important;
-    }
-    /* .swiper-slide img {
-      width: 15rem !important;
-      height: 16rem !important;
-    } */
+  .s {
+    width: 28rem !important;
+    height: 26rem !important;
   }
-/* .swiper-slide img {
+
+  .img1 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .img2 {
+    width: 120px;
+    height: 20px;
+    border-radius: 0px
+  }
+}
+
+@media (max-width: 700px) {
+  .swiper_container {
+    height: 20rem;
+  }
+
+  .img1 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .img2 {
+    width: 120px;
+    height: 20px;
+    border-radius: 0px
+  }
+
+  /* .swiper-slide {
+      width: 18rem !important;
+      height: 16rem !important;
+    } */
+  .s {
+    width: 18rem !important;
+    height: 16rem !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .swiper_container {
+    height: 20rem;
+  }
+
+  .img1 {
+    width: 50px;
+    height: 50px;
+  }
+
+  .img2 {
+    width: 120px;
+    height: 20px;
+    border-radius: 0px
+  }
+
+  /* .swiper-slide {
+      width: 15rem !important;
+      height: 16rem !important;
+    } */
+  .s {
+    width: 15rem !important;
+    height: 16rem !important;
+  }
+}
+
+.s {
   width: 37rem;
   height: 32rem;
   border-radius: 2rem;
   object-fit: cover;
-} */
+}
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
@@ -107,7 +158,7 @@
 
 .slider-controler .slider-arrow {
   background: var(--white);
-  padding-top:2px;
+  padding-top: 2px;
   width: 1.5rem;
   height: 1.5rem;
   left: 42%;

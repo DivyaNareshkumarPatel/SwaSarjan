@@ -9,7 +9,7 @@ export default function HomeBanner() {
   const images = [img1, img2, img3, img4];
 
   return (
-    <div style={{height:"80vh"}}>
+    <div style={{height:"91vh"}}>
       <Carousel
         indicatorContainerProps={{
           style: {
