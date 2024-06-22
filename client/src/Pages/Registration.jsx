@@ -65,7 +65,7 @@ export default function Registration() {
                 borderRadius:'30px',
                 width:'200px'
             }}>
-                register
+                Next
             </Button>
       ) : (
             <Button
