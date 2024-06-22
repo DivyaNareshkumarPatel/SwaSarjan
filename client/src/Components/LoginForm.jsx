@@ -10,10 +10,21 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export default function LoginForm() {
   const isMedium = useMediaQuery("(max-width:807px)");
   const [focusedInput, setFocusedInput] = useState(null);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [mobileNumber, setMobileNumber] = useState("");
-  const [otp, setOtp] = useState("");
+  const [detail, setDetail] = useState({
+    userName: "",
+    password: "",
+    phone: "",
+    otp: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetail((prevDetail) => ({
+      ...prevDetail,
+      [name]: value
+    }));
+  };
+  
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState([]);
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -38,28 +49,28 @@ export default function LoginForm() {
   });
 
   const validateUsername = () => {
-    if (username.trim() === "") return "Username is required.";
-    if (username.length < 3) return "Username must be at least 3 characters.";
+    if (detail.userName.trim() === "") return "Username is required.";
+    if (detail.userName.length < 3) return "Username must be at least 3 characters.";
     return "";
   };
 
   const validatePassword = () => {
-    if (password.trim() === "") return "Password is required.";
-    if (password.length < 6) return "Password must be at least 6 characters.";
+    if (detail.password.trim() === "") return "Password is required.";
+    if (detail.password.length < 6) return "Password must be at least 6 characters.";
     return "";
   };
 
   const validateMobileNumber = () => {
-    if (mobileNumber.trim() === "") return "Mobile number is required.";
+    if (detail.phone.trim() === "") return "Mobile number is required.";
     const mobileNumberPattern = /^[0-9]{10}$/;
-    if (!mobileNumberPattern.test(mobileNumber))
+    if (!mobileNumberPattern.test(detail.phone))
       return "Invalid mobile number.";
     return "";
   };
 
   const validateOtp = () => {
-    if (otp.trim() === "") return "OTP is required.";
-    if (otp.length !== 6) return "OTP must be 6 digits.";
+    if (detail.otp.trim() === "") return "OTP is required.";
+    if (detail.otp.length !== 6) return "OTP must be 6 digits.";
     return "";
   };
 
@@ -165,8 +176,8 @@ export default function LoginForm() {
               <InputStyle
                 type="text"
                 placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={detail.userName}
+                onChange={(e) => handleChange(e.target.value)}
                 onFocus={() => setFocusedInput("userName")}
                 onBlur={() => setFocusedInput("")}
                 autoFocus={focusedInput === "userName"}
@@ -184,8 +195,8 @@ export default function LoginForm() {
                 <InputStyle
                   type="password"
                   placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={detail.password}
+                  onChange={(e) => handleChange(e.target.value)}
                   onFocus={() => setFocusedInput("password")}
                   onBlur={() => setFocusedInput("")}
                   autoFocus={focusedInput === "password"}
@@ -199,8 +210,8 @@ export default function LoginForm() {
               <InputStyle
                 type="tel"
                 placeholder="Mobile Number"
-                value={mobileNumber}
-                onChange={(e) => setMobileNumber(e.target.value)}
+                value={detail.phone}
+                onChange={(e) => handleChange(e.target.value)}
                 onFocus={() => setFocusedInput("mobileNumber")}
                 onBlur={() => setFocusedInput("")}
                 autoFocus={focusedInput === "mobileNumber"}
@@ -218,8 +229,8 @@ export default function LoginForm() {
                 <InputStyle
                   type="text"
                   placeholder="OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
+                  value={detail.otp}
+                  onChange={(e) => handleChange(e.target.value)}
                   onFocus={() => setFocusedInput("otp")}
                   onBlur={() => setFocusedInput("")}
                   autoFocus={focusedInput === "otp"}

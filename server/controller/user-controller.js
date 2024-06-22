@@ -32,3 +32,8 @@ export const signupUser = async (request , response) => {
 
     }
 }
+
+
+export const loginUser =  async (request , response) => {
+    
+}
