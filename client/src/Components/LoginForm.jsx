@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import { Typography, Button, styled, Radio, Snackbar } from "@mui/material";
+import { DataContext } from "../context/DataProvider";
+import { useNavigate } from "react-router-dom";
+
 import or from "../images/or.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
+import { API } from "../service/api";
 
 export default function LoginForm() {
   const isMedium = useMediaQuery("(max-width:807px)");
@@ -24,10 +29,13 @@ export default function LoginForm() {
       [name]: value
     }));
   };
-  
+
+  const { setAccount } = useContext(DataContext);
+  const navigate = useNavigate();
   const [rememberMe, setRememberMe] = useState(false);
   const [errors, setErrors] = useState([]);
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   const InputStyle = styled("input")({
     width: "100%",
@@ -74,7 +82,7 @@ export default function LoginForm() {
     return "";
   };
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
     const validationErrors = [];
     const usernameError = validateUsername();
@@ -90,10 +98,35 @@ export default function LoginForm() {
     if (validationErrors.length > 0) {
       setErrors(validationErrors);
     } else {
-      setOpenSnackbar(true);
       setErrors([]);
+      try {
+        const response = await API.userLogin({
+          userName: detail.userName,
+          password: detail.password,
+          phone: detail.phone,
+          otp: detail.otp
+        });
+
+        if (response && response.isSuccess) {
+          console.log(response)
+          setSuccessMessage("Login Successful!");
+          setOpenSnackbar(true);
+          sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`)
+          sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`)
+          navigate('/')
+          setAccount({ userName: response.data.userName , name: response.data.name })
+        } else if (response && response.isError) {
+          setErrors(["Something went wrong. Please try again!"]);
+        } else {
+          setErrors(["Unexpected response format from server."]);
+        }
+      } catch (error) {
+        setErrors(["Something went wrong. Please check internet and try again!"]);
+        console.error("Error during login:", error);
+      }
     }
   };
+
 
   return (
     <div
@@ -109,7 +142,7 @@ export default function LoginForm() {
         open={openSnackbar}
         autoHideDuration={6000}
         onClose={() => setOpenSnackbar(false)}
-        message="Login Successful!"
+        message={successMessage}
       />
       <div>
         <div
@@ -130,17 +163,17 @@ export default function LoginForm() {
             Register Yourself & let’s get started with SwaSarjan
           </Typography>
           <Link to='/registration'>
-          <Button
-            sx={{
-              border: "1px black solid",
-              width: "100%",
-              borderRadius: "50px",
-              color: "black",
-              "&:hover": { background: "black", color: "white" },
-            }}
-          >
-            Register Now
-          </Button>
+            <Button
+              sx={{
+                border: "1px black solid",
+                width: "100%",
+                borderRadius: "50px",
+                color: "black",
+                "&:hover": { background: "black", color: "white" },
+              }}
+            >
+              Register Now
+            </Button>
           </Link>
           <div
             style={{
@@ -154,30 +187,31 @@ export default function LoginForm() {
           </div>
         </div>
         <div style={{ marginTop: "10px" }}>
-        {errors.length > 0 && (
-        <div
-          style={{
-            color: "white",
-            background: "#FF7F7F",
-            marginBottom: "15px",
-            borderRadius: "5px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "5px",
-          }}
-        >
-          <ErrorIcon sx={{ marginRight: "5px" }} />
-          <span>{errors[0]}</span>
-        </div>
-      )}
+          {errors.length > 0 && (
+            <div
+              style={{
+                color: "white",
+                background: "#FF7F7F",
+                marginBottom: "15px",
+                borderRadius: "5px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "5px",
+              }}
+            >
+              <ErrorIcon sx={{ marginRight: "5px" }} />
+              <span>{errors[0]}</span>
+            </div>
+          )}
           <form onSubmit={handleLogin}>
             <div>
               <InputStyle
                 type="text"
                 placeholder="Username"
+                name="userName"
                 value={detail.userName}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={handleChange}
                 onFocus={() => setFocusedInput("userName")}
                 onBlur={() => setFocusedInput("")}
                 autoFocus={focusedInput === "userName"}
@@ -195,8 +229,9 @@ export default function LoginForm() {
                 <InputStyle
                   type="password"
                   placeholder="Password"
+                  name="password"
                   value={detail.password}
-                  onChange={(e) => handleChange(e.target.value)}
+                  onChange={handleChange}
                   onFocus={() => setFocusedInput("password")}
                   onBlur={() => setFocusedInput("")}
                   autoFocus={focusedInput === "password"}
@@ -210,8 +245,9 @@ export default function LoginForm() {
               <InputStyle
                 type="tel"
                 placeholder="Mobile Number"
+                name="phone"
                 value={detail.phone}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={handleChange}
                 onFocus={() => setFocusedInput("mobileNumber")}
                 onBlur={() => setFocusedInput("")}
                 autoFocus={focusedInput === "mobileNumber"}
@@ -229,67 +265,73 @@ export default function LoginForm() {
                 <InputStyle
                   type="text"
                   placeholder="OTP"
+                  name="otp"
                   value={detail.otp}
-                  onChange={(e) => handleChange(e.target.value)}
-                  onFocus={() => setFocusedInput("otp")}
-                  onBlur={() => setFocusedInput("")}
-                  autoFocus={focusedInput === "otp"}
+                  onChange={handleChange}
+                  onFocus={
+                    () => setFocusedInput("otp")}
+                    onBlur={() => setFocusedInput("")}
+                    autoFocus={focusedInput === "otp"}
+                  />
+                </div>
+                <div style={{ fontSize: "12px", color: "#202325" }}>
+                  Didn’t get OTP? <OrangeText>Resend it</OrangeText>
+                </div>
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Radio
+                  checked={rememberMe}
+                  onChange={() => setRememberMe(!rememberMe)}
+                  checkedIcon={<CheckCircleIcon style={{ color: "#F26522" }} />}
                 />
+                <span style={{ color: "#6C7072", fontSize: "12px" }}>
+                  Remember me for 30 days
+                </span>
               </div>
-              <div style={{ fontSize: "12px", color: "#202325" }}>
-                Didn’t get OTP? <OrangeText>Resend it</OrangeText>
+              <div>
+                <Button
+                  type="submit"
+                  sx={{
+                    width: "100%",
+                    background: "black",
+                    color: "white",
+                    margin: "10px auto",
+                    borderRadius: "50px",
+                    "&:hover": { background: "#011C2A" },
+                  }}
+                >
+                  Login
+                </Button>
               </div>
-            </div>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Radio
-                checked={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
-                checkedIcon={<CheckCircleIcon style={{ color: "#F26522" }} />}
-              />
-              <span style={{ color: "#6C7072", fontSize: "12px" }}>
-                Remember me for 30 days
-              </span>
-            </div>
-            <div>
-              <Button
-                type="submit"
-                sx={{
-                  width: "100%",
-                  background: "black",
-                  color: "white",
-                  margin: "10px auto",
-                  borderRadius: "50px",
-                  "&:hover": { background: "#011C2A" },
+              <div
+                style={{
+                  fontSize: "12px",
+                  color: "#202325",
+                  textAlign: "center",
                 }}
               >
-                Login
+                Don’t have an account?{" "}
+                <Link to="/registration">
+                  <OrangeText>Register</OrangeText>
+                </Link>
+              </div>
+            </form>
+            <Link to="/gallery" style={{ display: isMedium ? "block" : "none" }}>
+              <Button
+                variant=""
+                style={{
+                  color: "#F26522",
+                  fontSize: "10px",
+                  backgroundColor: "#FFFFFF",
+                }}
+                startIcon={<ArrowBackIcon style={{ fontSize: "10px" }} />}
+              >
+                Back to Home
               </Button>
-            </div>
-            <div
-              style={{
-                fontSize: "12px",
-                color: "#202325",
-                textAlign: "center",
-              }}
-            >
-              Don’t have an account? <Link to='/registration'><OrangeText>Register</OrangeText></Link>
-            </div>
-          </form>
-          <Link to="/gallery" style={{ display: isMedium ? "block" : "none" }}>
-            <Button
-              variant=""
-              style={{
-                color: "#F26522",
-                fontSize: "10px",
-                backgroundColor: "#FFFFFF",
-              }}
-              startIcon={<ArrowBackIcon style={{ fontSize: "10px" }} />}
-            >
-              Back to Home
-            </Button>
-          </Link>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+  

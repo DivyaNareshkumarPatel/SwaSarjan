@@ -1,6 +1,12 @@
-import User from "../models/user.js";
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 
+import User from "../models/user.js";
+import Token from "../models/token.js";
+
+
+dotenv.config();
 
 export const signupUser = async (request , response) => {
     try{
@@ -35,5 +41,25 @@ export const signupUser = async (request , response) => {
 
 
 export const loginUser =  async (request , response) => {
-    
+    let user = await User.findOne({ userName: request.body.userName });
+    if(!user){
+        return response.status(400).json({msg:'Username does not match'})
+    }
+    try{
+        let match = bcrypt.compare(request.body.userName, user.userName)
+        if(match){
+            const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_SECRETE_KEY , { expiresIn: '15m' })
+            const refreshToken = jwt.sign(user.toJSON(), process.env.REFRESH_SECRETE_KEY)
+
+            const newToken = new Token({ token: refreshToken })
+            await newToken.save();
+
+            return response.status(200).json({ accessToken: accessToken , refreshToken: refreshToken , name: user.name ,  userName: user.userName , });
+
+        }else{
+            return response.status(400).json({msg:'password does not match'})
+        }
+    } catch(error){
+        return response.staus(500).json({ msg: 'Error while user logging in'})
+    }
 }

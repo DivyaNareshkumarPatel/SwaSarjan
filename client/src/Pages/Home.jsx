@@ -17,7 +17,7 @@ export default function Home() {
     <div>
       <Navbar/>
       <HomeBanner/>
-      <HomeMarquee/>
+      {/* <HomeMarquee/> */}
       <Impact/>
       <Projects/>
       <HomeWorld/>
