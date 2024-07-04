@@ -5,7 +5,7 @@ import { contactUs } from '../controller/contact-controller.js'; // Import the c
 
 const router = express.Router();
 
-router.post('/registration', upload.single('photo'), signupUser);
+// router.post('/registration', upload.single('photo'), signupUser);
 router.post('/login', loginUser);
 router.post('/contact', contactUs); // Add the new contact form route
 
