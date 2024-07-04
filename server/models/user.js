@@ -60,10 +60,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     photo: {
-        
+        type: String,
+        required: true
     },
     signature: {
-
+        type: String,
+        required: true
     }
 });
 
