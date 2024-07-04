@@ -1,6 +1,5 @@
 import React from "react";
 import image3 from '../images/image3.png';
-import { useMediaQuery } from "@mui/material";
 import DonateBody from '../Components/DonateBody'
 
 

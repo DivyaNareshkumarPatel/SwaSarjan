@@ -11,7 +11,7 @@ export default function Blogs() {
       <NavBar/>
       <BlogsBanner/>
       <BlogsCardCollections/>
-      <BlogSlider/>
+      {/* <BlogSlider/> */}
       <Footer/>
     </div>
   )

@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 export default function AboutSwaSarjan() {
   return (
     <div>
-      <div>
+      {/* <div>
         <Typography
           variant="h5"
           style={{ padding: "35px", fontWeight: "500" }}
         >
           About SwaSarjan
         </Typography>
-      </div>
+      </div> */}
       <div
         style={{
           background: "#0C0C0C",
@@ -27,9 +27,9 @@ export default function AboutSwaSarjan() {
         }}
       >
         <div style={{ flex: "1", maxWidth: "528px" }}>
-          <div>
+          {/* <div>
             <Typography style={{fontSize:"18px"}}>~   WHAT IS SWASARJAN</Typography>
-          </div>
+          </div> */}
           <div>
             <Typography style={{marginTop:"40px", fontSize:"23px"}}>
               Swa Sarjan Foundation is an International foundation recognized

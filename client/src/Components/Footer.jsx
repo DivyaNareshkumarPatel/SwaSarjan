@@ -76,16 +76,16 @@ const Footer = () => {
       </FooterGrid>
       <Box sx={{ textAlign: 'center', margin: '20px 0' }}>
         <SocialIconButton>
-          <img src={LinkedinIcon} alt="" style={{width:"40px"}} />
+          <a href="https://in.linkedin.com/company/swa-sarjan-foundation"><img src={LinkedinIcon} alt="" style={{width:"40px"}} /></a>
         </SocialIconButton>
         <SocialIconButton>
-          <img src={FacebookIcon} alt="" style={{width:"40px"}} />
+          <a href="https://www.facebook.com/SwaSarjan/"><img src={FacebookIcon} alt="" style={{width:"40px"}} /></a>
         </SocialIconButton>
         <SocialIconButton>
-          <img src={InstagramIcon} alt="" style={{width:"40px"}} />
+          <a href="https://www.instagram.com/swa_sarjan/"><img src={InstagramIcon} alt="" style={{width:"40px"}} /></a>
         </SocialIconButton>
         <SocialIconButton>
-          <img src={YouTubeIcon} alt="" style={{width:"40px"}} />
+          <a href="https://www.youtube.com/@SwaSarjanFoundation"><img src={YouTubeIcon} alt="" style={{width:"40px"}} /></a>
         </SocialIconButton>
       </Box>
       <Typography variant="body2" align="center" color="#A9A9A9">Copyright © 2024 SwaSarjan</Typography>

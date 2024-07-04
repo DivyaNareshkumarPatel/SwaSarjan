@@ -63,30 +63,30 @@ export default function Impact() {
             margin: "0px",
           }}
         >
-          <div style={{ display: "flex", flexWrap: "wrap", flex: 2 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", flex: 2, justifyContent:"space-between"}}>
             <ImpactData
-              counter={2000}
-              content="Children are promoted and helped for education."
+              counter={125}
+              content="Team Members"
             />
             <ImpactData
-              counter={5000}
-              content="Trees are planted in city and traffic areas."
+              counter={11}
+              content="Years of Experience"
             />
             <ImpactData
-              counter={1000}
-              content="Girls are provided scholarships for future."
+              counter={2100}
+              content="Projects Done"
             />
             <ImpactData
-              counter={4000}
-              content="Villagers are got basic health check-ups for free."
+              counter={9}
+              content="States"
             />
             <ImpactData
-              counter={4000}
-              content="Villagers are got basic health check-ups for free."
+              counter={13}
+              content="Countries"
             />
             <ImpactData
-              counter={4000}
-              content="Villagers are got basic health check-ups for free."
+              counter={50}
+              content="Collaborations"
             />
           </div>
           <div>

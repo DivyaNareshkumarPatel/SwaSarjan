@@ -234,32 +234,32 @@ export default function ContactMain() {
             }}
           >
             <div>
-              <img
+              <a href="https://in.linkedin.com/company/swa-sarjan-foundation"><img
                 src={linkedin}
                 style={{ width: "40px", margin: "10px", cursor: "pointer" }}
                 alt=""
-              />
+              /></a>
             </div>
             <div>
-              <img
+              <a href="https://www.facebook.com/SwaSarjan/"><img
                 src={facebook}
                 style={{ width: "40px", margin: "10px", cursor: "pointer" }}
                 alt=""
-              />
+              /></a>
             </div>
             <div>
-              <img
+              <a href="https://www.instagram.com/swa_sarjan/"><img
                 src={insta}
                 style={{ width: "40px", margin: "10px", cursor: "pointer" }}
                 alt=""
-              />
+              /></a>
             </div>
             <div>
-              <img
+              <a href="https://www.youtube.com/@SwaSarjanFoundation"><img
                 src={youtube}
                 style={{ width: "40px", margin: "10px", cursor: "pointer" }}
                 alt=""
-              />
+              /></a>
             </div>
           </div>
         </div>
