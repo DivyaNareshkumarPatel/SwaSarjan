@@ -10,7 +10,7 @@ dotenv.config();
 export const signupUser = async (request, response) => {
     try {
         const hashedPassword = await bcrypt.hash(request.body.password, 10);
-
+        
         const user = {
             name: request.body.name,
             userName: request.body.userName,
@@ -25,7 +25,9 @@ export const signupUser = async (request, response) => {
             pinCode: request.body.pinCode,
             panCard: request.body.panCard,
             adharCard: request.body.adharCard,
-            gender: request.body.gender
+            gender: request.body.gender,
+            photo: request.body.photo,
+            signature: request.body.signature
         };
 
         const newUser = new User(user);
@@ -67,7 +69,7 @@ export const loginUser = async (request, response) => {
 
             const newToken = new Token({ token: refreshToken });
             await newToken.save();
-            
+            // console.log(user.name)
             return response.status(200).json({ accessToken: accessToken, refreshToken: refreshToken, name: user.name, userName: user.userName });
         } else {
             console.error('Password does not match');

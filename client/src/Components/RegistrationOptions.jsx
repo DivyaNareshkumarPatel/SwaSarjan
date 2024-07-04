@@ -4,7 +4,9 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import image3 from '../images/image3.png';
 import LoginCommunity from "./LoginCommunity";
 import Payment from "./Payment";
-import RegistrationWelcomeScreen from "./RegistrationWelcomeScreen";
+import Login from "../Pages/Login";
+import { useNavigate } from "react-router-dom";
+
 
 const StyledBox = styled(Box)({
     maxWidth: "sm",
@@ -27,6 +29,8 @@ const RegistrationOptions=()=>{
     const handleRoleSelection = (role) => {
         setSelectedRole(role);
     };
+
+    const navigate = useNavigate();
     // console.log(selectedRole)
     return(
         <div style={{
@@ -36,8 +40,6 @@ const RegistrationOptions=()=>{
             margin:'0px 10px',
             display: "flex",
             height: "90vh",
-            // background: "#F5F5F5",
-            // boxShadow: "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px",
         }}>
             {selectedRole === null ? <div
              style={{
@@ -88,7 +90,7 @@ const RegistrationOptions=()=>{
                 </div>
             </div> 
             : 
-                selectedRole === 'member' ? <Payment/> : <RegistrationWelcomeScreen/> 
+                selectedRole === 'member' ? <Payment/> : navigate('/login') 
             } 
 
         </div>
