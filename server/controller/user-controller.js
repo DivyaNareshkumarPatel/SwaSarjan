@@ -4,13 +4,23 @@ import dotenv from 'dotenv';
 
 import User from "../models/user.js";
 import Token from "../models/token.js";
+import { uploadOnCloudinary } from '../services/cloudinary.js';
+
 
 dotenv.config();
 
 export const signupUser = async (request, response) => {
     try {
         const hashedPassword = await bcrypt.hash(request.body.password, 10);
+        const photoLocalPath = request.file?.photo[0]?.path
+        const signatureLocalPath = request.file?.signature[0]?.path
         
+        const photo = await uploadOnCloudinary(photoLocalPath)
+        const signature = await uploadOnCloudinary(signatureLocalPath)
+        
+        console.log(photo)
+        console.log(signature)
+
         const user = {
             name: request.body.name,
             userName: request.body.userName,
@@ -26,16 +36,22 @@ export const signupUser = async (request, response) => {
             panCard: request.body.panCard,
             adharCard: request.body.adharCard,
             gender: request.body.gender,
-            photo: request.body.photo,
-            signature: request.body.signature
+            photo: photo,
+            signature: signature
         };
 
         const newUser = new User(user);
+
         await newUser.save();
+       
         return response.status(200).json({ msg: 'Signup successful' });
+        
     } catch (error) {
+
         console.error('Error during user signup:', error);
+        
         return response.status(500).json({ msg: 'Error while signing up the user' });
+    
     }
 }
 
