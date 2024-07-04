@@ -5,7 +5,6 @@ import DonateBody from '../Components/DonateBody'
 
 
 export default function Donate() {
-    const isMedium = useMediaQuery("(max-width:807px)");
     return (
         <div
             style={{
