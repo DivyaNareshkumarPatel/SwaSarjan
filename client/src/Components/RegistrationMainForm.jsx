@@ -4,7 +4,6 @@ import { styled, useMediaQuery } from "@mui/system";
 import { Link } from "react-router-dom";
 import OrangeLogo from '../images/Swa Icon Name Orange.png';
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
 import { API } from "../service/api";
 
 const InputStyle = styled("input")(({ isMedium }) => ({
@@ -45,10 +44,11 @@ const RegistrationMainForm = () => {
     pinCode: "",
     panCard: "",
     adharCard: "",
-    gender:""
+    gender: ""
   });
 
-  // const [gender, setGender] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [signature, setSignature] = useState("");
   const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -60,11 +60,7 @@ const RegistrationMainForm = () => {
     }));
   };
 
-  // const handleGenderChange = (e) => {
-  //   setGender(e.target.value);
-  // };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (
       !detail.name ||
@@ -80,18 +76,19 @@ const RegistrationMainForm = () => {
       !detail.pinCode ||
       !detail.panCard ||
       !detail.adharCard ||
-      !detail.gender 
-      
+      !detail.gender ||
+      !photo ||
+      !signature
     ) {
       setError("Please fill in all fields.");
       return;
     }
     if (detail.name.length < 3) {
-      setError("Please enter a valid first name.");
+      setError("Please enter a valid name.");
       return;
     }
     if (detail.userName.length < 3) {
-      setError("Please enter a valid last name.");
+      setError("Please enter a valid username.");
       return;
     }
     var phonePattern = /^\d{10}$/;
@@ -104,17 +101,33 @@ const RegistrationMainForm = () => {
       setError("Please enter a valid email address.");
       return;
     }
-    console.log("Form submitted:");
     setError("");
     setOpenSnackbar(true);
-    console.log(detail);
-    // console.log(gender);
+
+    const formData = new FormData();
+    
+    for (const key in detail) {
+      formData.append(key, detail[key]);
+    }
+    
+    formData.append("photo", photo);
+    formData.append("signature", signature);
+
+    try {
+      // Handle form submission with photo and signature files
+      console.log("Selected photo:", photo);
+      console.log("Selected signature:", signature);
+      ////////////////////////////////////////////////////////
+      await signupUser(formData);
+    } catch (error) {
+      console.error("Error during signup:", error);
+    }
   };
 
-  const signupUser = async () => {
-     let response = await API.userSignup(detail);
-     console.log(`api called from the registration`)
-  }
+  const signupUser = async (formData) => {
+    console.log(`API called from the registration`);
+    let response = await API.userSignup(formData);
+  };
 
   return (
     <div
@@ -134,11 +147,11 @@ const RegistrationMainForm = () => {
           textAlign: 'left'
         }}>
           <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={() => setOpenSnackbar(false)}
-        message="Details sent successfully Click next"
-      />
+            open={openSnackbar}
+            autoHideDuration={6000}
+            onClose={() => setOpenSnackbar(false)}
+            message="Details sent successfully. Click next."
+          />
           <div>
             <Link to='/'>
               <img
@@ -167,7 +180,7 @@ const RegistrationMainForm = () => {
             </Typography>
           </div>
         </div>
-        <form onSubmit={handleSubmit} action="/registration" method="post" enctype="multipart/form-data">
+        <form onSubmit={handleSubmit} action="/registration" method="post" encType="multipart/form-data">
           <Row isMedium={isMedium}>
             <InputStyle type="text" name="name" value={detail.name} onChange={handleChange} placeholder="Name" />
             <InputStyle type="text" name="userName" value={detail.userName} onChange={handleChange} placeholder="Username" />
@@ -207,11 +220,11 @@ const RegistrationMainForm = () => {
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Photo</label>
-            <InputStyle type="file" name="photo" />
+            <InputStyle type="file" name="photo" onChange={(e)=>setPhoto(e.target.files[0])} />
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Signature</label>
-            <InputStyle type="file" name="signature" />
+            <InputStyle type="file" name="signature" onChange={(e)=>setSignature(e.target.files[0])} />
           </Row>
           <div
             style={{
@@ -223,7 +236,7 @@ const RegistrationMainForm = () => {
             }}
           >
             {error && <Typography color="error">{error}</Typography>}
-            <Button type="submit" onClick={() => signupUser()} style={{color:'black'}}>
+            <Button type="submit" style={{ color: 'black' }}>
               Submit
             </Button>
           </div>
