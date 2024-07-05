@@ -6,18 +6,14 @@ import { upload } from '../middleware/multer.middleware.js';
 
 const router = express.Router();
 
-router.route('/registration').post( upload.fields([
-    {
-        name:'photo',
-        maxCount:1
-    },
-    {
-        name:'signature',
-        maxCount:1
-    }]),
-     signupUser);
+router.post('/registration', 
+    upload.fields([
+        { name: 'photo', maxCount: 1 },
+        { name: 'signature', maxCount: 1 }
+    ]), 
+    signupUser
+);
 router.post('/login', loginUser);
 router.post('/contact', contactUs); // Add the new contact form route
-
 
 export default router;
