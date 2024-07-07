@@ -117,6 +117,7 @@ const RegistrationMainForm = () => {
       // Handle form submission with photo and signature files
       console.log("Selected photo:", photo);
       console.log("Selected signature:", signature);
+      // console.log(formData.keys())
       ////////////////////////////////////////////////////////
       await signupUser(formData);
     } catch (error) {
@@ -180,7 +181,7 @@ const RegistrationMainForm = () => {
             </Typography>
           </div>
         </div>
-        <form onSubmit={handleSubmit} action="/registration" method="post" encType="multipart/form-data">
+        <form onSubmit={handleSubmit} action="/registration" method="post" enctype="multipart/form-data">
           <Row isMedium={isMedium}>
             <InputStyle type="text" name="name" value={detail.name} onChange={handleChange} placeholder="Name" />
             <InputStyle type="text" name="userName" value={detail.userName} onChange={handleChange} placeholder="Username" />

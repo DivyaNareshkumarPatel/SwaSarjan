@@ -16,11 +16,13 @@ export const signupUser = async (request, response) => {
     // working
     // console.log(request.body)
     // not working
-    // console.log(request.files)
+    // console.log(request.files) 
 
     const hashedPassword = await bcrypt.hash(request.body.password, 10);
+
     const photoLocalPath = request.files?.photo[0]?.path;
     const signatureLocalPath = request.files?.signature[0]?.path;
+    
     const photo = await uploadOnCloudinary(photoLocalPath);
     const signature = await uploadOnCloudinary(signatureLocalPath);
 
@@ -39,8 +41,8 @@ export const signupUser = async (request, response) => {
       panCard: request.body.panCard,
       adharCard: request.body.adharCard,
       gender: request.body.gender,
-      photo: photo.url, // Assuming you need the URL here
-      signature: signature.url // Assuming you need the URL here
+      photo: photo.url, 
+      signature: signature.url 
     };
 
     const newUser = new User(user);

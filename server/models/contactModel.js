@@ -10,6 +10,6 @@ const contactSchema = mongoose.Schema({
   message: { type: String, required: true }
 });
 
-const Contact = mongoose.model('Contact', contactSchema);
+const Contact = mongoose.model('ContactUs', contactSchema);
 
 export default Contact;
