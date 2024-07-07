@@ -18,7 +18,7 @@ export default function Donate() {
             <div
                 style={{
                     position: "relative",
-                    overflow: "hidden", // Hide overflow to prevent blurred image from overflowing
+                    overflow: "hidden", 
                     padding: "10px",
                     borderRadius: "10px",
                     margin: "10px",

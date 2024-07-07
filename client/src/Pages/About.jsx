@@ -8,7 +8,7 @@ import AboutTeam from "../Components/AboutTeam";
 import Benifits from "../Components/Benifits";
 import Volunteer from '../Components/Volunteer';
 import Footer from '../Components/Footer';
-import Awards from "../Components/Awards&Accreditations";
+// import Awards from "../Components/Awards&Accreditations";
 import AboutGallery from "../Components/AboutGallery";
 export default function About() {
   return (
@@ -20,7 +20,7 @@ export default function About() {
       <AboutValues/>
       <AboutTeam/>
       <Benifits/>
-      <Awards/>
+      {/* <Awards/> */}
       <AboutGallery/>
       <Volunteer/>
       <Footer/>
