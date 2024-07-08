@@ -61,7 +61,7 @@ export default function DonateForm() {
     console.log( detail );
     try{
       const response = await API.donateUs(detail)
-      
+      ;
     } catch(error){
       console.log('Error while donating',error)
     }

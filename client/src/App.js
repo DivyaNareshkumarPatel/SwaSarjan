@@ -14,6 +14,8 @@ import Donate from './Pages/Donate';
 import Campaign from './Pages/Campaign';
 import Campaign2 from './Pages/Campaign2';
 import Blogs from './Pages/Blogs';
+
+
 export default function App() {
   return (
     <DataProvider>
@@ -30,6 +32,7 @@ export default function App() {
           <Route path='/campaign' element={<Campaign/>}/>
           <Route path="/campaigndetail" element={<Campaign2/>}/>
           <Route path="/blogs" element={<Blogs/>}/>
+          
         </Routes>
       </Router>
     </DataProvider>
