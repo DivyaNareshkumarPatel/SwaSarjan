@@ -1,6 +1,6 @@
-// server/controller/contact-controller.js
+
 import sendEmail from '../services/emailService.js';
-import Contact from '../models/contactModel.js'; // Assuming you have a model for storing contact form data
+import Contact from '../models/contactModel.js'; 
 
 export const contactUs = async (req, res) => {
   const { firstName, lastName, email, phone, role, message } = req.body;
@@ -9,7 +9,7 @@ export const contactUs = async (req, res) => {
     return res.status(400).json({ msg: 'Please fill in all fields.' });
   }
 
-  // Save contact details to the database
+  
   try {
     const newContact = new Contact({ firstName, lastName, email, phone, role, message });
     await newContact.save();
@@ -17,12 +17,22 @@ export const contactUs = async (req, res) => {
     return res.status(500).json({ msg: 'Error saving contact details to the database.' });
   }
 
-  // Send email
+  const recipients = ['krishjp2538@gmail.com', 'divyanareshkumarpatel@gmail.com', 'kp6102k4@gmail.com']
+  
   const emailData = {
-    to: 'recipient@example.com', // Replace with your email or dynamically set
-    subject: 'New Contact Form Submission',
-    text: `You have received a new message from ${firstName} ${lastName} (${email}, ${phone}): ${message}`,
+    from: `${email}`,
+    to: recipients.join(', '),
+    subject: `SwaSarjan WebSite contactForm: ${email}`,
+    text: `You have received a new message from:
+    First Name: ${firstName}
+    Last Name: ${lastName}
+    Email: ${email}
+    Phone: ${phone}
+  
+    Message:
+    ${message}`,
   };
+  
 
   try {
     await sendEmail(emailData);

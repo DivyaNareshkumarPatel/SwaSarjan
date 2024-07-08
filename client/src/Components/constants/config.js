@@ -27,4 +27,7 @@ export const API_NOTIFICATION_MESSAGES = {
 export const SERVICE_URLS = {
     userSignup: { url:'/registration' , method: 'POST'},
     userLogin: { url:'/login' , method: 'POST'},
+    contactUs: { url:'/contact', method: 'POST'},
+    donateUs: { url:'/donate', method: 'POST'},
+
 }

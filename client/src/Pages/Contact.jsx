@@ -8,7 +8,7 @@ export default function Contact() {
   return (
     <div>
       <NavBar/>
-      <CommonBanner head="Contact Us" line1="Contact us to join" line2="SwaSarjan Foundation"/>
+      {/* <CommonBanner head="Contact Us" line1="Contact us to join" line2="SwaSarjan Foundation"/> */}
       <ContactMain/>
       <ContactUsMap/>
       <Footer/>

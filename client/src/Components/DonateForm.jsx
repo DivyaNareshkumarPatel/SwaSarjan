@@ -1,19 +1,71 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import OrangeLogo from "../images/Swa Icon Name Orange.png";
-import { Typography, Button, Radio } from "@mui/material";
+import { Typography, Button, Radio, TextField, Autocomplete, RadioGroup, FormControlLabel, FormControl, FormLabel } from "@mui/material";
 import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import TextField from "@mui/material/TextField";
-import Autocomplete from "@mui/material/Autocomplete";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
+import { API } from "../service/api";
 
 export default function DonateForm() {
   const isMedium = useMediaQuery("(max-width:807px)");
+
+  const [detail, setDetail] = useState({
+    donationType: "general",
+    amount: "",
+    customAmount: "",
+    frequency: "oneTime"
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "amount") {
+      setDetail((prevDetail) => ({
+        ...prevDetail,
+        amount: value,
+        customAmount: ""
+      }));
+    } else if(name === "customAmount"){
+      setDetail((prevDetail) => ({
+        ...prevDetail,
+        amount: "",
+        customAmount: value,
+      }));
+    } else {
+      setDetail((prevDetail) => ({
+        ...prevDetail,
+        [name]: value
+      }));
+    }
+  };
+
+  const handleAutoCompleteChange = (event, value) => {
+    setDetail((prevDetail) => ({
+      ...prevDetail,
+      donationType: value
+    }));
+  };
+
+  // const handleCustomAmountChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setDetail((prevDetail) => ({
+  //     ...prevDetail,
+  //     customAmount: value,
+  //     amount: ""
+  //   }));
+  // };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // const finalAmount = detail.customAmount || detail.amount;
+    console.log( detail );
+    try{
+      const response = await API.donateUs(detail)
+      
+    } catch(error){
+      console.log('Error while donating',error)
+    }
+  };
 
   const DonationType = ["Education", "Women Empowerment", "Tree Plantation"];
 
@@ -81,7 +133,7 @@ export default function DonateForm() {
             </div>
           </div>
 
-          <form style={{ margin: "10px 0px 0px 0px" }}>
+          <form style={{ margin: "10px 0px 0px 0px" }} action="/donate" method="post" onSubmit={handleSubmit}>
             <div>
               <Typography
                 style={{
@@ -97,8 +149,9 @@ export default function DonateForm() {
                 id="combo-box-demo"
                 options={DonationType}
                 sx={{ width: 200 }}
+                onChange={handleAutoCompleteChange}
                 renderInput={(params) => (
-                  <TextField {...params} label="Donate" variant="standard" />
+                  <TextField {...params} label="Donation Type" variant="standard" />
                 )}
               />
             </div>
@@ -112,7 +165,7 @@ export default function DonateForm() {
                 margin: "10px 0px",
               }}
             >
-              <FormControl sx={{width:"250px"}}>
+              <FormControl sx={{ width: "250px" }}>
                 <FormLabel
                   id="demo-radio-buttons-group-label"
                   style={{
@@ -121,32 +174,36 @@ export default function DonateForm() {
                     color: "GrayText",
                   }}
                 >
-                  Chose a donation amount
+                  Choose a donation amount
                 </FormLabel>
                 <RadioGroup
                   aria-labelledby="demo-radio-buttons-group-label"
-                  defaultValue="female"
-                  name="radio-buttons-group"
+                  value={detail.amount}
+                  onChange={handleChange}
+                  name="amount"
                 >
                   <FormControlLabel
                     value="100"
-                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333"}} />}/>}
+                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333" }} />} />}
                     label="Rs. 100"
                   />
                   <FormControlLabel
                     value="500"
-                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333"}} />}/>}
+                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333" }} />} />}
                     label="Rs. 500"
                   />
                   <FormControlLabel
                     value="1000"
-                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333"}} />}/>}
+                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333" }} />} />}
                     label="Rs. 1000"
                   />
                 </RadioGroup>
                 <TextField
                   label="Enter custom amount"
                   variant="standard"
+                  name="customAmount"
+                  value={detail.customAmount}
+                  onChange={handleChange}
                   sx={{ "& input": { fontSize: "16px" } }}
                 />
               </FormControl>
@@ -166,7 +223,8 @@ export default function DonateForm() {
                 <RadioGroup
                   aria-label="donation-frequency"
                   defaultValue="oneTime"
-                  name="donation-frequency"
+                  name="frequency"
+                  onChange={handleChange}
                   style={{ display: "flex", flexDirection: "row" }}
                 >
                   <FormControlLabel
@@ -178,7 +236,7 @@ export default function DonateForm() {
                       paddimg: "10px",
                       marginRight: "20px",
                     }}
-                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333"}} />}/>}
+                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333" }} />} />}
                     label="Monthly"
                   />
                   <FormControlLabel
@@ -188,7 +246,7 @@ export default function DonateForm() {
                       fontSize: "10px",
                       minWidth: "100px",
                     }}
-                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333"}} />}/>}
+                    control={<Radio checkedIcon={<RadioButtonCheckedOutlinedIcon style={{ color: "#333333" }} />} />}
                     label="One time"
                   />
                 </RadioGroup>
@@ -216,9 +274,10 @@ export default function DonateForm() {
                   width: "120px",
                 }}
               >
-                Cancle
+                Cancel
               </Button>
               <Button
+                type="submit"
                 variant="outlined"
                 style={{
                   backgroundColor: "#0C0C0C",

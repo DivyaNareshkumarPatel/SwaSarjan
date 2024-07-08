@@ -1,26 +1,38 @@
-// server/services/emailService.js
 
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import { response } from 'express';
 
-const sendEmail = async (emailData) => {
+dotenv.config();
+
+const user = process.env.EMAIL_USER
+const password = process.env.EMAIL_PASS
+
+const sendEmail = async (request,response) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
+      user: user,
+      pass: password,
     },
   });
 
+  // console.log(user)
+  // console.log(password)
+
   const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: emailData.to,
-    subject: emailData.subject,
-    text: emailData.text,
+    from: request.email,
+    to: request.to,
+    subject: request.subject,
+    text: request.text,
   };
+
+  // console.log(mailOptions)
 
   try {
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
+    // return response.status(201).json({msg:`email sent successfully`})
   } catch (error) {
     console.error('Error sending email:', error);
   }

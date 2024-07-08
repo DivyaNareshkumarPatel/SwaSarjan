@@ -20,6 +20,8 @@ import youtube from "../images/oYoutube.png";
 import send from "../images/letter_send.png";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
+import { API } from "../service/api";
+
 
 export default function ContactMain() {
   const isMedium = useMediaQuery("(max-width:900px)");
@@ -54,23 +56,23 @@ export default function ContactMain() {
     lastName: "",
     email: "",
     phone: "",
+    role: "",
+    message: ""
   });
 
   const [focusedInput, setFocusedInput] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [role, setRole] = useState("");
-  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     if (
       !detail.firstName ||
       !detail.lastName ||
       !detail.email ||
       !detail.phone ||
-      !role ||
-      !message
+      !detail.role ||
+      !detail.message
     ) {
       setError("Please fill in all fields.");
       return;
@@ -93,14 +95,27 @@ export default function ContactMain() {
       setError("Please enter a valid email address.");
       return;
     }
-    if (message.length < 10) {
+    if (detail.message.length < 10) {
       setError("Message length should be at least 10 characters");
       return;
     }
+    // debugging
     console.log("Form submitted:");
-    setError("");
-    setOpenSnackbar(true);
     console.log(detail);
+    // console.log(response.data.msg.value)
+    // 
+    try{
+      const response = await API.contactUs(detail)
+    if (response.isError === true){
+      setError(`${response.data.msg.value}`);
+       
+    } else{
+      setError("");
+      setOpenSnackbar(true);
+    }
+    } catch (error){
+      console.log(error)
+    }
   };
 
   const inputChange = (e) => {
@@ -109,7 +124,6 @@ export default function ContactMain() {
       ...prev,
       [name]: value,
     }));
-    // console.log(value)
   };
 
   return (
@@ -384,8 +398,8 @@ export default function ContactMain() {
                 </label>
                 <RadioGroup
                   name="selectRole"
-                  value={role}
-                  onChange={(e) => setRole(e.target.value)}
+                  value={detail.role}
+                  onChange={(e) => setDetail((prev) => ({ ...prev, role: e.target.value }))}
                 >
                   <div
                     style={{
@@ -454,9 +468,10 @@ export default function ContactMain() {
                 <br />
                 <input
                   type="text"
+                  name="message"
                   placeholder="Write your message.."
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  value={detail.message}
+                  onChange={(e) => setDetail((prev) => ({ ...prev, message: e.target.value }))}
                   style={{
                     "&:placeholder": { fontSize: "20px", color: "#8D8D8D" },
                     border: "none",

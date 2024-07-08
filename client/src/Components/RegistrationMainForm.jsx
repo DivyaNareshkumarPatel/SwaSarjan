@@ -156,7 +156,7 @@ const RegistrationMainForm = () => {
             <Typography variant="h7">Register Yourself & let’s get started with SwaSarjan</Typography>
           </div>
         </div>
-        <form onSubmit={handleSubmit} action="/registration" method="post" encType="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Row isMedium={isMedium}>
             <InputStyle type="text" name="name" value={detail.name} onChange={handleChange} placeholder="Name" />
             <InputStyle type="text" name="userName" value={detail.userName} onChange={handleChange} placeholder="Username" />
