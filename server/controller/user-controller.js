@@ -10,18 +10,27 @@ import { uploadOnCloudinary } from '../services/cloudinary.js';
 dotenv.config();
 
 export const signupUser = async (request, response) => {
+    console.log(request.files)
     try {
         const hashedPassword = await bcrypt.hash(request.body.password, 10);
-        const photoLocalPath = request.file?.photo[0]?.path
-        const signatureLocalPath = request.file?.signature[0]?.path
-        
-        const photo = await uploadOnCloudinary(photoLocalPath)
-        const signature = await uploadOnCloudinary(signatureLocalPath)
-        
-        console.log(photo)
-        console.log(signature)
 
-        const user = {
+        // Handle file uploads if they exist
+        const photoFile = request.files?.photo?.[0]?.path;
+        const signatureFile = request.files?.signature?.[0]?.path;
+
+        let photoUrl, signatureUrl;
+        if (photoFile) {
+            photoUrl = await uploadOnCloudinary(photoFile);
+        } else {
+            throw new Error('Photo is required');
+        }
+
+        if (signatureFile) {
+            signatureUrl = await uploadOnCloudinary(signatureFile);
+        } else {
+            throw new Error('Signature is required');
+        }
+        const user = new User({
             name: request.body.name,
             userName: request.body.userName,
             email: request.body.email,
@@ -36,25 +45,19 @@ export const signupUser = async (request, response) => {
             panCard: request.body.panCard,
             adharCard: request.body.adharCard,
             gender: request.body.gender,
-            photo: photo,
-            signature: signature
-        };
+            photo: photoUrl,
+            signature: signatureUrl
+        });
 
-        const newUser = new User(user);
+        await user.save();
 
-        await newUser.save();
-       
-        return response.status(200).json({ msg: 'Signup successful' });
-        
+        return response.status(201).json({ msg: 'Signup successful' });
+
     } catch (error) {
-
         console.error('Error during user signup:', error);
-        
-        return response.status(500).json({ msg: 'Error while signing up the user' });
-    
+        return response.status(500).json({ msg: 'Error while signing up the user', error: error.message });
     }
-}
-
+};
 export const loginUser = async (request, response) => {
     try {
         let user = await User.findOne({ userName: request.body.userName });
