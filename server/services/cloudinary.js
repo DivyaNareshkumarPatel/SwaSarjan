@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+
 // Configuration
 cloudinary.config({ 
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME, 
@@ -13,27 +14,21 @@ cloudinary.config({
 
 const uploadOnCloudinary = async (localFilePath) => {
     try {
-        if (!localFilePath){
-            // debugging
-            console.log(localFilePath)
-            console.log("localfilepath not found")
-            // 
-            return null
-        };
-        const response = await cloudinary.uploader.upload(localFilePath, {
+        if (!localFilePath) return null;
+
+        const result = await cloudinary.uploader.upload(localFilePath, {
             resource_type: "auto"
         });
-        console.log('File uploaded successfully!', response.url);
-        return response;
+
+        console.log('File uploaded successfully!', result.url);
+        
+        // Return the secure URL of the uploaded file
+        return result.secure_url;
     } catch (error) {
-        console.error('Error uploading to Cloudinary:', error);
-        if (
-            fs.existsSync(localFilePath)) {
-            fs.unlinkSync(localFilePath);
-        }
-        return null;
+        console.error('Error uploading file to Cloudinary:', error);
+        fs.unlinkSync(localFilePath); // Delete the local file on error
+        throw error; // Re-throw the error to handle it in the calling function
     }
 }
-
 
 export { uploadOnCloudinary };

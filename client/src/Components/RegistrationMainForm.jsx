@@ -3,7 +3,6 @@ import { Box, Button, Typography, RadioGroup, Radio, FormControlLabel, Snackbar 
 import { styled, useMediaQuery } from "@mui/system";
 import { Link } from "react-router-dom";
 import OrangeLogo from '../images/Swa Icon Name Orange.png';
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { API } from "../service/api";
 
 const InputStyle = styled("input")(({ isMedium }) => ({
@@ -44,11 +43,11 @@ const RegistrationMainForm = () => {
     pinCode: "",
     panCard: "",
     adharCard: "",
-    gender: ""
+    gender: "",
   });
+  const [photo, setPhoto] = useState(null);
+  const [signature, setSignature] = useState(null);
 
-  const [photo, setPhoto] = useState("");
-  const [signature, setSignature] = useState("");
   const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
@@ -58,6 +57,14 @@ const RegistrationMainForm = () => {
       ...prevDetail,
       [name]: value
     }));
+  };
+
+  const handlePhotoChange = (e) => {
+    setPhoto(e.target.files[0]);
+  };
+
+  const handleSignatureChange = (e) => {
+    setSignature(e.target.files[0]);
   };
 
   const handleSubmit = async (event) => {
@@ -80,9 +87,11 @@ const RegistrationMainForm = () => {
       !photo ||
       !signature
     ) {
-      setError("Please fill in all fields.");
+      setError("Please fill in all fields and upload required documents.");
       return;
     }
+
+    // Form data validation logic here
     if (detail.name.length < 3) {
       setError("Please enter a valid name.");
       return;
@@ -101,87 +110,53 @@ const RegistrationMainForm = () => {
       setError("Please enter a valid email address.");
       return;
     }
-    setError("");
-    setOpenSnackbar(true);
-
-    const formData = new FormData();
-    
-    for (const key in detail) {
-      formData.append(key, detail[key]);
-    }
-    
-    formData.append("photo", photo);
-    formData.append("signature", signature);
 
     try {
-      // Handle form submission with photo and signature files
-      console.log("Selected photo:", photo);
-      console.log("Selected signature:", signature);
-      // console.log(formData.keys())
-      ////////////////////////////////////////////////////////
-      await signupUser(formData);
-    } catch (error) {
-      console.error("Error during signup:", error);
-    }
-  };
+      // Prepare form data with files
+      const formData = new FormData();
+      formData.append("name", detail.name);
+      formData.append("userName", detail.userName);
+      formData.append("email", detail.email);
+      formData.append("password", detail.password);
+      formData.append("phone", detail.phone);
+      formData.append("otp", detail.otp);
+      formData.append("dob", detail.dob);
+      formData.append("addr", detail.addr);
+      formData.append("state", detail.state);
+      formData.append("city", detail.city);
+      formData.append("pinCode", detail.pinCode);
+      formData.append("panCard", detail.panCard);
+      formData.append("adharCard", detail.adharCard);
+      formData.append("gender", detail.gender);
+      formData.append("photo", photo);
+      formData.append("signature", signature);
 
-  const signupUser = async (formData) => {
-    console.log(`API called from the registration`);
-    let response = await API.userSignup(formData);
+      // Call API method to handle signup with form data and files
+      const response = await API.userSignup(formData);
+      console.log("Signup API response:", response);
+      setOpenSnackbar(true); // Show success message
+    } catch (error) {
+      console.error("Error signing up:", error);
+      setError("Error signing up. Please try again.");
+    }
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: isMedium ? 'auto' : '100vh',
-        alignItems: "center",
-        justifyContent: "center",
-        margin: "0px 40px",
-        flexDirection: "column",
-      }}
-    >
+    <div style={{ display: "flex", height: isMedium ? 'auto' : '100vh', alignItems: "center", justifyContent: "center", margin: "0px 40px", flexDirection: "column" }}>
       <div>
-        <div style={{
-          display: 'flex',
-          justifyContent: isMedium ? 'center' : 'flex-start',
-          textAlign: 'left'
-        }}>
-          <Snackbar
-            open={openSnackbar}
-            autoHideDuration={6000}
-            onClose={() => setOpenSnackbar(false)}
-            message="Details sent successfully. Click next."
-          />
+        <div style={{ display: 'flex', justifyContent: isMedium ? 'center' : 'flex-start', textAlign: 'left' }}>
+          <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)} message="Details sent successfully. Click next." />
           <div>
             <Link to='/'>
-              <img
-                src={OrangeLogo}
-                style={{
-                  height: '50px',
-                  width: '40px',
-                  margin: '0px 60px 0px 10px'
-                }}
-              />
+              <img src={OrangeLogo} style={{ height: '50px', width: '40px', margin: '0px 60px 0px 10px' }} />
             </Link>
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center",
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: '20px'
-            }}
-          >
+          <div style={{ display: "flex", flexDirection: "column", textAlign: "center", justifyContent: "center", alignItems: "center", marginBottom: '20px' }}>
             <Typography variant="h5" style={{ textAlign: 'left' }}>Register your Account</Typography>
-            <Typography variant="h7">
-              Register Yourself & let’s get started with SwaSarjan
-            </Typography>
+            <Typography variant="h7">Register Yourself & let’s get started with SwaSarjan</Typography>
           </div>
         </div>
-        <form onSubmit={handleSubmit} action="/registration" method="post" enctype="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data">
           <Row isMedium={isMedium}>
             <InputStyle type="text" name="name" value={detail.name} onChange={handleChange} placeholder="Name" />
             <InputStyle type="text" name="userName" value={detail.userName} onChange={handleChange} placeholder="Username" />
@@ -196,12 +171,7 @@ const RegistrationMainForm = () => {
           </Row>
           <Row isMedium={isMedium}>
             <InputStyle type="date" name="dob" value={detail.dob} onChange={handleChange} placeholder="DOB" />
-            <RadioGroup
-              name="gender"
-              value={detail.gender}
-              onChange={handleChange}
-              style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '10px 80px' }}
-            >
+            <RadioGroup name="gender" value={detail.gender} onChange={handleChange} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: '10px 80px' }}>
               <Typography variant="body1" style={{ marginRight: '10px' }}>Gender:</Typography>
               <FormControlLabel value="male" control={<Radio />} label="Male" />
               <FormControlLabel value="female" control={<Radio />} label="Female" />
@@ -221,21 +191,13 @@ const RegistrationMainForm = () => {
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Photo</label>
-            <InputStyle type="file" name="photo" onChange={(e)=>setPhoto(e.target.files[0])} />
+            <InputStyle type="file" name="photo" onChange={handlePhotoChange} />
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Signature</label>
-            <InputStyle type="file" name="signature" onChange={(e)=>setSignature(e.target.files[0])} />
+            <InputStyle type="file" name="signature" onChange={handleSignatureChange} />
           </Row>
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: '30px'
-            }}
-          >
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
             {error && <Typography color="error">{error}</Typography>}
             <Button type="submit" style={{ color: 'black' }}>
               Submit

@@ -31,4 +31,3 @@ export const SERVICE_URLS = {
     donateUs: { url:'/donate', method: 'POST'},
 
 }
-
