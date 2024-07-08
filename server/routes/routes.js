@@ -2,6 +2,7 @@ import express from 'express';
 import { signupUser, loginUser } from '../controller/user-controller.js';
 import { contactUs } from '../controller/contact-controller.js'; // Import the contact form handler
 import { upload } from '../middleware/multer.middleware.js';
+import { donateUs } from '../controller/donate-controller.js';
 
 const router = express.Router();
 
