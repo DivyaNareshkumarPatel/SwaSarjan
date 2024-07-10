@@ -1,5 +1,5 @@
 import express from 'express';
-import { signupUser, loginUser } from '../controller/user-controller.js';
+import { signupUser, loginUser} from '../controller/user-controller.js';
 import { contactUs } from '../controller/contact-controller.js'; // Import the contact form handler
 import { upload } from '../middleware/multer.middleware.js';
 
@@ -15,6 +15,6 @@ router.post('/registration',
 
 router.post('/login', loginUser);
 router.post('/contact', contactUs);
-router.post('/donate', donateUs);
+// router.post('/donate', donateUs);
 
 export default router;
