@@ -29,5 +29,6 @@ export const SERVICE_URLS = {
     userLogin: { url:'/login' , method: 'POST'},
     contactUs: { url:'/contact', method: 'POST'},
     donateUs: { url:'/donate', method: 'POST'},
-    adminEvent: {url:'/admin29/events', method:'POST'}
+    adminEvent: {url:'/admin29/events', method:'POST'},
+    adminLogin: { url:'/admin29/login', method: 'POST'},
 }
