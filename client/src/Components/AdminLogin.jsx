@@ -8,6 +8,7 @@ import logo from "../images/SwaLogoMain.png"
 import ErrorIcon from "@mui/icons-material/Error";
 import { API } from "../service/api";
 
+
 const Component = styled(Box)`
     width   : 400px;
     height : auto;
@@ -88,23 +89,27 @@ const AdminLogin = () => {
         } else {
           setErrors([]);
         };
-
+        
         try {
             console.log(detail)
+            console.log(`calling api from frontend`)
             const response = await API.adminLogin({
               admin: detail.admin,
               password: detail.password,
             });
     
             if (response && response.isSuccess) {
+                console.log(`got response from backend with success`)
               console.log(response)
               sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`)
               sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`)
               navigate('/')
               
             } else if (response && response.isError) {
+                console.log(`got response from backend with error`)
               setErrors(["Something went wrong. Please try again!"]);
             } else {
+                console.log(`got response from backend without success nor failure`)
               setErrors(["Unexpected response format from server."]);
             }
           } catch (error) {

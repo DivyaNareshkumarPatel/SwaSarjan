@@ -6,11 +6,12 @@ import Token from '../models/token.js';
 dotenv.config();
 
 export const loginAdmin = async (request, response) => {
-  try {
+    try {
     console.log(request.body.admin); 
     console.log(request.body.password); 
-
+    
     const admin = await Admin.findOne({ admin: request.body.admin });
+
     console.log(admin); 
 
     if (!admin) {
@@ -18,7 +19,7 @@ export const loginAdmin = async (request, response) => {
       return response.status(400).json({ msg: 'Admin does not exist' });
     }
 
-    const match = request.body.password === admin.password; // Simple comparison for now
+    const match = request.body.password === admin.password; 
     if (match) {
       if (!process.env.ACCESS_SECRET_KEY || !process.env.REFRESH_SECRET_KEY) {
         throw new Error('Secret keys are not set');
