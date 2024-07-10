@@ -82,16 +82,16 @@ export default function NavBar() {
     },
     // { text: 'Event', onClick: () => setActiveMenu('Event') },
     { text: "Events", to: "/events", onClick: () => setActiveMenu("About") },
-    {
-      text: "Contact",
-      to: "/contact",
-      onClick: () => setActiveMenu("Contact"),
-    },
-    {
-      text: "Registration",
-      to: "/registration",
-      onClick: () => setActiveMenu("Registration"),
-    },
+    // {
+    //   text: "Contact",
+    //   to: "/contact",
+    //   onClick: () => setActiveMenu("Contact"),
+    // },
+    // {
+    //   text: "Registration",
+    //   to: "/registration",
+    //   onClick: () => setActiveMenu("Registration"),
+    // },
   ];
 
   return (
@@ -166,7 +166,7 @@ export default function NavBar() {
               </NavLink>
             ))}
           </Wrapper>
-          <Box>
+          {/* <Box>
             <IconButton color="#f26522" paddingLeft="5px">
               <SearchIcon />
             </IconButton>
@@ -175,7 +175,7 @@ export default function NavBar() {
                 <AccountCircleIcon />
               </Link>
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </Navbar1>
     </Box>

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "@mui/material";
 import OrangeLogo from "../images/Swa Icon Name Orange.png";
-import { Typography, Button, Radio, TextField, Autocomplete, RadioGroup, FormControlLabel, FormControl, FormLabel } from "@mui/material";
+import { Typography, Button, Radio, TextField, Autocomplete, RadioGroup, FormControlLabel, FormControl, FormLabel,Snackbar } from "@mui/material";
 import RadioButtonCheckedOutlinedIcon from '@mui/icons-material/RadioButtonCheckedOutlined';
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ErrorIcon from "@mui/icons-material/Error";
 import { API } from "../service/api";
 
 export default function DonateForm() {
@@ -14,6 +15,7 @@ export default function DonateForm() {
     donationType: "general",
     amount: "",
     customAmount: "",
+    phoneNumber:"",
     frequency: "oneTime"
   });
 
@@ -60,8 +62,7 @@ export default function DonateForm() {
     // const finalAmount = detail.customAmount || detail.amount;
     console.log( detail );
     try{
-      const response = await API.donateUs(detail)
-      ;
+      const response = await API.donateUs(detail);
     } catch(error){
       console.log('Error while donating',error)
     }
@@ -203,6 +204,14 @@ export default function DonateForm() {
                   variant="standard"
                   name="customAmount"
                   value={detail.customAmount}
+                  onChange={handleChange}
+                  sx={{ "& input": { fontSize: "16px" } }}
+                />
+                <TextField
+                  label="Enter Phone Number"
+                  variant="standard"
+                  name="phoneNumber"
+                  value={detail.phoneNumber}
                   onChange={handleChange}
                   sx={{ "& input": { fontSize: "16px" } }}
                 />
