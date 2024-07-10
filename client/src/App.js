@@ -14,6 +14,8 @@ import Donate from './Pages/Donate';
 import Campaign from './Pages/Campaign';
 import Campaign2 from './Pages/Campaign2';
 import Blogs from './Pages/Blogs';
+import AdminPage from './Pages/Admin';
+import EventSettings from './Components/EventSettings';
 
 
 export default function App() {
@@ -32,6 +34,8 @@ export default function App() {
           <Route path='/campaign' element={<Campaign/>}/>
           <Route path="/campaigndetail" element={<Campaign2/>}/>
           <Route path="/blogs" element={<Blogs/>}/>
+          <Route path="/admin29" element={<AdminPage/>}/>
+          <Route path="/admin29/events" element={<EventSettings/>}/>
           
         </Routes>
       </Router>
