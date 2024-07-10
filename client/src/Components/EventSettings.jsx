@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
-
+import { API } from '../service/api';
 const EventSettings = () => {
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
     date: '',
     venue: '',
+    smallDesc: '',
+    eventType: '',
     image: null,
   });
 
@@ -21,14 +23,40 @@ const EventSettings = () => {
   const handleImageChange = (e) => {
     setEventData((prevData) => ({
       ...prevData,
-      image: e.target.files[0],
+      image: e.target.files[0], // Set the selected file to the image field
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    console.log(eventData);
+
+    try {
+      const formData = new FormData();
+      formData.append('title', eventData.title);
+      formData.append('description', eventData.description);
+      formData.append('date', eventData.date);
+      formData.append('venue', eventData.venue);
+      formData.append('smallDesc', eventData.smallDesc);
+      formData.append('eventType', eventData.eventType);
+      formData.append('image', eventData.image); // Append the image file to FormData
+
+      const response = await API.adminEvent(formData)
+      console.log('Event created successfully:', response.data);
+
+      // Clear form data after successful submission
+      setEventData({
+        title: '',
+        description: '',
+        date: '',
+        venue: '',
+        smallDesc: '',
+        eventType: '',
+        image: null,
+      });
+    } catch (error) {
+      console.error('Error while creating event:', error);
+      // Handle error state or show error message to the user
+    }
   };
 
   return (
@@ -78,17 +106,28 @@ const EventSettings = () => {
               onChange={handleChange}
             />
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="smallDesc"
+              label="Small Description"
+              fullWidth
+              value={eventData.smallDesc}
+              onChange={handleChange}
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              name="eventType"
+              label="Event Type"
+              fullWidth
+              value={eventData.eventType}
+              onChange={handleChange}
+            />
+          </Grid>
           <Grid item xs={12}>
-            <Button
-              variant="contained"
-              component="label"
-            >
+            <Button variant="contained" component="label">
               Upload Event Image
-              <input
-                type="file"
-                hidden
-                onChange={handleImageChange}
-              />
+              <input type="file" onChange={handleImageChange} />
             </Button>
           </Grid>
           <Grid item xs={12}>
