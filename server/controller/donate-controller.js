@@ -1,16 +1,21 @@
-import donation from "../models/donate.js"
+import donation from "../models/donate.js";
+import { paymentUs } from "./paymentUs.js";
 
-export const donateUs = (request , response)=>{
-    const { donationType , amount , customAmount , frequency } = request.body
+export const donateUs = async (request, response) => {
+  try {
+    const { donationType, amount, customAmount, frequency } = request.body;
+    const amountFinal = amount ? amount : customAmount;
+
+    const responsePayment = await paymentUs({ amountFinal, mobileNumber: 1234567891 });
     
-    // console.log(donationType)
-    // console.log(amount)
-    // console.log(customAmount)
-    // console.log(frequency)
-
-    const amountFinal = amount ? amount : customAmount
-    // console.log(amountFinal)
-
-    
-    // const donated = new donation()
-}
+    if (responsePayment.success) {
+      // Handle successful payment
+      // const donated = new donation();
+      response.status(200).json({ message: "Donation successful", data: responsePayment });
+    } else {
+      response.status(400).json({ message: responsePayment.message, data: responsePayment });
+    }
+  } catch (error) {
+    response.status(500).json({ message: "Internal server error", error: error.message });
+  }
+};
