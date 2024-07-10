@@ -16,6 +16,7 @@ import Campaign2 from './Pages/Campaign2';
 import Blogs from './Pages/Blogs';
 import AdminPage from './Pages/Admin';
 import EventSettings from './Components/EventSettings';
+import AdminLogin from './Components/AdminLogin';
 
 
 export default function App() {
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/blogs" element={<Blogs/>}/>
           <Route path="/admin29" element={<AdminPage/>}/>
           <Route path="/admin29/events" element={<EventSettings/>}/>
+          <Route path="/admin29/login" element={<AdminLogin/>}/>
           
         </Routes>
       </Router>

@@ -7,6 +7,7 @@ import { setEvents } from '../controller/setEvents-controller.js';
 import { getEvents } from '../controller/getEvents-controller.js';
 import cloudinary from "cloudinary"
 import {upload} from "../middleware/multer.js"
+import {loginAdmin} from "../controller/adminLogin-controller.js"
 
 const router = express.Router();
 
@@ -21,6 +22,8 @@ router.post('/registration',
 router.post('/login', loginUser);
 router.post('/contact', contactUs);
 router.post('/donate', donateUs);
+
+router.post('/admin29/login', loginAdmin);
 
 router.post('/events', upload.single('photo'), async (req, res) => {
     const { title, description, date, venue } = req.body;
@@ -52,4 +55,11 @@ router.post('/events', upload.single('photo'), async (req, res) => {
       res.status(500).send(error);
     }
   });
+
+
+
+
+
+
+
 export default router;
