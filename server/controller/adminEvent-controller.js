@@ -22,3 +22,11 @@ export const createEvent = async (req, res) => {
         res.status(500).json({ message: 'Error while creating event', error });
     }
 };
+export const getAllEvents = async (req, res) => {
+    try {
+        const events = await AdminEvent.find();
+        res.status(200).json(events);
+    } catch (error) {
+        res.status(500).json({ message: 'Error while fetching events', error });
+    }
+};

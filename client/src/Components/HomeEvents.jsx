@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography } from '@mui/material';
 import styled from "@emotion/styled";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { Link } from "react-router-dom";
+import { API } from "../service/api"; // Adjust path as needed
 
 const OuterContainer = styled(Box)({
   padding: '0 40px',
@@ -82,6 +83,28 @@ const ArrowButtonBox = styled(Box)({
 }); 
 
 const HomeEvents = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await API.getEvents(); // Assuming API.getEvents() retrieves event data
+        if (response.isSuccess) {
+          setEvents(response.data); // Set events state with fetched data
+        } else {
+          console.error('Error fetching events:', response.msg);
+        }
+        setLoading(false); // Update loading state once data is fetched
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        setLoading(false); // Update loading state in case of error
+      }
+    };
+
+    fetchData(); // Invoke fetchData function on component mount
+  }, []);
+
   return ( 
     <div style={{ background: "white", paddingTop: "40px", paddingBottom: "40px" }}>
       <OuterContainer>
@@ -92,99 +115,34 @@ const HomeEvents = () => {
           <hr style={{ height: '1px', width: '100%', flex: 1, backgroundColor: '#DDDD', color: 'black' }} />
         </Title>
         <MainContainer>
-          <SubContainer>
-            <DateBox>
-              <Num>05</Num>
-              <Month>MAR</Month>
-            </DateBox>
-            <ContentBox>
-              <ContentCategory>
-                <ContentText variant="h6">EDUCATION</ContentText>
-                <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
-              </ContentCategory>
-              <Content>
-                <Typography variant="h5">
-                  Encouraged children to study and provided support to those in need
-                </Typography>
-              </Content>
-            </ContentBox>
-            <ArrowButtonBox>
-              <Link to='/events'>
-              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
-              </Link>
-            </ArrowButtonBox>
-          </SubContainer>
-
-          {/* Add more SubContainers here */}
-
-          <SubContainer>
-            <DateBox>
-              <Num>10</Num>
-              <Month>JUN</Month>
-            </DateBox>
-            <ContentBox>
-              <ContentCategory>
-                <ContentText variant="h6">ENVIRONMENT</ContentText>
-                <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
-              </ContentCategory>
-              <Content>
-                <Typography variant="h5">
-                  Organized a beach clean-up and raised awareness about marine conservation
-                </Typography>
-              </Content>
-            </ContentBox>
-            <ArrowButtonBox>
-            <Link to='/events'>
-              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
-              </Link>
-            </ArrowButtonBox>
-          </SubContainer>
-
-          <SubContainer>
-            <DateBox>
-              <Num>20</Num>
-              <Month>AUG</Month>
-            </DateBox>
-            <ContentBox>
-              <ContentCategory>
-                <ContentText variant="h6">HEALTH</ContentText>
-                <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
-              </ContentCategory>
-              <Content>
-                <Typography variant="h5">
-                  Conducted a health awareness camp and provided free medical check-ups
-                </Typography>
-              </Content>
-            </ContentBox>
-            <ArrowButtonBox>
-            <Link to='/events'>
-              <ArrowCircleRightIcon style={{ fontSize: '50px',color:'#0C0C0C' }} />
-              </Link>
-            </ArrowButtonBox>
-          </SubContainer>
-
-          <SubContainer>
-            <DateBox>
-              <Num>30</Num>
-              <Month>NOV</Month>
-            </DateBox>
-            <ContentBox>
-              <ContentCategory>
-                <ContentText variant="h6">COMMUNITY</ContentText>
-                <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
-              </ContentCategory>
-              <Content>
-                <Typography variant="h5">
-                  Arranged a food donation drive and distributed meals to homeless people
-                </Typography>
-              </Content>
-            </ContentBox>
-            <ArrowButtonBox>
-            <Link to='/events'>
-              <ArrowCircleRightIcon style={{ fontSize: '50px' , color:'#0C0C0C' }} />
-              </Link>
-            </ArrowButtonBox>
-          </SubContainer>
+          {loading ? (
+            <p>Loading events...</p>
+          ) : (
+            events.map((event) => (
+              <SubContainer key={event._id}>
+                <DateBox>
+                  <Num>{new Date(event.date).getDate()}</Num>
+                  <Month>{new Date(event.date).toLocaleString('default', { month: 'short' })}</Month>
+                </DateBox>
+                <ContentBox>
+                  <ContentCategory>
+                    <ContentText variant="h6">{event.eventType}</ContentText>
+                    <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
+                  </ContentCategory>
+                  <Content>
+                    <Typography variant="h5">
+                      {event.description}
+                    </Typography>
+                  </Content>
+                </ContentBox>
+                <ArrowButtonBox>
+                  <Link to={`/events/${event._id}`}>
+                    <ArrowCircleRightIcon style={{ fontSize: '50px', color: '#0C0C0C' }} />
+                  </Link>
+                </ArrowButtonBox>
+              </SubContainer>
+            ))
+          )}
         </MainContainer>
       </OuterContainer>
     </div>
