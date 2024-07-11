@@ -84,110 +84,35 @@ const DateIcon = styled(CalendarMonthIcon)({
     fontSize:'50px'
 });
 
-const EventsCards = () => {
+const EventsCards = ({title, description, date, month, smallDesc, venue}) => {
     return(
         <MainContainer>
             <Card>
                 <TextBox>
                     <SubTextBox1>
-                        <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
+                        <Typography variant="h3" style={{fontWeight:'bold'}}>{title}</Typography>
                         <Typography variant="h6" style={{color:'#3C3C43'}}>
-                            Skill and Knowledge Handing over Initiative for <br/>
-                            Women in collaboration with CCA.
+                            {description}
                         </Typography>
                     </SubTextBox1>
                     <SubTextBox2>
                         <DateTextBox>
                             <DateIcon/>
-                            <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
+                            <Typography style={{fontWeight:'bold'}}>{date} {month}</Typography> 
                             <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
+                                {smallDesc}
                             </Typography>      
                         </DateTextBox>
                         <AddressTextBox>
                             <AdressIcon/>
                             <Typography style={{fontWeight:'bold'}}>Address</Typography>
                             <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
+                                {venue}
                             </Typography>
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
                 <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt="" />
-            </Card>
-            <Card>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt="" />
-                <TextBox>
-                    <SubTextBox1>
-                        <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
-                        <Typography variant="h6" style={{color:'#3C3C43'}}>
-                            Skill and Knowledge Handing over Initiative for <br/>
-                            Women in collaboration with CCA.
-                        </Typography>
-                    </SubTextBox1>
-                    <SubTextBox2>
-                        <DateTextBox>
-                            <DateIcon/>
-                            <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
-                            <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
-                            </Typography>      
-                        </DateTextBox>
-                        <AddressTextBox>
-                            <AdressIcon/>
-                            <Typography style={{fontWeight:'bold'}}>Address</Typography>
-                            <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
-                            </Typography>
-                        </AddressTextBox>
-                    </SubTextBox2>
-                </TextBox>
-            </Card>
-            <Card>
-                <TextBox>
-                    <SubTextBox1>
-                        <Typography variant="h3" style={{fontWeight:'bold'}}>Project Sakhi</Typography>
-                        <Typography variant="h6" style={{color:'#3C3C43'}}>
-                            Skill and Knowledge Handing over Initiative for <br/>
-                            Women in collaboration with CCA.
-                        </Typography>
-                    </SubTextBox1>
-                    <SubTextBox2>
-                        <DateTextBox>
-                            <DateIcon/>
-                            <Typography style={{fontWeight:'bold'}}>09 February</Typography> 
-                            <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
-                            </Typography>      
-                        </DateTextBox>
-                        <AddressTextBox>
-                            <AdressIcon/>
-                            <Typography style={{fontWeight:'bold'}}>Address</Typography>
-                            <Typography style={{color:'#3C3C43'}}>
-                                Proin vel vestibulum, orci,
-                                tempus metus, habitant faucibus 
-                                aliquet. 
-                                Viverra posuere vitae eget.
-                            </Typography>
-                        </AddressTextBox>
-                    </SubTextBox2>
-                </TextBox>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt=""/>
             </Card>
         </MainContainer>
     )
