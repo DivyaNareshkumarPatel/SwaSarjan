@@ -2,14 +2,13 @@ import express from 'express';
 import { signupUser, loginUser } from '../controller/user-controller.js';
 import { contactUs } from '../controller/contact-controller.js';
 import { donateUs } from '../controller/donate-controller.js';
-
 import { createEvent } from '../controller/adminEvent-controller.js';
 import { getAllEvents } from '../controller/adminEvent-controller.js';
-import { setEvents } from '../controller/setEvents-controller.js';
-import { getEvents } from '../controller/getEvents-controller.js';
-import cloudinary from "cloudinary"
-import {upload} from "../middleware/multer.js"
 import {loginAdmin} from "../controller/adminLogin-controller.js"
+import { deleteEvent } from '../controller/adminEvent-controller.js';
+
+// import cloudinary from "cloudinary"
+// import {upload} from "../middleware/multer.js"
 
 const router = express.Router();
 
@@ -20,6 +19,7 @@ router.post('/contact', contactUs);
 // router.post('/donate', donateUs);
 router.post('/admin29/events', createEvent);
 router.get('/admin29/events', getAllEvents);
+router.delete('/events/:id', deleteEvent);
 
 
 router.post('/admin29/login', loginAdmin);

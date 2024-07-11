@@ -1,5 +1,5 @@
 import React from "react";
-import { styled, Box, Typography } from "@mui/material";
+import { styled, Box, Typography, Button } from "@mui/material";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PlaceIcon from '@mui/icons-material/Place';
 import Events from '../images/Events.png'
@@ -84,9 +84,14 @@ const DateIcon = styled(CalendarMonthIcon)({
     fontSize:'50px'
 });
 
-const EventsCards = ({title, description, date, month, smallDesc, venue}) => {
+const EventsCards = ({title, description, date, month, smallDesc, venue, onDelete, isAdmin}) => {
     return(
         <MainContainer>
+            {isAdmin && (
+            <Button variant="contained" color="secondary" onClick={onDelete}>
+                Delete Event
+            </Button>
+            )}
             <Card>
                 <TextBox>
                     <SubTextBox1>

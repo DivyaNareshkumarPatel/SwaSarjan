@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import CommonBanner from "../Components/CommonBanner";
 import EventsCards from "../Components/EventsCards";
 import EventNews from "../Components/EventNews";
+
 import { API } from "../service/api"; // Adjust path as needed
 
 const Events = () => {

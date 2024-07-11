@@ -146,7 +146,7 @@ const AdminNavbar = () => {
         <DrawerHeader />
         <Box>
           {/* Add your content here */}
-          
+          hello Admin
         </Box>
       </Content>
     </Root>
@@ -162,3 +162,5 @@ const App = () => (
 );
 
 export default App;
+
+

@@ -1,7 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
+import EventsCards from './EventsCards'; // Make sure to import EventsCards component
+
 const EventSettings = () => {
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const response = await API.getEvents();
+      if (response.isSuccess) {
+        setEvents(response.data);
+      } else {
+        console.error('Error fetching events:', response.msg);
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching events:', error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   const [eventData, setEventData] = useState({
     title: '',
     description: '',
@@ -40,7 +64,7 @@ const EventSettings = () => {
       formData.append('eventType', eventData.eventType);
       formData.append('image', eventData.image); // Append the image file to FormData
 
-      const response = await API.adminEvent(formData)
+      const response = await API.adminEvent(formData);
       console.log('Event created successfully:', response.data);
 
       // Clear form data after successful submission
@@ -53,9 +77,21 @@ const EventSettings = () => {
         eventType: '',
         image: null,
       });
+
+      // Fetch the updated list of events
+      fetchData();
     } catch (error) {
       console.error('Error while creating event:', error);
       // Handle error state or show error message to the user
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await API.deleteEvent(id);
+      fetchData(); // Refresh events list after deletion
+    } catch (error) {
+      console.error('Error deleting event:', error);
     }
   };
 
@@ -127,7 +163,7 @@ const EventSettings = () => {
           <Grid item xs={12}>
             <Button variant="contained" component="label">
               Upload Event Image
-              <input type="file" onChange={handleImageChange} />
+              <input type="file" onChange={handleImageChange} hidden />
             </Button>
           </Grid>
           <Grid item xs={12}>
@@ -136,6 +172,28 @@ const EventSettings = () => {
             </Button>
           </Grid>
         </Grid>
+      </Box>
+      <Box sx={{ marginTop: 4 }}>
+        <Typography variant="h5" gutterBottom>
+          Existing Events
+        </Typography>
+        {loading ? (
+          <p>Loading events...</p>
+        ) : (
+          events.map((event) => (
+            <EventsCards
+              key={event._id} // Assuming _id is the unique identifier for each event
+              title={event.title}
+              description={event.description}
+              date={new Date(event.date).getDate()} // Extract day from date
+              month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
+              smallDesc={event.smallDesc}
+              venue={event.venue}
+              onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
+              isAdmin={true} // Pass isAdmin as true for the admin view
+            />
+          ))
+        )}
       </Box>
     </Paper>
   );
