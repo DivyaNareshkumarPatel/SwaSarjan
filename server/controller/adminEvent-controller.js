@@ -4,6 +4,7 @@ import { AdminEvent } from "../models/adminEventModel.js";
 export const createEvent = async (req, res) => {
     const { title, description, date, venue, smallDesc, eventType, image } = req.body;
     try {
+        console.log(AdminEvent)
         const newEvent = new AdminEvent({
             title,
             description,
