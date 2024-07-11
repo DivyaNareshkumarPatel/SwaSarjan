@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React , { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import DataProvider from './context/DataProvider';
 
 
@@ -19,7 +19,17 @@ import EventSettings from './Components/EventSettings';
 import AdminLogin from './Components/AdminLogin';
 
 
+const PrivateRoute = ({ isAuthenticated }) => {
+    return isAuthenticated ? 
+    <Outlet/>
+    :
+    <Navigate replace to='/admin29/login' />
+}
+
 export default function App() {
+
+  const [ isAuthenticated , isUserAuthenticated ] = useState(false);
+
   return (
     <DataProvider>
       <Router basename="/SwaSarjan">
@@ -35,10 +45,11 @@ export default function App() {
           <Route path='/campaign' element={<Campaign/>}/>
           <Route path="/campaigndetail" element={<Campaign2/>}/>
           <Route path="/blogs" element={<Blogs/>}/>
-          <Route path="/admin29" element={<AdminPage/>}/>
-          <Route path="/admin29/events" element={<EventSettings/>}/>
-          <Route path="/admin29/login" element={<AdminLogin/>}/>
-          
+          <Route path="/admin29/login" element={<AdminLogin isUserAuthenticated={isUserAuthenticated}/>}/>
+          <Route path='/admin29' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
+            <Route path="/admin29" element={<AdminPage/>}/>
+            <Route path="/admin29/events" element={<EventSettings/>}/>
+          </Route>
         </Routes>
       </Router>
     </DataProvider>

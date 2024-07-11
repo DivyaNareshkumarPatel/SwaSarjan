@@ -41,7 +41,7 @@ const LoginButton = styled(Button)`
     backgroud : #F26522;
 `;
 
-const AdminLogin = () => {
+const AdminLogin = ({ isUserAuthenticated }) => {
 
     const imageUrl = logo;
 
@@ -103,7 +103,8 @@ const AdminLogin = () => {
               console.log(response)
               sessionStorage.setItem('accessToken', `Bearer ${response.data.accessToken}`)
               sessionStorage.setItem('refreshToken', `Bearer ${response.data.refreshToken}`)
-              navigate('/')
+              isUserAuthenticated(true);
+              navigate('/admin29')
               
             } else if (response && response.isError) {
                 console.log(`got response from backend with error`)
