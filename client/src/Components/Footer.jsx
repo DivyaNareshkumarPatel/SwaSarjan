@@ -1,11 +1,13 @@
-import React from 'react';
+import React , {useState} from 'react';
 import { Grid, Typography, Box, IconButton } from '@mui/material';
 import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
+
 import FacebookIcon from '../images/Facebook.png';
 import InstagramIcon from '../images/Instagram.png';
 import YouTubeIcon from '../images/Youtube.png';
 import LinkedinIcon from '../images/linkedin.png'
-import { Link } from 'react-router-dom';
+import NewsletterModal from './NewsletterModal';
 
 const FooterContainer = styled(Box)({
   backgroundColor: '#181818',
@@ -49,7 +51,13 @@ const SocialIconButton = styled(IconButton)(({ theme, color }) => ({
   },
 }));
 
+
+
 const Footer = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
   return (
     <FooterContainer>
       <FooterGrid container spacing={3} justifyContent="center">
@@ -69,7 +77,10 @@ const Footer = () => {
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>Resource Center</FooterHeader>
           <FooterContent>Annual Report</FooterContent>
-          <FooterContent>Newsletter</FooterContent>
+    
+            <FooterContent onClick={handleOpen} style={{ cursor: 'pointer', color: '' }}>Newsletter</FooterContent>
+       
+            <NewsletterModal open={modalOpen} handleClose={handleClose} />
           <FooterContent>Stories of Change</FooterContent>
           <FooterContent>Films</FooterContent>
         </FooterItem>
