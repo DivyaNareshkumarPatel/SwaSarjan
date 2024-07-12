@@ -6,6 +6,7 @@ import { createEvent } from '../controller/adminEvent-controller.js';
 import { getAllEvents } from '../controller/adminEvent-controller.js';
 import {loginAdmin} from "../controller/adminLogin-controller.js"
 import { deleteEvent } from '../controller/adminEvent-controller.js';
+import { News } from '../controller/newsLetter-controller.js';
 
 // import cloudinary from "cloudinary"
 import {upload} from "../middleware/multer.js"
@@ -26,6 +27,8 @@ router.get('/admin29/events', getAllEvents);
 router.delete('/admin29/events/:id', deleteEvent);
 
 router.post('/admin29/login', loginAdmin);
+
+router.post('/', News)
 
 router.post('/upload',(req,res)=>{
     console.log(req.file)

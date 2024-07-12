@@ -16,7 +16,7 @@ app.use(bodyParser.json({ extended:true}))
 app.use(bodyParser.urlencoded({ extended:true}))
 app.use('/',router);
 // app.use(express.static("public"))
-app
+
 const PORT = 8000
 
 app.listen(PORT , ()=>{console.log(`Server is running successfully on PORT ${PORT}`)})

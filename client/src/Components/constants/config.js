@@ -33,4 +33,5 @@ export const SERVICE_URLS = {
     getEvents: { url:'/admin29/events', method: 'GET' },
     deleteEvent: {url:'/admin29/events', method:'POST'},
     adminLogin: { url:'/admin29/login', method: 'POST'},
+    newsLetter: { url:'/', method: 'POST'},
 }
