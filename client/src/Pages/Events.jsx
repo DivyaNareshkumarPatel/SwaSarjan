@@ -10,7 +10,6 @@ import { API } from "../service/api"; // Adjust path as needed
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -29,7 +28,9 @@ const Events = () => {
 
     fetchData();
   }, []);
-
+  function clk(){
+    console.log(events)
+  }
   return (
     <div>
       <NavBar />
@@ -47,6 +48,7 @@ const Events = () => {
               month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
               smallDesc={event.smallDesc}
               venue={event.venue}
+              image={`http://localhost:8000/${event.image}`}
             />
           ))}
           <EventNews />

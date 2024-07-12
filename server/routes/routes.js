@@ -1,4 +1,5 @@
 import express from 'express';
+import { upload } from '../middleware/multer.js';
 import { signupUser, loginUser } from '../controller/user-controller.js';
 import { contactUs } from '../controller/contact-controller.js';
 import { donateUs } from '../controller/donate-controller.js';
@@ -17,7 +18,7 @@ router.post('/registration', signupUser);
 router.post('/login', loginUser);
 router.post('/contact', contactUs);
 // router.post('/donate', donateUs);
-router.post('/admin29/events', createEvent);
+router.post('/admin29/events',upload.single("image"), createEvent);
 router.get('/admin29/events', getAllEvents);
 router.delete('/events/:id', deleteEvent);
 
