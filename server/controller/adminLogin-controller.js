@@ -2,11 +2,10 @@ import Admin from '../models/admin.js';
 
 export const loginAdmin = async (request, response) => {
   try {
+    console.log('Request Headers:', request.headers);;
     const { admin, password } = request.body;
     console.log('Admin:', admin);
     console.log('Password:', password);
-    
-    // Log the query execution
     console.log('Querying admin record...');
     const adminRecord = await Admin.findOne({ admin: admin });
 

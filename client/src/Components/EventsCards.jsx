@@ -84,7 +84,7 @@ const DateIcon = styled(CalendarMonthIcon)({
     fontSize:'50px'
 });
 
-const EventsCards = ({title, description, date, month, smallDesc, venue, onDelete, isAdmin}) => {
+const EventsCards = ({title, description, date, month, smallDesc, venue,image, onDelete, isAdmin}) => {
     return(
         <MainContainer>
             {isAdmin && (
@@ -117,7 +117,7 @@ const EventsCards = ({title, description, date, month, smallDesc, venue, onDelet
                         </AddressTextBox>
                     </SubTextBox2>
                 </TextBox>
-                <img src={Events} style={{ maxWidth: '100%' , borderRadius:'10px'}} alt="" />
+                <img src={image} style={{ maxWidth: '100%' , borderRadius:'10px', maxHeight:"600px"}} alt="" />
             </Card>
         </MainContainer>
     )

@@ -1,4 +1,5 @@
 import express from 'express';
+import { upload } from '../middleware/multer.js';
 import { signupUser, loginUser } from '../controller/user-controller.js';
 import { contactUs } from '../controller/contact-controller.js';
 import { donateUs } from '../controller/donate-controller.js';
@@ -7,9 +8,6 @@ import { getAllEvents } from '../controller/adminEvent-controller.js';
 import {loginAdmin} from "../controller/adminLogin-controller.js"
 import { deleteEvent } from '../controller/adminEvent-controller.js';
 import { News } from '../controller/newsLetter-controller.js';
-
-// import cloudinary from "cloudinary"
-import {upload} from "../middleware/multer.js"
 
 const router = express.Router();
 

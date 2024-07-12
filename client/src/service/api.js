@@ -67,15 +67,32 @@ const processError = (error) => {
   }
 };
 
+const convertToFormData = (data) => {
+  const formData = new FormData();
+  for (const key in data) {
+    formData.append(key, data[key]);
+  }
+  return formData;
+};
+
 const API = {};
 
 for (const [key, value] of Object.entries(SERVICE_URLS)) {
   API[key] = async (body, showUploadProgress, showDownloadProgress) => {
     try {
+      const isMultipart = body instanceof FormData;
+
+      if (!isMultipart && value.method === 'post') {
+        body = convertToFormData(body);
+      }
+
       const response = await axiosInstance({
         method: value.method,
         url: value.url,
         data: body,
+        headers: {
+          'Content-Type': isMultipart ? 'multipart/form-data' : 'application/json'
+        },
         responseType: value.responseType,
         onUploadProgress: function (progressEvent) {
           if (showUploadProgress) {

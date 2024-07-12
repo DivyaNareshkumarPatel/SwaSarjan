@@ -33,7 +33,6 @@ const EventSettings = () => {
     venue: '',
     smallDesc: '',
     eventType: '',
-    image: null,
   });
 
   const handleChange = (e) => {
@@ -44,11 +43,9 @@ const EventSettings = () => {
     }));
   };
 
+  const [image, setImage] = useState('');
   const handleImageChange = (e) => {
-    setEventData((prevData) => ({
-      ...prevData,
-      image: e.target.files[0], // Set the selected file to the image field
-    }));
+    setImage(e.target.files[0])
   };
 
   const handleSubmit = async (e) => {
@@ -62,10 +59,10 @@ const EventSettings = () => {
       formData.append('venue', eventData.venue);
       formData.append('smallDesc', eventData.smallDesc);
       formData.append('eventType', eventData.eventType);
-      formData.append('image', eventData.image); // Append the image file to FormData
+      formData.append('image', image);
 
       const response = await API.adminEvent(formData);
-      console.log('Event created successfully:', response.data);
+      console.log('Event created successfully:', response);
 
       // Clear form data after successful submission
       setEventData({
@@ -164,7 +161,7 @@ const EventSettings = () => {
           <Grid item xs={12}>
             <Button variant="contained" component="label">
               Upload Event Image
-              <input type="file" name='image' onChange={handleImageChange} hidden />
+              <input type="file" onChange={handleImageChange} accept="image/"/>
             </Button>
           </Grid>
           <Grid item xs={12}>
