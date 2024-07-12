@@ -32,11 +32,13 @@ export const getAllEvents = async (req, res) => {
 };
 
 export const deleteEvent = async (req, res) => {
-    const { id } = req.params;
+    const articleID = req.params.id.toString().trim(); 
+    console.log(`articleID :- ${articleID}`)
+    // console.log(req.params.id)
     try {
-        const deletedEvent = await AdminEvent.findByIdAndDelete(id);
+        const deletedEvent = await AdminEvent.findByIdAndDelete({"_id": articleID});
         if (!deletedEvent) {
-            return res.status(404).json({ message: 'Event not found' });
+            return res.status(404).json({ message: 'Event not found' });    
         }
         res.status(200).json({ message: 'Event deleted successfully' });
     } catch (error) {

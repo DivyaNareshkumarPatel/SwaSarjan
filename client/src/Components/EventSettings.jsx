@@ -12,10 +12,10 @@ const EventSettings = () => {
       const response = await API.getEvents();
       if (response.isSuccess) {
         setEvents(response.data);
-      } else {
-        console.error('Error fetching events:', response.msg);
-      }
-      setLoading(false);
+        } else {
+          console.error('Error fetching events:', response.msg);
+        }
+        setLoading(false);
     } catch (error) {
       console.error('Error fetching events:', error);
       setLoading(false);
@@ -88,6 +88,7 @@ const EventSettings = () => {
 
   const handleDelete = async (id) => {
     try {
+      console.log(`api called`)
       await API.deleteEvent(id);
       fetchData(); // Refresh events list after deletion
     } catch (error) {
@@ -100,7 +101,7 @@ const EventSettings = () => {
       <Typography variant="h4" gutterBottom>
         Add New Event
       </Typography>
-      <Box component="form" onSubmit={handleSubmit}>
+      <Box component="form" action='/admin29/events' onSubmit={handleSubmit} method='POST' encType='multipart/form-data'>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -163,7 +164,7 @@ const EventSettings = () => {
           <Grid item xs={12}>
             <Button variant="contained" component="label">
               Upload Event Image
-              <input type="file" onChange={handleImageChange} hidden />
+              <input type="file" name='image' onChange={handleImageChange} hidden />
             </Button>
           </Grid>
           <Grid item xs={12}>
