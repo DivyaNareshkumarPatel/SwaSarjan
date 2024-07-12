@@ -178,6 +178,7 @@ const EventSettings = () => {
         {loading ? (
           <p>Loading events...</p>
         ) : (
+          
           events.map((event) => (
             <EventsCards
               key={event._id} // Assuming _id is the unique identifier for each event
@@ -187,6 +188,7 @@ const EventSettings = () => {
               month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
               smallDesc={event.smallDesc}
               venue={event.venue}
+              image={`http://localhost:8000/${event.image}`}
               onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
               isAdmin={true} // Pass isAdmin as true for the admin view
             />
