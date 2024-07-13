@@ -37,4 +37,5 @@ export const SERVICE_URLS = {
     deleteNews: {url:'/admin29/news', method:'POST'},
     adminLogin: { url:'/admin29/login', method: 'POST'},
     newsLetter: { url:'/', method: 'POST'},
+    tempAplication: { url:'/about', method: 'POST'},
 }

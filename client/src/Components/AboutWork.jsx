@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import tick from "../images/tick.png";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import TempApplicant from "./temp.applicant";
 export default function AboutWork() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
   return (
     <div
       style={{
@@ -188,7 +192,8 @@ export default function AboutWork() {
             marginTop: "40px",
           }}
         >
-          <Link to="/registration">
+          <TempApplicant open={modalOpen} handleClose={handleClose} />
+          {/* <Link to="/registration"> */}
           <Button
             variant="contained"
             sx={{
@@ -201,10 +206,11 @@ export default function AboutWork() {
                 color: "white",
               },
             }}
+            onClick={handleOpen}
           >
             Join Us
           </Button>
-          </Link>
+          {/* </Link> */}
 
         </div>
       </div>

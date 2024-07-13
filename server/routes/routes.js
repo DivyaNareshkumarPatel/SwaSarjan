@@ -11,6 +11,7 @@ import { News } from '../controller/newsLetter-controller.js';
 import { getAllNews } from '../controller/adminNews-controller.js';
 import { createNews } from '../controller/adminNews-controller.js';
 import { deleteNews } from '../controller/adminNews-controller.js';
+import { tempApplicant } from '../controller/temp.applicant-controller.js';
 
 const router = express.Router();
 
@@ -21,6 +22,7 @@ const router = express.Router();
 router.post('/registration', signupUser);
 router.post('/login', loginUser);
 router.post('/contact', contactUs);
+router.post('/about', tempApplicant);
 // router.post('/donate', donateUs);
 
 router.post('/admin29/events', upload.single('image'), createEvent);
