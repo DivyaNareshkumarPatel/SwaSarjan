@@ -30,8 +30,11 @@ export const SERVICE_URLS = {
     contactUs: { url:'/contact', method: 'POST'},
     donateUs: { url:'/donate', method: 'POST'},
     adminEvent: {url:'/admin29/events', method:'POST'},
+    adminNews: {url:'/admin29/news', method:'POST'},
     getEvents: { url:'/admin29/events', method: 'GET' },
+    getNews: { url:'/admin29/news', method: 'GET' },
     deleteEvent: {url:'/admin29/events', method:'POST'},
+    deleteNews: {url:'/admin29/news', method:'POST'},
     adminLogin: { url:'/admin29/login', method: 'POST'},
     newsLetter: { url:'/', method: 'POST'},
 }

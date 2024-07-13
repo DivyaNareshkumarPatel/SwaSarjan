@@ -19,6 +19,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import HomeIcon from '@mui/icons-material/Home';
 import EventIcon from '@mui/icons-material/Event';
 import SettingsIcon from '@mui/icons-material/Settings';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
 import { styled } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -95,6 +96,12 @@ const AdminNavbar = () => {
           </ListItemIcon>
           <ListItemText primary="Events" />
         </ListItem>
+        <ListItem button onClick={() => handleNavigation('/admin29/news')}>
+          <ListItemIcon>
+            <NewspaperIcon />
+          </ListItemIcon>
+          <ListItemText primary="News" />
+        </ListItem>
         <ListItem button onClick={() => handleNavigation('/admin29/settings')}>
           <ListItemIcon>
             <SettingsIcon />
@@ -108,6 +115,7 @@ const AdminNavbar = () => {
   return (
     <Root>
       <CssBaseline />
+      
       <AppBarStyled position="fixed">
         <Toolbar>
           <IconButton
@@ -124,6 +132,7 @@ const AdminNavbar = () => {
           </Typography>
         </Toolbar>
       </AppBarStyled>
+
       <DrawerStyled
         variant="temporary"
         open={mobileOpen}
@@ -135,6 +144,7 @@ const AdminNavbar = () => {
       >
         {drawer}
       </DrawerStyled>
+
       <DrawerStyled
         variant="permanent"
         sx={{ display: { xs: 'none', sm: 'block' } }}
@@ -142,6 +152,7 @@ const AdminNavbar = () => {
       >
         {drawer}
       </DrawerStyled>
+
       <Content>
         <DrawerHeader />
         <Box>

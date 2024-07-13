@@ -4,7 +4,7 @@ import HomeBanner from '../Components/HomeBanner'
 // import HomeMarquee from '../Components/HomeMarquee'
 import Impact from '../Components/Impact'
 import HomeWorld from '../Components/HomeWorld'
-import Sponsers from '../Components/Sponsers'
+// import Sponsers from '../Components/Sponsers'
 import HomeTestimonials from '../Components/HomeTestimonials'
 import Volunteer from '../Components/Volunteer'
 import Projects from '../Components/Projects'
@@ -21,7 +21,7 @@ export default function Home() {
       <Impact/>
       <Projects/>
       <HomeWorld/>
-      <Sponsers/>
+      {/* <Sponsers/> */}
       <HomeEvents/>
       <HomeTestimonials/>
       <FAQs/>

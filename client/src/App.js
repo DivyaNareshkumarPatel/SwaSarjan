@@ -16,6 +16,7 @@ import Campaign2 from './Pages/Campaign2';
 import Blogs from './Pages/Blogs';
 import AdminPage from './Pages/Admin';
 import EventSettings from './Components/EventSettings';
+import NewsSettings from './Components/NewsSettings';
 import AdminLogin from './Components/AdminLogin';
 
 
@@ -49,6 +50,7 @@ export default function App() {
           <Route path='/admin29' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
             <Route path="/admin29" element={<AdminPage/>}/>
             <Route path="/admin29/events" element={<EventSettings/>}/>
+            <Route path="/admin29/news" element={<NewsSettings/>}/>
           </Route>
         </Routes>
       </Router>

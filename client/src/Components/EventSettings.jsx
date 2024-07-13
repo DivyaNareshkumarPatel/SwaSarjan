@@ -86,7 +86,8 @@ const EventSettings = () => {
   const handleDelete = async (id) => {
     try {
       console.log(`api called`)
-      await API.deleteEvent(id);
+      // const fromData = new FormData({})
+      await API.deleteEvent({_id : id});
       fetchData(); // Refresh events list after deletion
     } catch (error) {
       console.error('Error deleting event:', error);
