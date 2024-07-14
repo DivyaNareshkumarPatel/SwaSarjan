@@ -1,9 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import img from "../images/volunteer.png";
 import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+import TempApplicant from "../Components/temp.applicant"
+
 export default function Volunteer() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
   const isSmallScreen = window.innerWidth <= 600;
   return (
     <div
@@ -41,7 +46,8 @@ export default function Volunteer() {
             <Typography style={{ marginBottom: "0.3rem" }}>
               You can do what you do best
             </Typography>
-            <Link to='/registration'>
+            <TempApplicant open={modalOpen} handleClose={handleClose} />
+            {/* <Link to='/registration'> */}
             <Button
 
               style={{
@@ -63,10 +69,11 @@ export default function Volunteer() {
                   color: "white",
                 },
               }}
+              onClick={handleOpen}
               >
               Apply Now
               </Button>
-            </Link>
+            {/* </Link> */}
           </div>
         </div>
       </div>

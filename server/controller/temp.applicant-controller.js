@@ -15,7 +15,8 @@ export const tempApplicant = async (req , res) => {
         email: email,
         phone: phone,
     })
-    const exists = TempAplicant.findOne(phone)
+    const exists = await TempAplicant.findOne({ phone: phone })
+    console.log(exists)
     if(exists){
         return res.status(409).json({ msg:"Phone nnumber already registered."})
     }
@@ -43,15 +44,15 @@ export const tempApplicant = async (req , res) => {
     const emailDataClient = {
         from: `${email}`,
         to: `${email}`,
-        subject: `Thank you for Apply into SwaSarjan: ${email}`,
+        subject: `Thank you for Applying into SwaSarjan:`,
         text: `You have Requested a MemberSHip into SwaSarjan NGO:
         Thank you for taking one step forward tawrds the social service, we work for society and for Environment.We will reach you in shortly for further communication.
         Thank You: ${fullName}
-        Have A Nice Day!
         
+        Have A Nice Day!
         SwaSarjan NGO`,
     };
-    await sendEmail(emailDataAdmin);
+    await sendEmail(emailDataClient);
 
     return res.status(200).json({ msg: 'Apllied successfully!'})
     console.log(`applied successfully`)

@@ -1,5 +1,5 @@
 import donation from "../models/donate.js";
-// import { paymentUs } from "./paymentUs.js";
+import { paymentUs } from "./paymentUs.js";
 
 export const donateUs = async (request, response) => {
   try {

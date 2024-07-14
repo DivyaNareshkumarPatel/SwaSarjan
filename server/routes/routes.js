@@ -23,7 +23,7 @@ router.post('/registration', signupUser);
 router.post('/login', loginUser);
 router.post('/contact', contactUs);
 router.post('/about', tempApplicant);
-// router.post('/donate', donateUs);
+router.post('/donate', donateUs);
 
 router.post('/admin29/events', upload.single('image'), createEvent);
 router.get('/admin29/events', getAllEvents);
