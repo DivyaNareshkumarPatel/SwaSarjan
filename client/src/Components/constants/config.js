@@ -33,7 +33,7 @@ export const SERVICE_URLS = {
     adminNews: {url:'/admin29', method:'POST'},
     getEvents: { url:'/admin29', method: 'GET' },
     getNews: { url:'/admin29', method: 'GET' },
-    deleteEvent: {url:'/admin29', method:'POST'},
+    deleteEvent: {url:'/admin29/:id', method:'DELETE'},
     deleteNews: {url:'/admin29', method:'POST'},
     adminLogin: { url:'/admin29/login', method: 'POST'},
     newsLetter: { url:'/', method: 'POST'},

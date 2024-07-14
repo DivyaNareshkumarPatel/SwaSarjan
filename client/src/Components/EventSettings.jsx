@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 import EventsCards from './EventsCards'; // Make sure to import EventsCards component
-import AdminNavbar from './AdminNavbar'
+import AdminNavbar from './AdminNavbar';
+
 const EventSettings = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -12,10 +13,10 @@ const EventSettings = () => {
       const response = await API.getEvents();
       if (response.isSuccess) {
         setEvents(response.data);
-        } else {
-          console.error('Error fetching events:', response.msg);
-        }
-        setLoading(false);
+      } else {
+        console.error('Error fetching events:', response.msg);
+      }
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching events:', error);
       setLoading(false);
@@ -45,7 +46,7 @@ const EventSettings = () => {
 
   const [image, setImage] = useState('');
   const handleImageChange = (e) => {
-    setImage(e.target.files[0])
+    setImage(e.target.files[0]);
   };
 
   const handleSubmit = async (e) => {
@@ -85,9 +86,7 @@ const EventSettings = () => {
 
   const handleDelete = async (id) => {
     try {
-      console.log(`api called`)
-      // const fromData = new FormData({})
-      await API.deleteEvent({_id : id});
+      await API.deleteEvent(id);
       fetchData(); // Refresh events list after deletion
     } catch (error) {
       console.error('Error deleting event:', error);
@@ -96,109 +95,109 @@ const EventSettings = () => {
 
   return (
     <>
-    {/* <AdminNavbar/> */}
-    <Paper sx={{ padding: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Add New Event
-      </Typography>
-      <Box component="form" action='/admin29/events' onSubmit={handleSubmit} method='POST' encType='multipart/form-data'>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <TextField
-              name="title"
-              label="Event Title"
-              fullWidth
-              value={eventData.title}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              name="description"
-              label="Event Description"
-              fullWidth
-              multiline
-              rows={4}
-              value={eventData.description}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="date"
-              label="Event Date"
-              type="date"
-              fullWidth
-              InputLabelProps={{ shrink: true }}
-              value={eventData.date}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="venue"
-              label="Event Venue"
-              fullWidth
-              value={eventData.venue}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="smallDesc"
-              label="Small Description"
-              fullWidth
-              value={eventData.smallDesc}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              name="eventType"
-              label="Event Type"
-              fullWidth
-              value={eventData.eventType}
-              onChange={handleChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button variant="contained" component="label">
-              Upload Event Image
-              <input type="file" onChange={handleImageChange} accept="image/"/>
-            </Button>
-          </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary">
-              Add Event
-            </Button>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box sx={{ marginTop: 4 }}>
-        <Typography variant="h5" gutterBottom>
-          Existing Events
+      {/* <AdminNavbar /> */}
+      <Paper sx={{ padding: 3 }}>
+        <Typography variant="h4" gutterBottom>
+          Add New Event
         </Typography>
-        {loading ? (
-          <p>Loading events...</p>
-        ) : (
-          
-          events.map((event) => (
-            <EventsCards
-              key={event._id} // Assuming _id is the unique identifier for each event
-              title={event.title}
-              description={event.description}
-              date={new Date(event.date).getDate()} // Extract day from date
-              month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
-              smallDesc={event.smallDesc}
-              venue={event.venue}
-              image={`http://localhost:8000/${event.image}`}
-              onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
-              isAdmin={true} // Pass isAdmin as true for the admin view
-            />
-          ))
-        )}
-      </Box>
-    </Paper></>
+        <Box component="form" onSubmit={handleSubmit} method="POST" encType="multipart/form-data">
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                name="title"
+                label="Event Title"
+                fullWidth
+                value={eventData.title}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                name="description"
+                label="Event Description"
+                fullWidth
+                multiline
+                rows={4}
+                value={eventData.description}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="date"
+                label="Event Date"
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={eventData.date}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="venue"
+                label="Event Venue"
+                fullWidth
+                value={eventData.venue}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="smallDesc"
+                label="Small Description"
+                fullWidth
+                value={eventData.smallDesc}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                name="eventType"
+                label="Event Type"
+                fullWidth
+                value={eventData.eventType}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button variant="contained" component="label">
+                Upload Event Image
+                <input type="file" onChange={handleImageChange} accept="image/*" hidden />
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button type="submit" variant="contained" color="primary">
+                Add Event
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+        <Box sx={{ marginTop: 4 }}>
+          <Typography variant="h5" gutterBottom>
+            Existing Events
+          </Typography>
+          {loading ? (
+            <p>Loading events...</p>
+          ) : (
+            events.map((event) => (
+              <EventsCards
+                key={event._id} // Assuming _id is the unique identifier for each event
+                title={event.title}
+                description={event.description}
+                date={new Date(event.date).getDate()} // Extract day from date
+                month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
+                smallDesc={event.smallDesc}
+                venue={event.venue}
+                image={`http://localhost:8000/${event.image}`}
+                onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
+                isAdmin={true} // Pass isAdmin as true for the admin view
+              />
+            ))
+          )}
+        </Box>
+      </Paper>
+    </>
   );
 };
 
