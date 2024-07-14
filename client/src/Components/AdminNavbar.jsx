@@ -5,7 +5,6 @@ import {
   CssBaseline,
   Divider,
   Drawer,
-  Hidden,
   IconButton,
   List,
   ListItem,
@@ -13,7 +12,6 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-  
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -26,7 +24,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import EventSettings from './EventSettings';
 import NewsSettings from './NewsSettings';
 import LogoImage from "../images/SwaLogoMain.png";
-import AdminHome from "./AdminHome"
+import AdminHome from "./AdminHome";
+import UsersList from './UserList';
 
 const drawerWidth = 240;
 const Image = styled("img")({
@@ -67,6 +66,7 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
 const Content = styled('main')(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
+  overflowX: 'auto', // Ensure overflow is handled here
 }));
 
 const AdminNavbar = () => {
@@ -87,13 +87,13 @@ const AdminNavbar = () => {
   const renderComponent = () => {
     switch (selectedComponent) {
       case 'Home':
-        return <AdminHome/>;
+        return <AdminHome />;
       case 'Events':
         return <EventSettings />;
       case 'News':
         return <NewsSettings />;
-      case 'Settings':
-        // return <Settings />;
+      case 'Users':
+        return <UsersList />;
       default:
         return <h1>This will be the Dashboard</h1>;
     }
@@ -102,9 +102,9 @@ const AdminNavbar = () => {
   const drawer = (
     <div>
       <DrawerHeader>
-              <div>
-                <Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} />
-              </div>
+        <div>
+          <Image src={LogoImage} alt="Logo" sx={{ marginLeft: "auto" }} />
+        </div>
         <IconButton onClick={handleDrawerToggle}>
           <ChevronLeftIcon />
         </IconButton>
@@ -129,11 +129,11 @@ const AdminNavbar = () => {
           </ListItemIcon>
           <ListItemText primary="News" />
         </ListItem>
-        <ListItem button onClick={() => handleNavigation('Settings')}>
+        <ListItem button onClick={() => handleNavigation('Users')}>
           <ListItemIcon>
             <SettingsIcon />
           </ListItemIcon>
-          <ListItemText primary="Settings" />
+          <ListItemText primary="Users" />
         </ListItem>
       </List>
     </div>
@@ -142,10 +142,8 @@ const AdminNavbar = () => {
   return (
     <Root>
       <CssBaseline />
-      
       <AppBarStyled position="fixed">
         <Toolbar>
-              
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -160,7 +158,6 @@ const AdminNavbar = () => {
           </Typography>
         </Toolbar>
       </AppBarStyled>
-
       <DrawerStyled
         variant="temporary"
         open={mobileOpen}
@@ -172,7 +169,6 @@ const AdminNavbar = () => {
       >
         {drawer}
       </DrawerStyled>
-
       <DrawerStyled
         variant="permanent"
         sx={{ display: { xs: 'none', sm: 'block' } }}
@@ -180,7 +176,6 @@ const AdminNavbar = () => {
       >
         {drawer}
       </DrawerStyled>
-
       <Content>
         <DrawerHeader />
         <Box>

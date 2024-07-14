@@ -10,11 +10,13 @@ import Volunteer from '../Components/Volunteer';
 import Footer from '../Components/Footer';
 // import Awards from "../Components/Awards&Accreditations";
 import AboutGallery from "../Components/AboutGallery";
+import AboutPhilosophy from "../Components/AboutPhilosophy";
 export default function About() {
   return (
     <div>
       <NavBar />
       <CommonBanner head="About Us" line1="Know About us that" line2="Who we are & What we do" />
+      <AboutPhilosophy/>
       <AboutSwaSarjan/>
       <AboutWork/>
       <AboutValues/>

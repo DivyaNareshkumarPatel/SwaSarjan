@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import {
   Box,
   Typography,
@@ -34,10 +33,11 @@ const UsersList = () => {
       <Typography variant="h4" gutterBottom>
         Registered Users
       </Typography>
-      <TableContainer component={Paper}>
-        <Table>
+      <TableContainer component={Paper} sx={{ overflowX: 'auto' }}>
+        <Table sx={{ minWidth: 1800 }}>
           <TableHead>
             <TableRow>
+              <TableCell>Sr No.</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>User Name</TableCell>
               <TableCell>Email</TableCell>
@@ -55,8 +55,9 @@ const UsersList = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((user) => (
+            {users.map((user, index) => (
               <TableRow key={user._id}>
+                <TableCell>{index + 1}</TableCell>
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.userName}</TableCell>
                 <TableCell>{user.email}</TableCell>
