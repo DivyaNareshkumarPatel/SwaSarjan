@@ -24,6 +24,8 @@ export const createEvent = async (req, res) => {
         res.status(500).json({ message: 'Error while creating event', error });
     }
 };
+
+
 export const getAllEvents = async (req, res) => {
     try {
         const events = await AdminEvent.find();
@@ -34,16 +36,17 @@ export const getAllEvents = async (req, res) => {
 };
 
 export const deleteEvent = async (req, res) => {
-    const articleID = req.params.id.toString().trim(); 
+    console.log(req)
+    const articleID = req.params.id; 
     console.log(`articleID :- ${articleID}`)
     // console.log(req.params.id)
     try {
-        const deletedEvent = await AdminEvent.findByIdAndDelete({"_id": articleID});
+        const deletedEvent = await AdminEvent.findByIdAndDelete({_id: articleID});
         if (!deletedEvent) {
             return res.status(404).json({ message: 'Event not found' });    
         }
-        res.status(200).json({ message: 'Event deleted successfully' });
+        return res.status(200).json({ message: 'Event deleted successfully' });
     } catch (error) {
-        res.status(500).json({ message: 'Error while deleting event', error });
+        return res.status(500).json({ message: 'Error while deleting event', error });
     }
 };

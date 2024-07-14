@@ -4,29 +4,59 @@ import ErrorIcon from "@mui/icons-material/Error";
 
 import { API } from '../service/api';
 
-const NewsletterModal = ({ open, handleClose }) => {
+const TempApplicant = ({ open, handleClose }) => {
+  const msg=''
   const [email, setEmail] = useState('');
+  const [detail, setDetail] = useState({
+    fullName: "",
+    city: "",
+    phone: "",
+    email: "",
+  });
+
   const [error, setError] = useState('');
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
 
+  var phonePattern = /^\d{10}$/;
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setDetail((prevDetail) => ({
+      ...prevDetail,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('')
 
     try {
-      if (!emailPattern.test(email)) {
-        setError('Please enter a valid email address.');
-      } else {
-        const formData = new FormData();
-        formData.append('email', email);
+      if (
+        !detail.fullName ||
+        !detail.city ||
+        !detail.email ||
+        !detail.phone){
 
-        const response = await API.newsLetter(formData);
-        console.log(response);
+          setError('Please fill in all fields.');
+        }
+      else if (!phonePattern.test(detail.phone)) {
+        setError("Please enter a valid phone number.");
+      }
+       else if (!emailPattern.test(detail.email)) {
+        setError('Please enter a valid email address.');
+        } else {
+
+          console.log(detail)
+          console.log(`calling api from here`)
+          const response = await API.tempAplication(detail);
+          console.log(`called api and got response ${response}`)
+        
         if (response.isSuccess) {
-          console.log('Email submitted:', email);
-          setSuccessMessage('Subscription Successful!');
+          console.log('Email submitted:', detail);
+          setSuccessMessage('Applied Successfully!');
           setOpenSnackbar(true);
           setEmail(''); 
           setError('');
@@ -34,8 +64,9 @@ const NewsletterModal = ({ open, handleClose }) => {
             handleClose();
           }, 3000);
         } else {
-          if (response.status === 409) {
-            setError('Email already in use. Please enter a different email.');
+          if (response.isError) {
+             msg = response.msg
+            setError(`${msg}`);
           } else {
             setError('Something went wrong. Please try again later.');
           }
@@ -43,7 +74,7 @@ const NewsletterModal = ({ open, handleClose }) => {
         }
       }
     } catch (error) {
-      setError('Email already in use or something went wrong. Please try again later.');
+      setError(`Phone number already registered or Something went wrong.`);
       console.error('Error:', error);
     }
   };
@@ -66,7 +97,7 @@ const NewsletterModal = ({ open, handleClose }) => {
       <Modal open={open} onClose={handleClose}>
         <Box sx={modalStyle}>
           <Typography variant="h6" component="h2" gutterBottom>
-            Subscribe to our Newsletter
+            Apply to join SwaSarjan
           </Typography>
           {error && (
             <div
@@ -87,12 +118,49 @@ const NewsletterModal = ({ open, handleClose }) => {
           )}
           <form onSubmit={handleSubmit}>
             <TextField
+              label='Full Name'
+              variant='outlined'
+              fullWidth
+              margin='normal'
+              name='fullName'
+              value={detail.fullName}
+              onChange={handleChange}
+              style={{
+                marginBottom: '20px',
+              }}
+            />
+            <TextField
+              label='Current City'
+              variant='outlined'
+              fullWidth
+              margin='normal'
+              name='city'
+              value={detail.city}
+              onChange={handleChange}
+              style={{
+                marginBottom: '20px',
+              }}
+            />
+            <TextField
+              label='Phone Number'
+              variant='outlined'
+              fullWidth
+              margin='normal'
+              name='phone'
+              value={detail.phone}
+              onChange={handleChange}
+              style={{
+                marginBottom: '20px',
+              }}
+            />
+            <TextField
               label='Email Address'
               variant='outlined'
               fullWidth
               margin='normal'
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              name='email'
+              value={detail.email}
+              onChange={handleChange}
               style={{
                 marginBottom: '20px',
               }}
@@ -106,7 +174,7 @@ const NewsletterModal = ({ open, handleClose }) => {
                 marginTop: '10px',
               }}
             >
-              Subscribe
+              Apply
             </Button>
           </form>
         </Box>
@@ -128,4 +196,4 @@ const modalStyle = {
   p: 4,
 };
 
-export default NewsletterModal;
+export default TempApplicant;

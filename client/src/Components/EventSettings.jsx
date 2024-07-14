@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 import EventsCards from './EventsCards'; // Make sure to import EventsCards component
-
+import AdminNavbar from './AdminNavbar'
 const EventSettings = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -86,7 +86,8 @@ const EventSettings = () => {
   const handleDelete = async (id) => {
     try {
       console.log(`api called`)
-      await API.deleteEvent(id);
+      // const fromData = new FormData({})
+      await API.deleteEvent({_id : id});
       fetchData(); // Refresh events list after deletion
     } catch (error) {
       console.error('Error deleting event:', error);
@@ -94,6 +95,8 @@ const EventSettings = () => {
   };
 
   return (
+    <>
+    {/* <AdminNavbar/> */}
     <Paper sx={{ padding: 3 }}>
       <Typography variant="h4" gutterBottom>
         Add New Event
@@ -178,6 +181,7 @@ const EventSettings = () => {
         {loading ? (
           <p>Loading events...</p>
         ) : (
+          
           events.map((event) => (
             <EventsCards
               key={event._id} // Assuming _id is the unique identifier for each event
@@ -187,13 +191,14 @@ const EventSettings = () => {
               month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
               smallDesc={event.smallDesc}
               venue={event.venue}
+              image={`http://localhost:8000/${event.image}`}
               onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
               isAdmin={true} // Pass isAdmin as true for the admin view
             />
           ))
         )}
       </Box>
-    </Paper>
+    </Paper></>
   );
 };
 

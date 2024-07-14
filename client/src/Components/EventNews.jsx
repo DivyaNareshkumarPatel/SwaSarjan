@@ -1,23 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-// import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./GallerySlickVideo.css";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
-import { Typography, Modal } from "@mui/material";
-import image1 from '../images/news1.jpeg';
-import image2 from '../images/news2.jpeg';
-import image3 from '../images/news3.jpeg';
-import image4 from '../images/news4.jpg';
-import image5 from '../images/news5.jpg';
-const images = [image1, image2, image3, image4, image5]
+import { Typography, Modal, IconButton } from "@mui/material";
+import { Delete } from "@mui/icons-material";
+import { API } from "../service/api"; // Ensure your API service is imported correctly
 
-function EventNews() {
+function EventNews({ isAdmin }) {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await API.getNews(); // Adjust this API call as per your backend
+        if (response.isSuccess) {
+          const imageUrls = response.data.map(event => event.image);
+          setImages(imageUrls);
+        } else {
+          console.error('Error fetching events:', response.msg);
+        }
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+    fetchImages();
+  }, []);
 
   const handleOpen = (image) => {
     setSelectedImage(image);
@@ -27,15 +39,23 @@ function EventNews() {
     setSelectedImage(null);
   };
 
+  const handleDelete = async (image) => {
+    try {
+      const response = await API.deleteNews({ image });
+      if (response.isSuccess) {
+        setImages(images.filter(img => img !== image));
+      } else {
+        console.error('Error deleting image:', response.msg);
+      }
+    } catch (error) {
+      console.error('Error deleting image:', error);
+    }
+  };
+
   return (
     <div className="container">
-      <div
-        style={{ textAlign: "center", marginTop: "20px", marginBottom: "5px" }}
-      >
-        <Typography
-          style={{ fontSize: "30px", fontWeight: "bold" }}
-          className="head"
-        >
+      <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "5px" }}>
+        <Typography style={{ fontSize: "30px", fontWeight: "bold" }} className="head">
           News
         </Typography>
         <Typography style={{ fontSize: "14px" }}>
@@ -64,36 +84,51 @@ function EventNews() {
         className="swiper_container"
       >
         {images.map((image, index) => (
-          <SwiperSlide>
-            <img
-              src={image}
-              alt={index}
-              onClick={() => handleOpen(image)}
-            ></img>
+          <SwiperSlide key={index}>
+            <div style={{ position: "relative" }}>
+              <img
+                src={`http://localhost:8000/${image}`} // Adjust the base URL as per your backend setup
+                alt={index}
+                onClick={() => handleOpen(image)}
+                style={{ width: "100%", cursor: "pointer" }}
+              />
+              {isAdmin && (
+                <IconButton
+                  style={{
+                    position: "absolute",
+                    top: 10,
+                    right: 10,
+                    backgroundColor: "rgba(255, 255, 255, 0.7)"
+                  }}
+                  onClick={() => handleDelete(image)}
+                >
+                  <Delete />
+                </IconButton>
+              )}
+            </div>
           </SwiperSlide>
         ))}
+        
         <div className="slider-controler">
-          <div>
-          </div>
           <div className="swiper-pagination"></div>
         </div>
       </Swiper>
       <Modal
-          open={!!selectedImage}
-          onClose={handleClose}
-          aria-labelledby="simple-modal-title"
-          aria-describedby="simple-modal-description"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin:"20px"
-          }}
-        >
-          <div>
-            <img src={selectedImage} alt="" style={{ maxWidth: "100%", maxHeight: "100%"}} />
-          </div>
-        </Modal>
+        open={!!selectedImage}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "20px"
+        }}
+      >
+        <div>
+          <img src={`http://localhost:8000/${selectedImage}`} alt="" style={{ maxWidth: "100%", maxHeight: "100%"}} />
+        </div>
+      </Modal>
     </div>
   );
 }
