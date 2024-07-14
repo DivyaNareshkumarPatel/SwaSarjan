@@ -26,9 +26,9 @@ router.post('/donate', donateUs);
 
 router.post('/admin29', upload.single('image'), createEvent);
 router.get('/admin29', getAllEvents);
-router.get('/admin29', getAllNews);
+router.get('/admin29/news', getAllNews);
 router.delete('/admin29/:id', deleteEvent);
-router.post('/admin29', upload.single('image'), createNews);
+router.post('/admin29/news', upload.single('image'), createNews);
 router.delete('/admin29/:id', deleteNews);
 
 router.post('/admin29/login', loginAdmin);

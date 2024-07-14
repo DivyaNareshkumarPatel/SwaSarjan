@@ -17,7 +17,8 @@ function EventNews({ isAdmin }) {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await API.getNews(); // Adjust this API call as per your backend
+        const response = await API.getNews(); 
+        console.log(response)
         if (response.isSuccess) {
           const imageUrls = response.data.map(event => event.image);
           setImages(imageUrls);
