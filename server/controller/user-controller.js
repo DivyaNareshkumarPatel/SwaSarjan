@@ -8,6 +8,8 @@ import Token from '../models/token.js';
 
 dotenv.config();
 
+//////////////////////////////////////////  SIGNUP  ///////////////////////////////////////////////////////////
+
 export const signupUser = async (request, response) => {
   try {
     const hashedPassword = await bcrypt.hash(request.body.password, 10);
@@ -43,6 +45,8 @@ export const signupUser = async (request, response) => {
   }
 };
 
+//////////////////////////////////////////  LOGIN  ///////////////////////////////////////////////////////////
+
 export const loginUser = async (request, response) => {
   try {
     const user = await User.findOne({ userName: request.body.userName });
@@ -73,3 +77,15 @@ export const loginUser = async (request, response) => {
     return response.status(500).json({ msg: 'Error while user logging in' });
   }
 };
+
+
+//////////////////////////////////////////  FETCHDATA  ///////////////////////////////////////////////////////////
+
+export const getAllUsers = async (req , res) => {
+  try {
+      const users = await User.find();
+      res.status(200).json(users);
+  } catch (error) {
+      res.status(500).json({ message: 'Error while fetching users', error });
+  }   
+}

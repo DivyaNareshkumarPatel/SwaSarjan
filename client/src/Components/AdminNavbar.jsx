@@ -26,6 +26,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import EventSettings from './EventSettings';
 import NewsSettings from './NewsSettings';
 import LogoImage from "../images/SwaLogoMain.png";
+import AdminHome from "./AdminHome"
 
 const drawerWidth = 240;
 const Image = styled("img")({
@@ -86,7 +87,7 @@ const AdminNavbar = () => {
   const renderComponent = () => {
     switch (selectedComponent) {
       case 'Home':
-        return <h1>This will be the Dashboard</h1>;
+        return <AdminHome/>;
       case 'Events':
         return <EventSettings />;
       case 'News':
