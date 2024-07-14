@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 import EventsCards from './EventsCards'; // Make sure to import EventsCards component
-
+import AdminNavbar from './AdminNavbar'
 const EventSettings = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -95,6 +95,8 @@ const EventSettings = () => {
   };
 
   return (
+    <>
+    {/* <AdminNavbar/> */}
     <Paper sx={{ padding: 3 }}>
       <Typography variant="h4" gutterBottom>
         Add New Event
@@ -196,7 +198,7 @@ const EventSettings = () => {
           ))
         )}
       </Box>
-    </Paper>
+    </Paper></>
   );
 };
 

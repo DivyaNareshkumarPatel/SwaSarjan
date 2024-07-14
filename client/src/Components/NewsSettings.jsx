@@ -9,7 +9,7 @@ const NewsSettings = () => {
 
   const fetchData = async () => {
     try {
-      const response = await API.getEvents();
+      const response = await API.getNews();
       if (response.isSuccess) {
         setEvents(response.data);
         } else {

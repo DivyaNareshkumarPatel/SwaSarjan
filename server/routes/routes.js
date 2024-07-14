@@ -25,12 +25,12 @@ router.post('/contact', contactUs);
 router.post('/about', tempApplicant);
 router.post('/donate', donateUs);
 
-router.post('/admin29/events', upload.single('image'), createEvent);
-router.get('/admin29/events', getAllEvents);
-router.get('/admin29/news', getAllNews);
-router.delete('/admin29/events/:id', deleteEvent);
-router.post('/admin29/news', upload.single('image'), createNews);
-router.delete('/admin29/news/:id', deleteNews);
+router.post('/admin29', upload.single('image'), createEvent);
+router.get('/admin29', getAllEvents);
+router.get('/admin29', getAllNews);
+router.delete('/admin29/:id', deleteEvent);
+router.post('/admin29', upload.single('image'), createNews);
+router.delete('/admin29/:id', deleteNews);
 
 router.post('/admin29/login', loginAdmin);
 
