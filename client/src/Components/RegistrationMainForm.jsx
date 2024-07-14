@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Typography, RadioGroup, Radio, FormControlLabel, Snackbar } from "@mui/material";
 import { styled, useMediaQuery } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -45,8 +45,8 @@ const RegistrationMainForm = () => {
     adharCard: "",
     gender: "",
   });
-  const [photo, setPhoto] = useState(null);
-  const [signature, setSignature] = useState(null);
+  const [photo, setPhoto] = useState();
+  const [signature, setSignature] = useState();
 
   const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -66,6 +66,11 @@ const RegistrationMainForm = () => {
   const handleSignatureChange = (e) => {
     setSignature(e.target.files[0]);
   };
+
+  useEffect(() => {
+    console.log("Photo:", photo);
+    console.log("Signature:", signature);
+  }, [photo, signature]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -148,7 +153,7 @@ const RegistrationMainForm = () => {
           <Snackbar open={openSnackbar} autoHideDuration={6000} onClose={() => setOpenSnackbar(false)} message="Details sent successfully. Click next." />
           <div>
             <Link to='/'>
-              <img src={OrangeLogo} style={{ height: '50px', width: '40px', margin: '0px 60px 0px 10px' }} />
+              <img src={OrangeLogo} style={{ height: '50px', width: '40px', margin: '0px 60px 0px 10px' }} alt=""/>
             </Link>
           </div>
           <div style={{ display: "flex", flexDirection: "column", textAlign: "center", justifyContent: "center", alignItems: "center", marginBottom: '20px' }}>
@@ -156,7 +161,7 @@ const RegistrationMainForm = () => {
             <Typography variant="h7">Register Yourself & let’s get started with SwaSarjan</Typography>
           </div>
         </div>
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
+        <form onSubmit={handleSubmit} encType="multipart/form-data" method="POST" action='/registration'>
           <Row isMedium={isMedium}>
             <InputStyle type="text" name="name" value={detail.name} onChange={handleChange} placeholder="Name" />
             <InputStyle type="text" name="userName" value={detail.userName} onChange={handleChange} placeholder="Username" />
@@ -191,11 +196,11 @@ const RegistrationMainForm = () => {
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Photo</label>
-            <InputStyle type="file" name="photo" onChange={handlePhotoChange} />
+            <InputStyle type="file" name="photo" onChange={handlePhotoChange} accept="image/"/>
           </Row>
           <Row isMedium={isMedium}>
             <label style={{ margin: '10px 80px' }}>Signature</label>
-            <InputStyle type="file" name="signature" onChange={handleSignatureChange} />
+            <InputStyle type="file" name="signature" onChange={handleSignatureChange} accept="image/"/>
           </Row>
           <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '30px' }}>
             {error && <Typography color="error">{error}</Typography>}

@@ -7,8 +7,6 @@ import connection from './database/db.js';
 import router from './routes/routes.js';
 import bodyParser from 'body-parser';
 
-const upload = multer({ dest: 'uploads/' });
-
 dotenv.config()
 const app = express()
 app.use(cors());

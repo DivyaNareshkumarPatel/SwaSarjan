@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 import User from '../models/user.js';
 import Token from '../models/token.js';
-import { uploadOnCloudinary } from '../services/cloudinary.js';
+// import { uploadOnCloudinary } from '../services/cloudinary.js';
 
 dotenv.config();
 
@@ -12,18 +12,9 @@ export const signupUser = async (request, response) => {
   try {
     const hashedPassword = await bcrypt.hash(request.body.password, 10);
 
-    // Handle file uploads if they exist
-    const photoLocalPath = request.files?.photo[0]?.path;
-    const signatureLocalPath = request.files?.signature[0]?.path;
-
-    // Check if both photo and signature files exist
-    if (!photoLocalPath || !signatureLocalPath) {
-      throw new Error('Both photo and signature are required');
-    }
-
-    const photo = await uploadOnCloudinary(photoLocalPath);
-    const signature = await uploadOnCloudinary(signatureLocalPath);
-
+    console.log(request.body)
+    console.log(request.files['photo'][0].path)
+    console.log(request.files['signature'][0].path)
     const newUser = new User({
       name: request.body.name,
       userName: request.body.userName,
@@ -39,8 +30,8 @@ export const signupUser = async (request, response) => {
       panCard: request.body.panCard,
       adharCard: request.body.adharCard,
       gender: request.body.gender,
-      photo: photo.url, // Assuming uploadOnCloudinary returns an object with a `url` property
-      signature: signature.url // Assuming uploadOnCloudinary returns an object with a `url` property
+      photo: request.files['photo'][0].path,
+      signature: request.files['signature'][0].path
     });
 
     await newUser.save();

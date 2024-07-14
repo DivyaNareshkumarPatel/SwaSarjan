@@ -5,6 +5,7 @@ export const createEvent = async (req, res) => {
     const { title, description, date, venue, smallDesc, eventType} = req.body;
     try {
         const image = req.file ? req.file.path : null;
+        console.log(req.file)
         console.log(image)
         const newEvent = new AdminEvent({
             title,

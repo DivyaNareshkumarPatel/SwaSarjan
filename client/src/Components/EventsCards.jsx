@@ -2,7 +2,6 @@ import React from "react";
 import { styled, Box, Typography, Button } from "@mui/material";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PlaceIcon from '@mui/icons-material/Place';
-import Events from '../images/Events.png'
 
 const MainContainer = styled(Box)({
     height:'auto',
