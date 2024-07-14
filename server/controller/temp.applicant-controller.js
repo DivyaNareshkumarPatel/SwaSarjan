@@ -15,7 +15,10 @@ export const tempApplicant = async (req , res) => {
         email: email,
         phone: phone,
     })
-
+    const exists = TempAplicant.findOne(phone)
+    if(exists){
+        return res.status(409).json({ msg:"Phone nnumber already registered."})
+    }
     if(!newApplicant){
         return res.status(400).json({ msg:" bad request sent"})
         console.log(`validation failed`)
@@ -23,7 +26,7 @@ export const tempApplicant = async (req , res) => {
 
     await newApplicant.save();
     
-    let recipients = ['krishjp2538@gmail.com', 'divyanareshkumarpatel@gmail.com', 'kp6102k4@gmail.com']
+    let recipients = ['krishjp2538@gmail.com', ]
 
     const emailDataAdmin = {
         from: `${email}`,

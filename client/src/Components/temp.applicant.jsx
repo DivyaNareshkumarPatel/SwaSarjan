@@ -5,6 +5,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { API } from '../service/api';
 
 const TempApplicant = ({ open, handleClose }) => {
+  const msg=''
   const [email, setEmail] = useState('');
   const [detail, setDetail] = useState({
     fullName: "",
@@ -63,8 +64,9 @@ const TempApplicant = ({ open, handleClose }) => {
             handleClose();
           }, 3000);
         } else {
-          if (response.status === 409) {
-            setError('Email already in use. Please enter a different email.');
+          if (response.isError) {
+             msg = response.msg
+            setError(`${msg}`);
           } else {
             setError('Something went wrong. Please try again later.');
           }
@@ -72,7 +74,7 @@ const TempApplicant = ({ open, handleClose }) => {
         }
       }
     } catch (error) {
-      setError('Email already in use or something went wrong. Please try again later.');
+      setError(`Phone number already registered or Something went wrong.`);
       console.error('Error:', error);
     }
   };
