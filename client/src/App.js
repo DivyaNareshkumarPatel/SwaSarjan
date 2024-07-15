@@ -16,6 +16,7 @@ import Campaign2 from './Pages/Campaign2';
 import Blogs from './Pages/Blogs';
 import AdminPage from './Pages/Admin';
 import AdminLogin from './Components/AdminLogin';
+import TermsAndConditions from './Pages/Terms&Condition_PrivacyPolicy';
 
 
 const PrivateRoute = ({ isAuthenticated }) => {
@@ -44,6 +45,7 @@ export default function App() {
           <Route path='/campaign' element={<Campaign/>}/>
           <Route path="/campaigndetail" element={<Campaign2/>}/>
           <Route path="/blogs" element={<Blogs/>}/>
+          <Route path="/termsandconditions" element={<TermsAndConditions/>}/>
           <Route path="/admin29/login" element={<AdminLogin isUserAuthenticated={isUserAuthenticated}/>}/>
           <Route path='/admin29' element={<PrivateRoute isAuthenticated={isAuthenticated} />} >
             <Route path="/admin29" element={<AdminPage/>}/>

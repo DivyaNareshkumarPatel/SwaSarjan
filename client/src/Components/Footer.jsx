@@ -73,6 +73,7 @@ const Footer = () => {
           <FooterContent>Individual Support</FooterContent>
           <FooterContent>Corporate Partnership</FooterContent>
           <Link to='/registration' style={{textDecoration:'none'}}><FooterContent>Member</FooterContent></Link>
+          <Link to='/termsandconditions' style={{textDecoration:'none'}}><FooterContent>Terms & Conditions</FooterContent></Link>
         </FooterItem>
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>Resource Center</FooterHeader>
