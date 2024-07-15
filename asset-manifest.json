@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/SwaSarjan/static/css/main.cc0d18e0.css",
-    "main.js": "/SwaSarjan/static/js/main.26698c83.js",
+    "main.js": "/SwaSarjan/static/js/main.c063228c.js",
     "static/js/453.5565870f.chunk.js": "/SwaSarjan/static/js/453.5565870f.chunk.js",
     "static/media/HomeBanner1.png": "/SwaSarjan/static/media/HomeBanner1.4883ee4f7c23d840d59a.png",
     "static/media/aboutSwa.png": "/SwaSarjan/static/media/aboutSwa.fdb530174a51fccfe58f.png",
@@ -22,16 +22,7 @@
     "static/media/image1.png": "/SwaSarjan/static/media/image1.a4fcb8a55030fdd5b891.png",
     "static/media/HomeBanner3.jpeg": "/SwaSarjan/static/media/HomeBanner3.aed1ac4a4761fb75f5b0.jpeg",
     "static/media/volunteer.png": "/SwaSarjan/static/media/volunteer.e24b5dfb4cae4ec4878e.png",
-    "static/media/blog6.png": "/SwaSarjan/static/media/blog6.5eb3c5011f0cc6ffcff0.png",
-    "static/media/blog1.png": "/SwaSarjan/static/media/blog1.d37a0bbedab5d7a2a0fd.png",
-    "static/media/blog2.png": "/SwaSarjan/static/media/blog2.a89748a1220e4e28f772.png",
-    "static/media/blog8.png": "/SwaSarjan/static/media/blog8.7c26bb960cf84866eb48.png",
     "static/media/HomeBanner2.jpeg": "/SwaSarjan/static/media/HomeBanner2.6febbd0405c3545c7a9e.jpeg",
-    "static/media/blog4.png": "/SwaSarjan/static/media/blog4.af1cf466db9f848b617c.png",
-    "static/media/blog9.png": "/SwaSarjan/static/media/blog9.ecceb37c9646db89926d.png",
-    "static/media/blog5.png": "/SwaSarjan/static/media/blog5.7d7974c94fb2af66794e.png",
-    "static/media/blog3.png": "/SwaSarjan/static/media/blog3.713767e16f2e8e68dff9.png",
-    "static/media/blog7.png": "/SwaSarjan/static/media/blog7.74027d894a24e12a39b3.png",
     "static/media/HomeWorld.png": "/SwaSarjan/static/media/HomeWorld.b739bc1d81bf105116fb.png",
     "static/media/HomeBanner4.jpeg": "/SwaSarjan/static/media/HomeBanner4.39a0824ed121dc497c15.jpeg",
     "static/media/image4.png": "/SwaSarjan/static/media/image4.0464178dea4b42ed4745.png",
@@ -56,11 +47,11 @@
     "static/media/excellence.png": "/SwaSarjan/static/media/excellence.ec2d35cc1ceb1ef72ec2.png",
     "index.html": "/SwaSarjan/index.html",
     "main.cc0d18e0.css.map": "/SwaSarjan/static/css/main.cc0d18e0.css.map",
-    "main.26698c83.js.map": "/SwaSarjan/static/js/main.26698c83.js.map",
+    "main.c063228c.js.map": "/SwaSarjan/static/js/main.c063228c.js.map",
     "453.5565870f.chunk.js.map": "/SwaSarjan/static/js/453.5565870f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cc0d18e0.css",
-    "static/js/main.26698c83.js"
+    "static/js/main.c063228c.js"
   ]
 }
