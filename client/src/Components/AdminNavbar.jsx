@@ -89,14 +89,14 @@ const AdminNavbar = () => {
     switch (selectedComponent) {
       case 'Home':
         return <AdminHome />;
+      case 'Blogs':
+        return <AdminBlogs />; 
       case 'Events':
         return <EventSettings />;
       case 'News':
         return <NewsSettings />;
-      case 'Users':
-        return <UsersList />;
-      case 'Blogs':
-        return <AdminBlogs />; 
+      case 'Settings':
+        return <h1>This is settings section..</h1>;
       default:
         return <h1>This will be the Dashboard</h1>;
     }
@@ -132,17 +132,17 @@ const AdminNavbar = () => {
           </ListItemIcon>
           <ListItemText primary="News" />
         </ListItem>
-        <ListItem button onClick={() => handleNavigation('Users')}>
-          <ListItemIcon>
-            <SettingsIcon />
-          </ListItemIcon>
-          <ListItemText primary="Users" />
-        </ListItem>
         <ListItem button onClick={() => handleNavigation('Blogs')}> 
           <ListItemIcon>
             <NewspaperIcon />
           </ListItemIcon>
           <ListItemText primary="Blogs" />
+        </ListItem>
+        <ListItem button onClick={() => handleNavigation('Settings')}>
+          <ListItemIcon>
+            <SettingsIcon />
+          </ListItemIcon>
+          <ListItemText primary="Settings" />
         </ListItem>
       </List>
     </div>
