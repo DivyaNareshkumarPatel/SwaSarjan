@@ -8,7 +8,7 @@ const AdminBlogForm = ({ fetchBlogs }) => {
     title: '',
     content: '',
     author: '',
-    date: Date.now()
+    date: ''
   });
   const [image, setImage] = useState(null);
 
@@ -32,6 +32,8 @@ const AdminBlogForm = ({ fetchBlogs }) => {
       formData.append('title', blogData.title);
       formData.append('content', blogData.content);
       formData.append('author', blogData.author);
+        const date = new Date(blogData.date);
+        blogData.date = `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;
       formData.append('date', blogData.date);
 
       if (image) {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 import BlogForm from './AdminBlogForm';
-import BlogCard from './BlogCards'; 
+// import BlogCard from './tempBlogCards'; 
+import BlogsCardCollections from './BlogsCardCollections';
 const AdminBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -46,16 +47,11 @@ const AdminBlogs = () => {
           <p>Loading blogs...</p>
         ) : (
           <Grid container spacing={2}>
-            {blogs.map((blog) => (
-              <Grid item xs={12} sm={6} md={4} key={blog._id}>
-                <BlogCard
-                  title={blog.title}
-                  content={blog.content}
-                  image={blog.image}
-                  onDelete={() => handleDelete(blog._id)} 
-                />
+            
+              <Grid item xs={12} sm={6} md={4}>
+                <BlogsCardCollections />
               </Grid>
-            ))}
+            
           </Grid>
         )}
       </Box>
