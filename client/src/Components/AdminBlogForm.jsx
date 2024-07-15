@@ -41,7 +41,7 @@ const AdminBlogForm = ({ fetchBlogs }) => {
       const response = await API.adminBlog(formData);
       console.log('Blog created successfully:', response);
 
-      // Clear form data after successful submission
+      
       setBlogData({
         title: '',
         content: '',
@@ -49,7 +49,6 @@ const AdminBlogForm = ({ fetchBlogs }) => {
       });
       setImage(null);
 
-      // Fetch the updated list of blogs
       fetchBlogs();
     } catch (error) {
       console.error('Error while creating blog:', error);

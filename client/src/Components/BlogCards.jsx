@@ -3,9 +3,6 @@ import { Card, CardContent, CardMedia, Typography, IconButton } from '@mui/mater
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const BlogCard = ({ title, content, image, onDelete }) => {
-    // const handleOpen = (image) => {
-    //     setSelectedImage(image);
-    //   };
   return (
     <Card>
       {image && (
@@ -24,12 +21,6 @@ const BlogCard = ({ title, content, image, onDelete }) => {
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>
-        <img
-                src={`http://localhost:8000/${image}`} // Adjust the base URL as per your backend setup
-                // alt={index}
-                // onClick={() => handleOpen(image)}
-                style={{ width: "100%", cursor: "pointer" }}
-              />
         <IconButton onClick={onDelete} color="secondary">
           <DeleteIcon />
         </IconButton>

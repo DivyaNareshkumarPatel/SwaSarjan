@@ -26,7 +26,7 @@ import NewsSettings from './NewsSettings';
 import LogoImage from "../images/SwaLogoMain.png";
 import AdminHome from "./AdminHome";
 import UsersList from './UserList';
-import AdminBlogs from './AdminBlogs'; // Import the AdminBlogs component
+import AdminBlogs from './AdminBlogs'; 
 
 const drawerWidth = 240;
 const Image = styled("img")({
@@ -67,7 +67,7 @@ const AppBarStyled = styled(AppBar)(({ theme }) => ({
 const Content = styled('main')(({ theme }) => ({
   flexGrow: 1,
   padding: theme.spacing(3),
-  overflowX: 'auto', // Ensure overflow is handled here
+  overflowX: 'auto', 
 }));
 
 const AdminNavbar = () => {
@@ -96,7 +96,7 @@ const AdminNavbar = () => {
       case 'Users':
         return <UsersList />;
       case 'Blogs':
-        return <AdminBlogs />; // Render AdminBlogs component
+        return <AdminBlogs />; 
       default:
         return <h1>This will be the Dashboard</h1>;
     }
@@ -138,7 +138,7 @@ const AdminNavbar = () => {
           </ListItemIcon>
           <ListItemText primary="Users" />
         </ListItem>
-        <ListItem button onClick={() => handleNavigation('Blogs')}> {/* Add Blogs navigation */}
+        <ListItem button onClick={() => handleNavigation('Blogs')}> 
           <ListItemIcon>
             <NewspaperIcon />
           </ListItemIcon>

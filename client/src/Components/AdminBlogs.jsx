@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 import BlogForm from './AdminBlogForm';
-import BlogCard from './BlogCards'; // You need to create this component to display individual blog posts
-
+import BlogCard from './BlogCards'; 
 const AdminBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +29,7 @@ const AdminBlogs = () => {
   const handleDelete = async (id) => {
     try {
       await API.deleteBlog(id);
-      fetchBlogs(); // Refresh blogs list after deletion
+      fetchBlogs(); 
     } catch (error) {
       console.error('Error deleting blog:', error);
     }
@@ -52,8 +51,8 @@ const AdminBlogs = () => {
                 <BlogCard
                   title={blog.title}
                   content={blog.content}
-                  image={blog.imageUrl}
-                  onDelete={() => handleDelete(blog._id)} // Pass the delete function to the card
+                  image={blog.image}
+                  onDelete={() => handleDelete(blog._id)} 
                 />
               </Grid>
             ))}
