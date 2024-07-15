@@ -26,6 +26,7 @@ import NewsSettings from './NewsSettings';
 import LogoImage from "../images/SwaLogoMain.png";
 import AdminHome from "./AdminHome";
 import UsersList from './UserList';
+import AdminBlogs from './AdminBlogs'; // Import the AdminBlogs component
 
 const drawerWidth = 240;
 const Image = styled("img")({
@@ -94,6 +95,8 @@ const AdminNavbar = () => {
         return <NewsSettings />;
       case 'Users':
         return <UsersList />;
+      case 'Blogs':
+        return <AdminBlogs />; // Render AdminBlogs component
       default:
         return <h1>This will be the Dashboard</h1>;
     }
@@ -134,6 +137,12 @@ const AdminNavbar = () => {
             <SettingsIcon />
           </ListItemIcon>
           <ListItemText primary="Users" />
+        </ListItem>
+        <ListItem button onClick={() => handleNavigation('Blogs')}> {/* Add Blogs navigation */}
+          <ListItemIcon>
+            <NewspaperIcon />
+          </ListItemIcon>
+          <ListItemText primary="Blogs" />
         </ListItem>
       </List>
     </div>

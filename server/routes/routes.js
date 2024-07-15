@@ -13,6 +13,8 @@ import { createNews } from '../controller/adminNews-controller.js';
 import { deleteNews } from '../controller/adminNews-controller.js';
 import { tempApplicant } from '../controller/temp.applicant-controller.js';
 import { getAllUsers } from '../controller/user-controller.js';
+import { createBlog } from '../controller/adminBlog-controller.js';
+import { getAllBlogs } from '../controller/adminBlog-controller.js';
 
 const router = express.Router();
 // User related routes
@@ -26,7 +28,9 @@ router.post('/about', tempApplicant);
 router.post('/donate', donateUs);
 
 router.post('/admin29/events', upload.single('image'), createEvent);
+router.post('/admin29/blogs', upload.single('image'), createBlog);
 router.get('/admin29/events', getAllEvents);
+router.get('/admin29/blogs', getAllBlogs);
 router.get('/admin29/news', getAllNews);
 router.get('/admin29/users', getAllUsers);
 router.delete('/admin29/events/:id', deleteEvent);
