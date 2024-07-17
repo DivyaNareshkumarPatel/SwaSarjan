@@ -2,13 +2,22 @@ import React, { useState } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
 
+const getCurrentDateFormatted = () => {
+  const date = new Date();
+  const day = date.getDate();
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.getFullYear();
+  return `${day} ${month} ${year}`;
+};
+
 const AdminBlogForm = ({ fetchBlogs }) => {
 
   const [blogData, setBlogData] = useState({
     title: '',
     content: '',
     author: '',
-    date: ''
+    role:'',
+    date: getCurrentDateFormatted()
   });
   const [image, setImage] = useState(null);
 
@@ -32,8 +41,7 @@ const AdminBlogForm = ({ fetchBlogs }) => {
       formData.append('title', blogData.title);
       formData.append('content', blogData.content);
       formData.append('author', blogData.author);
-        const date = new Date(blogData.date);
-        blogData.date = `${date.getDate()} ${date.toLocaleString('default', { month: 'short' })} ${date.getFullYear()}`;
+      formData.append('role', blogData.role);
       formData.append('date', blogData.date);
 
       if (image) {
@@ -47,7 +55,8 @@ const AdminBlogForm = ({ fetchBlogs }) => {
       setBlogData({
         title: '',
         content: '',
-        author:''
+        author:'',
+        role:''
       });
       setImage(null);
 
@@ -93,6 +102,17 @@ const AdminBlogForm = ({ fetchBlogs }) => {
               fullWidth
               rows={4}
               value={blogData.author}
+              onChange={handleChange}
+              required
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              name="role"
+              label="Blog author role"
+              fullWidth
+              rows={4}
+              value={blogData.role}
               onChange={handleChange}
               required
             />

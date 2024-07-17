@@ -15,6 +15,7 @@ import { tempApplicant } from '../controller/temp.applicant-controller.js';
 import { getAllUsers } from '../controller/user-controller.js';
 import { createBlog } from '../controller/adminBlog-controller.js';
 import { getAllBlogs } from '../controller/adminBlog-controller.js';
+import { deleteBlog } from '../controller/adminBlog-controller.js';
 
 const router = express.Router();
 // User related routes
@@ -36,6 +37,8 @@ router.get('/admin29/users', getAllUsers);
 router.delete('/admin29/events/:id', deleteEvent);
 router.post('/admin29/news', upload.single('image'), createNews);
 router.delete('/admin29/news/:id', deleteNews);
+router.delete('/admin29/blogs/:id', deleteBlog);
+
 
 router.post('/admin29/login', loginAdmin);
 

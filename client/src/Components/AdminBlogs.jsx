@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Typography, Paper, Grid } from '@mui/material';
+import { Box, Typography, Grid } from '@mui/material';
 import { API } from '../service/api';
 import BlogForm from './AdminBlogForm';
-// import BlogCard from './tempBlogCards'; 
 import BlogsCardCollections from './BlogsCardCollections';
+
 const AdminBlogs = () => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -39,7 +39,7 @@ const AdminBlogs = () => {
   return (
     <>
       <BlogForm fetchBlogs={fetchBlogs} />
-      <Box sx={{ marginTop: 4 }}>
+      <Box sx={{ marginTop: 4, marginBottom: '50px' }}>
         <Typography variant="h5" gutterBottom>
           Existing Blogs
         </Typography>
@@ -47,11 +47,11 @@ const AdminBlogs = () => {
           <p>Loading blogs...</p>
         ) : (
           <Grid container spacing={2}>
-            
-              <Grid item xs={12} sm={6} md={4}>
-                <BlogsCardCollections />
-              </Grid>
-            
+            <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+              <div style={{ maxWidth: "1500px", display: "flex", alignItems: "center", flexWrap: "wrap", justifyContent: "center" }}>
+                <BlogsCardCollections isAdmin={true} />
+              </div>
+            </div>
           </Grid>
         )}
       </Box>
