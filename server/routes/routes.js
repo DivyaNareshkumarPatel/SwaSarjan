@@ -12,6 +12,10 @@ import { getAllNews } from '../controller/adminNews-controller.js';
 import { createNews } from '../controller/adminNews-controller.js';
 import { deleteNews } from '../controller/adminNews-controller.js';
 import { tempApplicant } from '../controller/temp.applicant-controller.js';
+import { getAllUsers } from '../controller/user-controller.js';
+import { createBlog } from '../controller/adminBlog-controller.js';
+import { getAllBlogs } from '../controller/adminBlog-controller.js';
+import { deleteBlog } from '../controller/adminBlog-controller.js';
 
 const router = express.Router();
 // User related routes
@@ -24,12 +28,17 @@ router.post('/contact', contactUs);
 router.post('/about', tempApplicant);
 router.post('/donate', donateUs);
 
-router.post('/admin29', upload.single('image'), createEvent);
-router.get('/admin29', getAllEvents);
+router.post('/admin29/events', upload.single('image'), createEvent);
+router.post('/admin29/blogs', upload.single('image'), createBlog);
+router.get('/admin29/events', getAllEvents);
+router.get('/admin29/blogs', getAllBlogs);
 router.get('/admin29/news', getAllNews);
-router.delete('/admin29/:id', deleteEvent);
+router.get('/admin29/users', getAllUsers);
+router.delete('/admin29/events/:id', deleteEvent);
 router.post('/admin29/news', upload.single('image'), createNews);
-router.delete('/admin29/:id', deleteNews);
+router.delete('/admin29/news/:id', deleteNews);
+router.delete('/admin29/blogs/:id', deleteBlog);
+
 
 router.post('/admin29/login', loginAdmin);
 
