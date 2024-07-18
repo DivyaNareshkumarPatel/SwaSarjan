@@ -15,34 +15,45 @@ const FooterContainer = styled(Box)({
   padding: '40px',
   paddingTop:"60px",
   borderTop: '1px solid #FFFFFF',
+  textAlign:'left'
 });
 
-const FooterGrid = styled(Grid)({
-  textAlign: 'center',
+const FooterGrid = styled(Grid)(({ theme }) =>({
+  textAlign: 'left',
   display :"flex",
   justifyContent:"space-around",
-  width:"100%"
-});
+  width:"100%",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent:"flex-start",
+  },
+  [theme.breakpoints.down("xs")]: {
+    justifyContent:"flex-start",
+  },
+  
+}));
 
 const FooterItem = styled(Box)({
   textAlign: 'left',
-  padding:"20px 60px"
+  padding:"20px 60px",
+  textAlign: 'left',
 });
 
 const FooterHeader = styled(Typography)({
   color: '#F26522',
   fontSize: '1.5rem',
   marginBottom: '20px',
+  textAlign:'left'
 });
 
 const FooterContent = styled(Typography)({
   color: '#FFFFFF',
   fontSize: '1rem',
+  textAlign:'left'
 });
 
 const SocialIconButton = styled(IconButton)(({ theme, color }) => ({
   backgroundColor: '#181818',
-  color: color, // Use the color prop here
+  color: color, 
   borderRadius: '50%',
   // padding: '5px',
   margin: '0 2px',
@@ -60,7 +71,7 @@ const Footer = () => {
   const handleClose = () => setModalOpen(false);
   return (
     <FooterContainer>
-      <FooterGrid container spacing={3} justifyContent="center">
+      <FooterGrid container spacing={3} justifyContent="left">
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>About Us</FooterHeader>
           <Link to='/about' style={{textDecoration:'none'}}><FooterContent>About SwaSarjan</FooterContent></Link>

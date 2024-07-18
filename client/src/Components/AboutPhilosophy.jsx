@@ -7,72 +7,79 @@ const StyledBox = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   backgroundColor: 'rgba(118, 34, 215, 0.6)',
   color: 'white',
-  margin: '10px 10px 10px 10px',
+  margin: '10px',
   borderRadius: '10px',
 }));
 
 const Heading = styled(Typography)(({ theme }) => ({
   fontWeight: 'bold',
-  marginBottom: '30px',
-  marginTop: '0px',
   color: '#3b237b',
   fontSize: '2rem',
+  marginBottom: '10px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '0.6rem',
+  },
 }));
 
 const Text = styled(Typography)(({ theme }) => ({
   color: 'black',
-  fontSize: '2rem',
-  alignSelf:'center',
-  marginBottom: '40px',
+  fontSize: '1.5rem',
+  marginBottom: '20px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.6rem',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '0.4rem',
+  },
 }));
 
-const Topic = styled(Typography)({
-    color: '#333333',
-    fontWeight: 'bolder',
-    marginBottom: '20px',
-  });
-  const MainTitle = styled(Typography)({
-    fontWeight: 'bold',
-  marginBottom: '10px',
-  color:'#F26522'
-});
+const MainTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 'bold',
+  color: '#F26522',
+  fontSize: '2rem',
+  marginBottom: '20px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '1.2rem',
+  },
+}));
+
 const AboutPhilosophy = () => {
   return (
-    <Box sx={{ flexGrow: 1, padding: 12, backgroundColor: 'white' }}>
-      <Box style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems:'center',
-        justifyContent: 'center',
-        textAlign:'center'
-      }}>
+    <Box sx={{ flexGrow: 1, padding: { xs: 2, sm: 6, md: 12 }, backgroundColor: 'white' }}>
+      <Box sx={{ textAlign: 'center', marginBottom: '20px' }}>
         <MainTitle variant="h4">
-            Our Philosophy
+          Our Philosophy
         </MainTitle>
-        <Topic variant="h6">
-        Inclusivity: bring change, along with uplifting oneself and the people<br/> around. SELF-DEVELOPMENT.
-        </Topic>
+        <Typography variant="subtitle1" color="textSecondary">
+          Inclusivity: bring change, along with uplifting oneself and the people around. SELF-DEVELOPMENT.
+        </Typography>
       </Box>
       <Grid container spacing={4}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <StyledBox>
             <Heading>Our Mission</Heading>
             <Text>Recreating the views of society.</Text>
           </StyledBox>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <StyledBox>
             <Heading>Our Vision</Heading>
             <Text>Create a sustainable community.</Text>
           </StyledBox>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <StyledBox>
             <Heading>Our Goals</Heading>
-            <Text>A better tommorrow, a better mind.</Text>
+            <Text>A better tomorrow, a better mind.</Text>
           </StyledBox>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={6}>
           <StyledBox>
             <Heading>Our Belief</Heading>
             <Text>You Can, It's That Simple.</Text>

@@ -34,6 +34,19 @@ export default function BlogsCardCollections({ isAdmin }) {
     setIsModalOpen(false);
     setSelectedBlog(null);
   };
+  const handleCreateBlog = async (newBlog) => {
+    try {
+      const response = await API.adminBlog(newBlog);
+      if (response.isSuccess) {
+        setBlogs([...blogs, response.data]);
+        console.log('Successfully created!');
+      } else {
+        console.error('Failed to create blog:', response.msg);
+      }
+    } catch (error) {
+      console.error('Error creating blog:', error);
+    }
+  };
 
   const handleDeleteBlog = async (id) => {
     try {
@@ -46,20 +59,6 @@ export default function BlogsCardCollections({ isAdmin }) {
       }
     } catch (error) {
       console.error('Error deleting blog:', error);
-    }
-  };
-
-  const handleCreateBlog = async (newBlog) => {
-    try {
-      const response = await API.adminBlog(newBlog);
-      if (response.isSuccess) {
-        setBlogs([...blogs, response.data]);
-        console.log('Successfully created!');
-      } else {
-        console.error('Failed to create blog:', response.msg);
-      }
-    } catch (error) {
-      console.error('Error creating blog:', error);
     }
   };
 

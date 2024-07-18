@@ -27,30 +27,29 @@ export default function ImpactData({ counter, content }) {
   return (
     <div
       style={{
-        minWidth: "270px",
+        minWidth: "200px",
         flex: 1,
         marginTop: "20px",
         marginBottom: "20px",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
+        flexDirection: "column",
+        alignItems: "center",
+        textAlign: "center",
       }}
     >
-      <div>
-        <Typography
-          style={{
-            fontSize: "2em",
-            fontWeight: "bold",
-            color: "#F26522",
-            marginBottom: "5px",
-          }}
-        >
-          {displayCounter}+
-        </Typography>
-        <Typography style={{ maxWidth: "200px", textWrap: "wrap" }}>
-          {content}
-        </Typography>
-      </div>
+      <Typography
+        style={{
+          fontSize: "2em",
+          fontWeight: "bold",
+          color: "#F26522",
+          marginBottom: "5px",
+        }}
+      >
+        {displayCounter}+
+      </Typography>
+      <Typography style={{ maxWidth: "200px", wordWrap: "break-word" }}>
+        {content}
+      </Typography>
     </div>
   );
 }
