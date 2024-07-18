@@ -32,7 +32,7 @@ export const SERVICE_URLS = {
     adminEvent: {url:'/admin29', method:'POST'},
     adminNews: {url:'/admin29/news', method:'POST'},
     getEvents: { url:'/admin29', method: 'GET' },
-    deleteEvent: {url:'/admin29/:id', method:'DELETE'},
+    deleteEvent: {url:'/admin29', method:'DELETE'},
     getNews: { url:'/admin29/news', method: 'GET' },
     deleteNews: {url:'/admin29', method:'POST'},
     adminLogin: { url:'/admin29/login', method: 'POST'},
