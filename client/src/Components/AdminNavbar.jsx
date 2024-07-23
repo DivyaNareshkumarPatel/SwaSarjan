@@ -26,7 +26,8 @@ import NewsSettings from './NewsSettings';
 import LogoImage from "../images/SwaLogoMain.png";
 import AdminHome from "./AdminHome";
 import UsersList from './UserList';
-import AdminBlogs from './AdminBlogs'; 
+import AdminBlogs from './AdminBlogs';
+import AdminCampaigns from './AdminCampaigns'; // Import the AdminCampaigns component
 
 const drawerWidth = 240;
 const Image = styled("img")({
@@ -90,11 +91,13 @@ const AdminNavbar = () => {
       case 'Home':
         return <AdminHome />;
       case 'Blogs':
-        return <AdminBlogs />; 
+        return <AdminBlogs />;
       case 'Events':
         return <EventSettings />;
       case 'News':
         return <NewsSettings />;
+      case 'Campaigns': // Add this case for rendering AdminCampaigns
+        return <AdminCampaigns />;
       case 'Settings':
         return <h1>This is settings section..</h1>;
       default:
@@ -137,6 +140,12 @@ const AdminNavbar = () => {
             <NewspaperIcon />
           </ListItemIcon>
           <ListItemText primary="Blogs" />
+        </ListItem>
+        <ListItem button onClick={() => handleNavigation('Campaigns')}> 
+          <ListItemIcon>
+            <EventIcon /> {/* You can use any suitable icon */}
+          </ListItemIcon>
+          <ListItemText primary="Campaigns" />
         </ListItem>
         <ListItem button onClick={() => handleNavigation('Settings')}>
           <ListItemIcon>
