@@ -138,7 +138,7 @@ const Footer = () => {
             <FooterContent style={{
               fontSize:'0.8rem',
               overflow:'none'
-            }}> swasarjan@gmail.com</FooterContent>
+            }}>swasarjan@gmail.com</FooterContent>
 
           </Box>
 
