@@ -6,7 +6,6 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 function VideoGallery() {
   const [size, setSize] = useState(5);
   const [selectedVideo, setSelectedVideo] = useState(null);
-  const [videoTitles, setVideoTitles] = useState({});
   const videos = useMemo(() => [
     {
       src: "https://www.youtube.com/embed/MBqdXGsjJ74?si=WIxzbqhBb7HeXQq2",
@@ -80,7 +79,7 @@ function VideoGallery() {
         }
       }
       console.log("Updated Video Titles:", titles);
-      setVideoTitles(titles);
+
     };
     fetchTitles();
   }, [videos]);
@@ -126,7 +125,6 @@ function VideoGallery() {
                   style={{ width: "100%", height: "100%" }}
                   onClick={() => handleVideoClick(video)}
                 />
-                <div>{videoTitles[video.src] || "Untitled Video"}</div>
                 <PlayArrowIcon
                   style={{
                     position: "absolute",
