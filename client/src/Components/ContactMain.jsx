@@ -209,7 +209,7 @@ export default function ContactMain() {
                 />
               </div>
               <div style={{ margin: "40px 10px", maxWidth: "300px" }}>
-                <Typography>07043038000</Typography>
+                <Typography>+91 704 303 8000</Typography>
               </div>
             </div>
             <div style={{ display: "flex" }}>
@@ -221,7 +221,7 @@ export default function ContactMain() {
                 />
               </div>
               <div style={{ margin: "40px 10px", maxWidth: "300px" }}>
-                <Typography>demo@gmail.com</Typography>
+                <Typography>swasarjan@gmail.com</Typography>
               </div>
             </div>
             <div style={{ display: "flex" }}>

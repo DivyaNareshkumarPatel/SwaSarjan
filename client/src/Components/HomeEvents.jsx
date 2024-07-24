@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 import styled from "@emotion/styled";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { Link } from "react-router-dom";
@@ -48,8 +48,7 @@ const Num = styled(Box)({
   fontSize: '60px',
 });
 
-const Month = styled(Box)({
-});
+const Month = styled(Box)({});
 
 const ContentBox = styled(Box)({
   padding: '20px',
@@ -79,12 +78,18 @@ const ArrowButtonBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color:'#0C0C0C'
-}); 
+  color: '#0C0C0C'
+});
+
+const truncateText = (text, maxLength) => {
+  if (text.length <= maxLength) return text;
+  return text.slice(0, maxLength) + "...";
+};
 
 const HomeEvents = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const isSmallScreen = useMediaQuery('(max-width: 600px)');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -105,7 +110,7 @@ const HomeEvents = () => {
     fetchData(); // Invoke fetchData function on component mount
   }, []);
 
-  return ( 
+  return (
     <div style={{ background: "white", paddingTop: "40px", paddingBottom: "40px" }}>
       <OuterContainer>
         <Title>
@@ -129,9 +134,18 @@ const HomeEvents = () => {
                     <ContentText variant="h6">{event.eventType}</ContentText>
                     <hr style={{ height: '0.2px', width: '20px', flex: 1, backgroundColor: '#212121', color: 'black', margin: '0' }} />
                   </ContentCategory>
-                  <Content>
-                    <Typography variant="h5">
-                      {event.description}
+                  <Content style={{ width: "100%" }}>
+                    <Typography
+                      variant="h5"
+                      style={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        WebkitLineClamp: isSmallScreen ? 1 : 2,
+                      }}
+                    >
+                      {truncateText(event.description, isSmallScreen ? 20 : 100)}
                     </Typography>
                   </Content>
                 </ContentBox>
@@ -146,7 +160,7 @@ const HomeEvents = () => {
         </MainContainer>
       </OuterContainer>
     </div>
-  )
-}
+  );
+};
 
 export default HomeEvents;

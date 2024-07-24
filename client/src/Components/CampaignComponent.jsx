@@ -3,7 +3,7 @@ import design from "../images/DonateDesign.png";
 import { Button, styled, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 export default function CampaignComponent({ detail }) {
-  const { image, head, head2, p1, p2, p3 } = detail;
+  const { image, head, topic, p1, p2, p3 } = detail;
   console.log(image);
   const Para = styled(Typography)({
     color: "#666C89",
@@ -52,7 +52,7 @@ export default function CampaignComponent({ detail }) {
               alt=""
               style={{ marginRight: "10px", width: "20px", height: "20px" }}
             />
-            <Typography style={{ color: "#666C89" }}>{head2}</Typography>
+            <Typography style={{ color: "#666C89" }}>{topic}</Typography>
           </div>
           <div style={{ marginBottom: "8px" }}>
             <Typography sx={{ fontWeight: "bold", fontSize: "30px" }}>

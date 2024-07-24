@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Button } from "@mui/material";
+import { Typography, Button, Grid } from "@mui/material";
 import img from "../images/HomeImpact.png";
 import ImpactData from "./ImpactData";
 import { Link } from "react-router-dom";
@@ -21,27 +21,12 @@ export default function Impact() {
         >
           Our Impact
         </Typography>
-        <Typography style={{marginBottom:"20px"}}>The works we've done till the date</Typography>
+        <Typography style={{ marginBottom: "20px" }}>
+          The works we've done till the date
+        </Typography>
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          marginTop: "20px",
-          marginBottom: "20px",
-          flexWrap: "wrap",
-          width: "100%",
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            marginRight: "20px",
-          }}
-        >
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12} md={6} style={{ display: "flex", justifyContent: "center" }}>
           <img
             src={img}
             alt=""
@@ -53,64 +38,50 @@ export default function Impact() {
               objectFit: "cover",
             }}
           />
-        </div>
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            margin: "0px",
-          }}
-        >
-          <div style={{ display: "flex", flexWrap: "wrap", flex: 2, justifyContent:"space-between"}}>
-            <ImpactData
-              counter={125}
-              content="Team Members"
-            />
-            <ImpactData
-              counter={11}
-              content="Years of Experience"
-            />
-            <ImpactData
-              counter={2100}
-              content="Projects Done"
-            />
-            <ImpactData
-              counter={9}
-              content="States"
-            />
-            <ImpactData
-              counter={13}
-              content="Countries"
-            />
-            <ImpactData
-              counter={50}
-              content="Collaborations"
-            />
-          </div>
-          <div>
+        </Grid>
+        <Grid item xs={12} md={6}>
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={125} content="Team Members" />
+            </Grid>
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={11} content="Years of Experience" />
+            </Grid>
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={2100} content="Projects Done" />
+            </Grid>
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={9} content="States" />
+            </Grid>
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={13} content="Countries" />
+            </Grid>
+            <Grid item xs={6} sm={4} md={6}>
+              <ImpactData counter={50} content="Collaborations" />
+            </Grid>
+          </Grid>
+          <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
             <Link to="/about">
-            <Button
-              variant="contained"
-              sx={{
-                marginTop: "20px",
-                backgroundColor: "transparent",
-                borderRadius: "20px",
-                borderWidth: "2px",
-                border: "2px solid white",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "white",
-                  color: "black",
-                },
-              }}
-            >
-              Know More About Us
-            </Button></Link>
+              <Button
+                variant="contained"
+                sx={{
+                  backgroundColor: "transparent",
+                  borderRadius: "20px",
+                  borderWidth: "2px",
+                  border: "2px solid white",
+                  color: "white",
+                  "&:hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                  },
+                }}
+              >
+                Know More About Us
+              </Button>
+            </Link>
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </div>
   );
 }

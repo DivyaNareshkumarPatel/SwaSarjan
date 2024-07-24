@@ -8,6 +8,10 @@ import InstagramIcon from '../images/Instagram.png';
 import YouTubeIcon from '../images/Youtube.png';
 import LinkedinIcon from '../images/linkedin.png'
 import NewsletterModal from './NewsletterModal';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import TempApplicant from './temp.applicant';
 
 const FooterContainer = styled(Box)({
   backgroundColor: '#181818',
@@ -15,34 +19,45 @@ const FooterContainer = styled(Box)({
   padding: '40px',
   paddingTop:"60px",
   borderTop: '1px solid #FFFFFF',
+  textAlign:'left'
 });
 
-const FooterGrid = styled(Grid)({
-  textAlign: 'center',
+const FooterGrid = styled(Grid)(({ theme }) =>({
+  textAlign: 'left',
   display :"flex",
   justifyContent:"space-around",
-  width:"100%"
-});
+  width:"100%",
+  [theme.breakpoints.down("sm")]: {
+    justifyContent:"flex-start",
+  },
+  [theme.breakpoints.down("xs")]: {
+    justifyContent:"flex-start",
+  },
+  
+}));
 
 const FooterItem = styled(Box)({
   textAlign: 'left',
-  padding:"20px 60px"
+  padding:"20px 60px",
+  textAlign: 'left',
 });
 
 const FooterHeader = styled(Typography)({
   color: '#F26522',
   fontSize: '1.5rem',
   marginBottom: '20px',
+  textAlign:'left'
 });
 
 const FooterContent = styled(Typography)({
   color: '#FFFFFF',
   fontSize: '1rem',
+  textAlign:'left'
 });
 
 const SocialIconButton = styled(IconButton)(({ theme, color }) => ({
   backgroundColor: '#181818',
-  color: color, // Use the color prop here
+  color: color, 
   borderRadius: '50%',
   // padding: '5px',
   margin: '0 2px',
@@ -58,32 +73,93 @@ const Footer = () => {
 
   const handleOpen = () => setModalOpen(true);
   const handleClose = () => setModalOpen(false);
+  const [modalOpenMember, setModalOpenMember] = useState(false);
+  const handleOpenMember = () => setModalOpenMember(true);
+  const handleCloseMember = () => setModalOpenMember(false);
   return (
     <FooterContainer>
-      <FooterGrid container spacing={3} justifyContent="center">
+      <FooterGrid container spacing={3} justifyContent="left">
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>About Us</FooterHeader>
+          <Link to='/' style={{textDecoration:'none'}}><FooterContent>Home</FooterContent></Link>
           <Link to='/about' style={{textDecoration:'none'}}><FooterContent>About SwaSarjan</FooterContent></Link>
-          <FooterContent>Impact</FooterContent>
-          <FooterContent>Reach & Presence</FooterContent>
+          
+          {/* <FooterContent>Reach & Presence</FooterContent> */}
           <Link to='/blogs' style={{textDecoration:'none'}}><FooterContent>Blogs</FooterContent></Link>
         </FooterItem>
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>Get Involved</FooterHeader>
-          <FooterContent>Individual Support</FooterContent>
-          <FooterContent>Corporate Partnership</FooterContent>
-          <Link to='/registration' style={{textDecoration:'none'}}><FooterContent>Member</FooterContent></Link>
+          {/* <FooterContent>Individual Support</FooterContent> */}
+          <TempApplicant open={modalOpenMember} handleClose={handleCloseMember} />
+          <FooterContent onClick={handleOpenMember} style={{ cursor: 'pointer', color: '' }}>Member</FooterContent>
+          <Link to='/Privacypolicy' style={{textDecoration:'none'}}><FooterContent>Privacy Policy</FooterContent></Link>
           <Link to='/termsandconditions' style={{textDecoration:'none'}}><FooterContent>Terms & Conditions</FooterContent></Link>
         </FooterItem>
         <FooterItem item xs={12} sm={4}>
           <FooterHeader>Resource Center</FooterHeader>
-          <FooterContent>Annual Report</FooterContent>
+          <Link to='/campaign' style={{textDecoration:'none'}}><FooterContent>Our Campaigns</FooterContent></Link>
     
             <FooterContent onClick={handleOpen} style={{ cursor: 'pointer', color: '' }}>Newsletter</FooterContent>
        
             <NewsletterModal open={modalOpen} handleClose={handleClose} />
-          <FooterContent>Stories of Change</FooterContent>
-          <FooterContent>Films</FooterContent>
+          
+          <Link to='/events' style={{textDecoration:'none'}}><FooterContent>Events</FooterContent></Link>
+          <Link to='/gallery' style={{textDecoration:'none'}}><FooterContent>Our Gallery</FooterContent></Link>
+        </FooterItem>
+        <FooterItem item xs={12} sm={4}>
+          <FooterHeader>Contact Details</FooterHeader>
+          <Link to='/contact' style={{textDecoration:'none',}}><FooterContent style={{marginBottom:'10px'}}>Contact Us</FooterContent></Link>
+          
+          <Box style={{
+            display:'flex',
+
+          }}>
+            <PhoneIcon style={{
+              fontSize:'1rem',
+              overflow:'none',
+              marginRight:'5px'
+            }}/>
+            <FooterContent style={{
+              fontSize:'0.8rem',
+              overflow:'none'
+            }}>+91 704 303 8000</FooterContent>
+          </Box>
+
+          <Box style={{
+            display:'flex',
+
+          }}>
+
+            <LocalPostOfficeIcon style={{
+              fontSize:'1rem',
+              overflow:'none',
+              marginRight:'5px'
+            }}/>
+            <FooterContent style={{
+              fontSize:'0.8rem',
+              overflow:'none'
+            }}>swasarjan@gmail.com</FooterContent>
+
+          </Box>
+
+          <Box
+            style={{
+              display:'flex',
+            }}>
+
+            <LocationOnIcon style={{
+              fontSize:'1rem',
+              overflow:'none',
+              marginRight:'5px'
+            }}/>
+
+            <FooterContent style={{
+              fontSize:'0.6rem',
+              overflow:'none'
+            }}> A/10, Dwarkesh Appt,<br/> B/hPost Office, Rambagh,<br/> Maninagar, Ahmedabad,<br/>Gujarat 380008</FooterContent>
+          
+          </Box>
+
         </FooterItem>
       </FooterGrid>
       <Box sx={{ textAlign: 'center', margin: '20px 0' }}>
