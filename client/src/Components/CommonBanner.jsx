@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import img1 from "../images/HomeBanner1.png";
 import img2 from "../images/HomeBanner2.jpeg";
@@ -13,7 +13,6 @@ const styles = {
     color: "white",
     backgroundSize: "cover",
     backgroundPosition: "center",
-    height: "91vh",
     transition: "none",
   },
   content: {
@@ -29,11 +28,29 @@ const styles = {
     color: "white",
   },
 };
-export default function CommonBanner({head, line1, line2}) {
+
+export default function CommonBanner({ head, line1, line2 }) {
+  const [bannerHeight, setBannerHeight] = useState("91vh");
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 600) {
+        setBannerHeight("50vh");
+      } else {
+        setBannerHeight("91vh");
+      }
+    };
+
+    handleResize(); // Call on mount
+    window.addEventListener("resize", handleResize); // Attach listener
+
+    return () => window.removeEventListener("resize", handleResize); // Cleanup listener
+  }, []);
+
   const images = [img1, img2, img3, img4];
 
   return (
-    <div style={{ height: "91vh" }}>
+    <div style={{ height: bannerHeight }}>
       <Carousel
         indicatorContainerProps={{
           style: {
@@ -43,9 +60,11 @@ export default function CommonBanner({head, line1, line2}) {
       >
         {images.map((imgSrc, index) => (
           <Paper
+            key={index}
             style={{
               ...styles.paper,
               backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${imgSrc})`,
+              height: bannerHeight,
             }}
           >
             <div style={styles.content}>
@@ -55,7 +74,7 @@ export default function CommonBanner({head, line1, line2}) {
                   fontSize: "2.3em",
                   maxWidth: "425px",
                   lineHeight: "1.1",
-                  fontWeight:"bold"
+                  fontWeight: "bold",
                 }}
               >
                 {head}
