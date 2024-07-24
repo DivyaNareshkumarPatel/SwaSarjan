@@ -5,7 +5,7 @@ import CommonBanner from "../Components/CommonBanner";
 import EventsCards from "../Components/EventsCards";
 import EventNews from "../Components/EventNews";
 
-import { API } from "../service/api"; // Adjust path as needed
+import { API } from "../service/api"; 
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -38,13 +38,14 @@ const Events = () => {
         <>
           {events.map((event) => (
             <EventsCards
-              key={event._id} // Assuming _id is the unique identifier for each event
+              key={event._id} 
               title={event.title}
               description={event.description}
-              date={new Date(event.date).getDate()} // Extract day from date
-              month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
+              date={new Date(event.date).getDate()} 
+              month={new Date(event.date).toLocaleString('default', { month: 'short' })} 
               smallDesc={event.smallDesc}
               venue={event.venue}
+              // server link below
               image={`http://localhost:8000/${event.image}`}
             />
           ))}

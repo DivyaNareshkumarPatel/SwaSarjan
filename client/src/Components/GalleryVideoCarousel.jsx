@@ -70,22 +70,22 @@ const GalleryVideoCarousel = () => {
       Math.abs(index - slideIndex),
       videos.length - Math.abs(index - slideIndex)
     );
-    if (distance === 0) return 1.4; // Largest
-    if (distance === 1) return 1.2; // Slightly smaller
-    return 1; // Smallest
+    if (distance === 0) return 1.4; 
+    if (distance === 1) return 1.2; 
+    return 1; 
   };
 
   const settings = {
     infinite: true,
     lazyLoad: true,
     speed: 300,
-    slidesToShow: 5, // Show more than three videos
+    slidesToShow: 5, 
     centerMode: true,
     centerPadding: 0,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    beforeChange: (current, next) => setHoverIndex(-1), // Reset hover state when sliding
-    afterChange: (current) => setSlideIndex(current), // Update current slide index
+    beforeChange: (current, next) => setHoverIndex(-1), 
+    afterChange: (current) => setSlideIndex(current), 
   };
 
   return (
@@ -104,7 +104,7 @@ const GalleryVideoCarousel = () => {
             <div className="video-container">
               <iframe
                 title={`Video ${video.id}`}
-                src={`${video.src}&modestbranding=1`} // Add the modestbranding parameter
+                src={`${video.src}&modestbranding=1`} 
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen

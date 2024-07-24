@@ -43,23 +43,22 @@ const NewsSettings = () => {
       const response = await API.adminNews(formData);
       console.log('News created successfully:', response);
 
-      // Clear form data after successful submission
       setImage('')
 
-      // Fetch the updated list of events
+
       fetchData();
     } catch (error) {
       console.error('Error while creating news:', error);
-      // Handle error state or show error message to the user
+      
     }
   };
 
   const handleDelete = async (id) => {
     try {
       console.log(`api called`)
-      // const fromData = new FormData({})
+      
       await API.deleteEvent({_id : id});
-      fetchData(); // Refresh events list after deletion
+      fetchData(); 
     } catch (error) {
       console.error('Error deleting event:', error);
     }

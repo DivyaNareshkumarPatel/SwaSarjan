@@ -70,11 +70,11 @@ function BlogsBannerItems({ imgSrc }) {
           Checkout Our Blogs
         </Typography>
 
-        <div style={{display:"flex", flexWrap:"wrap"}}>
+        {/* <div style={{display:"flex", flexWrap:"wrap"}}>
           <div style={{marginRight:"10px"}}><AccountCircle/></div>
           <div style={{marginRight:"10px"}}>Blogger Ben</div>
           <div style={{marginRight:"15px"}}>December 13, 2023</div>
-        </div>
+        </div> */}
       </div>
     </Paper>
   );

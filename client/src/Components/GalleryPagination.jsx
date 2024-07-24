@@ -5,13 +5,13 @@ import { styled } from '@mui/material';
 
 const StyledPagination = styled(Pagination)(({ theme }) => ({
   '& .MuiPaginationItem-root': {
-    color: theme.palette.secondary.main, // Set color to secondary theme color
+    color: theme.palette.secondary.main, 
   },
   '& .Mui-selected': {
-    backgroundColor: theme.palette.secondary.main, // Highlight selected page
-    color: '#FFFFFF', // Set text color to white
+    backgroundColor: theme.palette.secondary.main, 
+    color: '#FFFFFF', 
     '&:hover': {
-      backgroundColor: theme.palette.secondary.dark, // Darken background color on hover
+      backgroundColor: theme.palette.secondary.dark,
     },
   },
 }));

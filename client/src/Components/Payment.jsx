@@ -1,3 +1,7 @@
+// this was just for demonstration and no longer useful for website 
+// we will integrate directly the phonepe gateway
+
+
 import React, { useState } from 'react';
 import { Box, Button, Card, CardContent, Typography, useMediaQuery,Radio, Divider } from '@mui/material';
 import GoogleIcon from '@mui/icons-material/Google';

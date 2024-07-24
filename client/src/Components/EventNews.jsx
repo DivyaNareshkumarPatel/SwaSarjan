@@ -8,7 +8,7 @@ import "./GallerySlickVideo.css";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
 import { Typography, Modal, IconButton } from "@mui/material";
 import { Delete } from "@mui/icons-material";
-import { API } from "../service/api"; // Ensure your API service is imported correctly
+import { API } from "../service/api";
 
 function EventNews({ isAdmin }) {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -127,6 +127,7 @@ function EventNews({ isAdmin }) {
         }}
       >
         <div>
+          {/* adjust the url of the backend here */}
           <img src={`http://localhost:8000/${selectedImage}`} alt="" style={{ maxWidth: "100%", maxHeight: "100%"}} />
         </div>
       </Modal>

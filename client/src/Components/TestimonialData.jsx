@@ -1,3 +1,6 @@
+//  no real data provided
+
+
 import React from "react";
 
 export default function TestimonialData({ item }) {

@@ -1,3 +1,7 @@
+// displays the table of the users
+
+
+
 import UsersList from "./UserList";
 
 const AdminHome = () => {

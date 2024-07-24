@@ -18,10 +18,10 @@ export default function HomeBanner() {
       }
     };
 
-    handleResize(); // Call on mount
-    window.addEventListener("resize", handleResize); // Attach listener
+    handleResize(); 
+    window.addEventListener("resize", handleResize); 
 
-    return () => window.removeEventListener("resize", handleResize); // Cleanup listener
+    return () => window.removeEventListener("resize", handleResize); 
   }, []);
 
   const images = [img1, img2, img3, img4];

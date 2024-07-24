@@ -18,7 +18,7 @@ const modalStyle = {
 
 export default function BlogModal({ open, handleClose, details }) {
   if (!details) return null;
-
+  // adjust the url backend 
   const image = `http://localhost:8000/${details.image}`;
 
   return (

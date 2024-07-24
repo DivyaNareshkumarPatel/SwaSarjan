@@ -4,6 +4,7 @@ import React from "react";
 
 export default function BlogsCard({ details, onCardClick, onDeleteClick, isAdmin }) {
   const theme = useTheme();
+  // adjust the backend server link here
   const image = `http://localhost:8000/${details.image}`;
 
   return (

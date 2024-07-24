@@ -1,3 +1,8 @@
+//  as of now in use because payment issue arrived so it sends the email and stores in database
+
+
+
+
 import React, { useState } from 'react';
 import { Modal, Box, Typography, TextField, Button, Snackbar, SnackbarContent } from '@mui/material';
 import ErrorIcon from "@mui/icons-material/Error";

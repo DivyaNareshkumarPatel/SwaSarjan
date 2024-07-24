@@ -1,3 +1,7 @@
+// attached with temp modal for data acceptance for temporary purpose
+
+
+
 import React, {useState} from "react";
 import img from "../images/volunteer.png";
 import { Typography } from "@mui/material";

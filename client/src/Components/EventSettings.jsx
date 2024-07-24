@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
-import EventsCards from './EventsCards'; // Ensure EventsCards component is correctly imported
+import EventsCards from './EventsCards'; 
 
 const EventSettings = () => {
   const [events, setEvents] = useState([]);
@@ -76,7 +76,7 @@ const EventSettings = () => {
           eventType: '',
         });
         setImage(null);
-        fetchData(); // Fetch the updated list of events
+        fetchData();
       } else {
         console.error('Error creating event:', response.msg);
       }
@@ -89,7 +89,7 @@ const EventSettings = () => {
     try {
       const response = await API.deleteEvent(id);
       if (response.isSuccess) {
-        fetchData(); // Refresh events list after deletion
+        fetchData(); 
       } else {
         console.error('Error deleting event:', response.msg);
       }
@@ -185,15 +185,16 @@ const EventSettings = () => {
         ) : (
           events.map((event) => (
             <EventsCards
-              key={event._id} // Assuming _id is the unique identifier for each event
+              key={event._id} 
               title={event.title}
               description={event.description}
-              date={new Date(event.date).getDate()} // Extract day from date
-              month={new Date(event.date).toLocaleString('default', { month: 'short' })} // Extract month from date
+              date={new Date(event.date).getDate()} 
+              month={new Date(event.date).toLocaleString('default', { month: 'short' })}
               smallDesc={event.smallDesc}
               venue={event.venue}
+              // adjust here backend server link
               image={`http://localhost:8000/${event.image}`}
-              onDelete={() => handleDelete(event._id)} // Pass the delete function to the card
+              onDelete={() => handleDelete(event._id)}
               isAdmin={true} // Pass isAdmin as true for the admin view
             />
           ))

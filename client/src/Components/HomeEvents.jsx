@@ -3,7 +3,7 @@ import { Box, Typography, useMediaQuery } from '@mui/material';
 import styled from "@emotion/styled";
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { Link } from "react-router-dom";
-import { API } from "../service/api"; // Adjust path as needed
+import { API } from "../service/api"; 
 
 const OuterContainer = styled(Box)({
   padding: '0 40px',
@@ -94,20 +94,20 @@ const HomeEvents = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await API.getEvents(); // Assuming API.getEvents() retrieves event data
+        const response = await API.getEvents(); 
         if (response.isSuccess) {
           setEvents(response.data); // Set events state with fetched data
         } else {
           console.error('Error fetching events:', response.msg);
         }
-        setLoading(false); // Update loading state once data is fetched
+        setLoading(false); 
       } catch (error) {
         console.error('Error fetching events:', error);
-        setLoading(false); // Update loading state in case of error
+        setLoading(false); 
       }
     };
 
-    fetchData(); // Invoke fetchData function on component mount
+    fetchData(); 
   }, []);
 
   return (
