@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import image3 from '../images/image3.png';
 import LoginCommunity from "./LoginCommunity";
 import Payment from "./Payment";
-import Login from "../Pages/Login";
+// import Login from "../Pages/Login";
 import { useNavigate } from "react-router-dom";
 
 
