@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Typography, Box, Link } from '@mui/material';
+import { Container, Typography} from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
 const TermsAndConditions = () => {

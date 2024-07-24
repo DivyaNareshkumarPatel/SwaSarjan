@@ -1,6 +1,6 @@
 import React from 'react'
 import NavBar from '../Components/Navbar'
-import CommonBanner from '../Components/CommonBanner'
+// import CommonBanner from '../Components/CommonBanner'
 import ContactMain from '../Components/ContactMain'
 import ContactUsMap from '../Components/ContactUsMap';
 import Footer from '../Components/Footer';

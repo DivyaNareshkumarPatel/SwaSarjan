@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, Typography, Paper, Grid } from '@mui/material';
 import { API } from '../service/api';
-import EventsCards from './EventsCards'; // Make sure to import EventsCards component
+// import EventsCards from './EventsCards'; // Make sure to import EventsCards component
 import EventNews from './EventNews';
 const NewsSettings = () => {
   const [events, setEvents] = useState([]);

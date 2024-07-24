@@ -1,3 +1,4 @@
+// api.js
 import axios from 'axios';
 import { API_NOTIFICATION_MESSAGES, SERVICE_URLS } from '../Components/constants/config.js';
 
@@ -13,6 +14,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   function (config) {
+    // You can add authorization headers or other request configurations here
     return config;
   },
   function (error) {

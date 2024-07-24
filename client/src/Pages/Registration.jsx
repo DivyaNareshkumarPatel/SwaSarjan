@@ -2,7 +2,7 @@ import React,{useState } from "react";
 // import LoginCommunity from "../Components/LoginCommunity";
 import RegistrationOptions from "../Components/RegistrationOptions";
 import RegistrationMainForm from "../Components/RegistrationMainForm";
-import {Box,styled, useMediaQuery ,Button } from "@mui/material";
+import {Button } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowBackwardIcon from '@mui/icons-material/ArrowBack';
 

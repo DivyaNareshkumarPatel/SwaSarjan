@@ -28,9 +28,6 @@ const Events = () => {
 
     fetchData();
   }, []);
-  function clk(){
-    console.log(events)
-  }
   return (
     <div>
       <NavBar />
