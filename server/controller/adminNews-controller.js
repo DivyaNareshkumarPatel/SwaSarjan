@@ -1,5 +1,6 @@
 import News from "../models/adminNewsModel.js";
 import fs from "fs"
+import mongoose from "mongoose";
 
 export const createNews = async (req , res) => {
     try{
@@ -34,18 +35,27 @@ export const getAllNews = async (req, res) => {
 
 
 export const deleteNews = async (req, res) => {
-    console.log(req)
-    const image = req.image; 
-    console.log(`image :- ${image}`)
-    // console.log(req.params.id)
+    const { id } = req.params.id; 
     try {
-        const deletedNews = await News.findByIdAndDelete({image});
-        if (!deletedNews) {
-            return res.status(404).json({ message: 'News not found' });    
+        const newsItem = await News.findById(id);
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            console.log('Invalid ID format')
+            return res.status(400).json({ message: 'Invalid ID format' });
+          }
+        if (!newsItem) {
+            return res.status(404).json({ message: 'News not found' });
         }
-        
+
+        const imagePath = newsItem.image;
+        if (fs.existsSync(imagePath)) {
+            fs.unlinkSync(imagePath);
+        }
+
+        await News.findByIdAndDelete(id);
         return res.status(200).json({ message: 'News deleted successfully' });
     } catch (error) {
+        console.error('Error while deleting news:', error);
         return res.status(500).json({ message: 'Error while deleting News', error });
     }
 };
