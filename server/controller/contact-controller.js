@@ -17,7 +17,7 @@ export const contactUs = async (req, res) => {
     return res.status(500).json({ msg: 'Error saving contact details to the database.' });
   }
 
-  const recipients = ['krishjp2538@gmail.com', 'divyanareshkumarpatel@gmail.com', 'kp6102k4@gmail.com']
+  const recipients = ['krishjp2538@gmail.com', 'swasarjan@gmail.com']
   
   const emailData = {
     from: `${email}`,
