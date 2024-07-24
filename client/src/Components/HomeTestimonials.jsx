@@ -2,6 +2,8 @@ import React from "react";
 import { Typography } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import img1 from "../images/Testimonial1.png";
+import img2 from "../images/Testimonial2.png";
+import img3 from '../images/Testimonial3.jpeg'
 import TestimonialData from "./TestimonialData";
 export default function HomeTestimonials() {
   const testimonial = [
@@ -14,17 +16,17 @@ export default function HomeTestimonials() {
     },
     {
       content:
-        "The team and volunteers of NGO are too good at their working . They organised an amazing events and handled it very well. I am very impressed with the NGO working and team members.",
+        "Being part of Swa-Sarjan has been a rewarding experience. Their commitment to helping others and making a real difference in people's lives is exceptional.",
       name: "David S. Neuman",
       designation: "Business Manager",
-      image: img1,
+      image: img2,
     },
     {
       content:
-        "The team and volunteers of NGO are too good at their working . They organised an amazing events and handled it very well. I am very impressed with the NGO working and team members.",
+        "Swa-Sarjan's impact on the local community is profound. Their innovative approaches to charity work and support for the less fortunate are truly commendable.",
       name: "David S. Neuman",
       designation: "Business Manager",
-      image: img1,
+      image: img3,
     },
   ];
   return (
