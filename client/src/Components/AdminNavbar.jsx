@@ -141,12 +141,12 @@ const AdminNavbar = () => {
           </ListItemIcon>
           <ListItemText primary="Blogs" />
         </ListItem>
-        <ListItem button onClick={() => handleNavigation('Campaigns')}> 
+        {/* <ListItem button onClick={() => handleNavigation('Campaigns')}> 
           <ListItemIcon>
-            <EventIcon /> {/* You can use any suitable icon */}
+            <EventIcon /> 
           </ListItemIcon>
           <ListItemText primary="Campaigns" />
-        </ListItem>
+        </ListItem> */}
         <ListItem button onClick={() => handleNavigation('Settings')}>
           <ListItemIcon>
             <SettingsIcon />

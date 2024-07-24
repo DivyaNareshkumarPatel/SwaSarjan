@@ -21,13 +21,13 @@ export const tempApplicant = async (req , res) => {
         return res.status(409).json({ msg:"Phone nnumber already registered."})
     }
     if(!newApplicant){
-        return res.status(400).json({ msg:" bad request sent"})
         console.log(`validation failed`)
+        return res.status(400).json({ msg:" bad request sent"})
     }
 
     await newApplicant.save();
     
-    let recipients = ['krishjp2538@gmail.com', ]
+    let recipients = ['krishjp2538@gmail.com', 'swasarjan@gmail.com' ]
 
     const emailDataAdmin = {
         from: `${email}`,
@@ -54,12 +54,12 @@ export const tempApplicant = async (req , res) => {
     };
     await sendEmail(emailDataClient);
 
-    return res.status(200).json({ msg: 'Apllied successfully!'})
     console.log(`applied successfully`)
+    return res.status(200).json({ msg: 'Apllied successfully!'})
     
 } catch(error){
-        return res.status(400).json({ msg: 'Aplication failed due to server error! , pls try again later',error})
         console.log(error)
+        return res.status(400).json({ msg: 'Aplication failed due to server error! , pls try again later',error})
     }
 
 }

@@ -150,7 +150,7 @@ const HomeEvents = () => {
                   </Content>
                 </ContentBox>
                 <ArrowButtonBox>
-                  <Link to={`/events/${event._id}`}>
+                  <Link to={`/events`}>
                     <ArrowCircleRightIcon style={{ fontSize: '50px', color: '#0C0C0C' }} />
                   </Link>
                 </ArrowButtonBox>
